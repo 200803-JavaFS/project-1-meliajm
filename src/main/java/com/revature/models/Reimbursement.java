@@ -7,8 +7,8 @@ public class Reimbursement {
 	private int reimbID;
 	private double reimbAmount;
 	private String reimbSubmitted;
-	private String reimResolved;
-	private String reimDescription;
+	private String reimbResolved;
+	private String reimbDescription;
 	private int reimbAuthor;
 	private int reimbResolver;
 	private int reimbStatusID;
@@ -24,8 +24,8 @@ public class Reimbursement {
 		this.reimbID = reimbID;
 		this.reimbAmount = reimbAmount;
 		this.reimbSubmitted = reimbSubmitted;
-		this.reimResolved = reimResolved;
-		this.reimDescription = reimDescription;
+		this.reimbResolved = reimResolved;
+		this.reimbDescription = reimDescription;
 		this.reimbAuthor = reimbAuthor;
 		this.reimbResolver = reimbResolver;
 		this.reimbStatusID = reimbStatusID;
@@ -37,8 +37,8 @@ public class Reimbursement {
 		super();
 		this.reimbAmount = reimbAmount;
 		this.reimbSubmitted = reimbSubmitted;
-		this.reimResolved = reimResolved;
-		this.reimDescription = reimDescription;
+		this.reimbResolved = reimResolved;
+		this.reimbDescription = reimDescription;
 		this.reimbAuthor = reimbAuthor;
 		this.reimbResolver = reimbResolver;
 		this.reimbStatusID = reimbStatusID;
@@ -69,20 +69,20 @@ public class Reimbursement {
 		this.reimbSubmitted = reimbSubmitted;
 	}
 
-	public String getReimResolved() {
-		return reimResolved;
+	public String getReimbResolved() {
+		return reimbResolved;
 	}
 
-	public void setReimResolved(String reimResolved) {
-		this.reimResolved = reimResolved;
+	public void setReimbResolved(String reimResolved) {
+		this.reimbResolved = reimResolved;
 	}
 
-	public String getReimDescription() {
-		return reimDescription;
+	public String getReimbDescription() {
+		return reimbDescription;
 	}
 
-	public void setReimDescription(String reimDescription) {
-		this.reimDescription = reimDescription;
+	public void setReimbDescription(String reimDescription) {
+		this.reimbDescription = reimDescription;
 	}
 
 	public int getReimbAuthor() {
@@ -118,24 +118,16 @@ public class Reimbursement {
 	}
 
 	@Override
-	public String toString() {
-		return "Reimbursement [reimbID=" + reimbID + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="
-				+ reimbSubmitted + ", reimResolved=" + reimResolved + ", reimDescription=" + reimDescription
-				+ ", reimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatusID="
-				+ reimbStatusID + ", reimbTypeID=" + reimbTypeID + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((reimDescription == null) ? 0 : reimDescription.hashCode());
-		result = prime * result + ((reimResolved == null) ? 0 : reimResolved.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(reimbAmount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + reimbAuthor;
+		result = prime * result + ((reimbDescription == null) ? 0 : reimbDescription.hashCode());
 		result = prime * result + reimbID;
+		result = prime * result + ((reimbResolved == null) ? 0 : reimbResolved.hashCode());
 		result = prime * result + reimbResolver;
 		result = prime * result + reimbStatusID;
 		result = prime * result + ((reimbSubmitted == null) ? 0 : reimbSubmitted.hashCode());
@@ -152,21 +144,21 @@ public class Reimbursement {
 		if (getClass() != obj.getClass())
 			return false;
 		Reimbursement other = (Reimbursement) obj;
-		if (reimDescription == null) {
-			if (other.reimDescription != null)
-				return false;
-		} else if (!reimDescription.equals(other.reimDescription))
-			return false;
-		if (reimResolved == null) {
-			if (other.reimResolved != null)
-				return false;
-		} else if (!reimResolved.equals(other.reimResolved))
-			return false;
 		if (Double.doubleToLongBits(reimbAmount) != Double.doubleToLongBits(other.reimbAmount))
 			return false;
 		if (reimbAuthor != other.reimbAuthor)
 			return false;
+		if (reimbDescription == null) {
+			if (other.reimbDescription != null)
+				return false;
+		} else if (!reimbDescription.equals(other.reimbDescription))
+			return false;
 		if (reimbID != other.reimbID)
+			return false;
+		if (reimbResolved == null) {
+			if (other.reimbResolved != null)
+				return false;
+		} else if (!reimbResolved.equals(other.reimbResolved))
 			return false;
 		if (reimbResolver != other.reimbResolver)
 			return false;
@@ -181,7 +173,17 @@ public class Reimbursement {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Reimbursement [reimbID=" + reimbID + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="
+				+ reimbSubmitted + ", reimbResolved=" + reimbResolved + ", reimbDescription=" + reimbDescription
+				+ ", reimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatusID="
+				+ reimbStatusID + ", reimbTypeID=" + reimbTypeID + "]";
+	}
+
 	
+
 	
 
 	
