@@ -32,13 +32,16 @@ public class MasterServlet extends HttpServlet {
 		String[] portions = URI.split("/");
 		
 		// better to log
-		//System.out.println(Arrays.toString(portions));
-		
+//		System.out.println(Arrays.toString(portions));
+//		System.out.println("portions[0]: "+  portions[0]);
+//		System.out.println("portions[0] equal: "+  portions[0].equals("login"));
 		try {
 			switch(portions[0]) {
 			
 				case "login":
+					
 					if (req.getMethod().equals("POST")) {
+						System.out.println("here in case login if statement");
 						uc.login(req, res);
 					}
 //				case "reimb":
