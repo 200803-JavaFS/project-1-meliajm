@@ -41,9 +41,15 @@ public class MasterServlet extends HttpServlet {
 				case "login":
 					
 					if (req.getMethod().equals("POST")) {
-						System.out.println("here in case login if statement");
 						uc.login(req, res);
 					}
+//				case "success": 
+//					// check what type of user they are 
+//					// this is for employee
+//					if (req.getParameter())
+//					if (req.getMethod().equals("GET")) {
+//						uc.employeeSuccess(req, res);
+//					}
 //				case "reimb":
 //					if (req.getMethod().equals("GET")) {
 //						if (portions.length == 2) {

@@ -6,5 +6,19 @@ public class userRole {
 	
 	private int UserRoleID;
 	private String UserRole;
+	public int getUserRoleID() {
+		return UserRoleID;
+	}
+	public void setUserRoleID(int userRoleID) {
+		UserRoleID = userRoleID;
+	}
+	public String getUserRole() {
+		return UserRole;
+	}
+	public void setUserRole(String userRole) {
+		UserRole = userRole;
+	}
+	
+	
 
 }

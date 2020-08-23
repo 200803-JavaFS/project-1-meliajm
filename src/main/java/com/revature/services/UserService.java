@@ -42,8 +42,13 @@ public class UserService {
 	}
 	
 	public List<Reimbursement> findUserReimbursements(User u) {
-		log.info("find user reimbursements");
+		log.info("find user reimbursements from user");
 		return uDao.findUserReimbursements(u);
 	}
+	
+//	public User findUserRole(int id) {
+//		log.info("find user role from user id");
+//		return uDao.findUserRole(id);
+//	}
 
 }
