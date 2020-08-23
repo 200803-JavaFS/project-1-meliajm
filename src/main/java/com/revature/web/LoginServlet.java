@@ -1,30 +1,26 @@
 package com.revature.web;
 
-import javax.servlet.http.HttpServlet;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.controllers.ReimbController;
 import com.revature.controllers.UserController;
 
-public class MasterServlet extends HttpServlet {
+public class LoginServlet  extends HttpServlet {
 	
 	private static UserController uc = new UserController();
 	
-	private static ReimbController rc = new ReimbController();
 	
-	public MasterServlet() {
+	public LoginServlet() {
 		super();
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("application/json");
 		res.setStatus(404);
 		
@@ -42,15 +38,15 @@ public class MasterServlet extends HttpServlet {
 //					RequestDispatcher rd = null;
 //					rd = req.getRequestDispatcher("index.html");
 
-//				case "login":
-//					System.out.println("req: "+ req);
-//
-//					System.out.println("req.get: "+ req.getMethod());
-//					if (req.getMethod().equals("POST")) {
-//						System.out.println("in if");
-//						
-//						uc.login(req, res);
-//					}
+				case "login":
+					System.out.println("req: "+ req);
+
+					System.out.println("req.get: "+ req.getMethod());
+					if (req.getMethod().equals("POST")) {
+						System.out.println("in if");
+						
+						uc.login(req, res);
+					}
 //				case "employeeSuccess": 
 //					// check what type of user they are 
 //					// this is for employee
@@ -78,18 +74,12 @@ public class MasterServlet extends HttpServlet {
 			res.getWriter().print("the id you provided is not an integer");
 			res.setStatus(400);
 		}
-		
-		
-		
-		
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		doGet(req,res);
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doPost(req,res);
 	}
-
-
 
 
 }

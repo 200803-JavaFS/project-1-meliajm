@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.models.Reimbursement;
 import com.revature.models.User;
 import com.revature.models.userRole;
 import com.revature.services.UserRoleService;
@@ -48,10 +50,34 @@ public class UserController {
 	
 	public void employeeSuccess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		// Print out reimbursements of users
-		System.out.println("your reimb for this user");
-		RequestDispatcher rd = null;
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
 
-		rd = req.getRequestDispatcher("employeeSuccess.html");
+		System.out.println("your reimb for this user");
+		System.out.println("req: "+ req);
+		System.out.println("reqs: "+ res);
+
+		RequestDispatcher rd = null;
+		// i want to use employeeSuccess.html but for now it's print outs
+		//rd = req.getRequestDispatcher("employeeSuccess.html");
+		out.print("<h1>Welcome, "+ req.getParameter("username")+ "!</h1>");
+		// find reimbs from user
+		// this an extra step needing to hit database again, not best practice, where can i pass in user so i
+		// do not need to do that
+		// this should go to employee success not login i believe
+		User u = us.findByUsername(req.getParameter("username"));
+		List<Reimbursement> listReimb = us.findUserReimbursements(u);
+		out.print("<h3>Here are your reimbursements</h3>");
+		int len = listReimb.size();
+		for (int i=0; i<len; i++) {	
+			out.print("");
+			out.print(listReimb.get(i));
+		}
+
+		
+		
+
+		System.out.println("your reimb for this user here? in employeeSuccess in user controller");
 
 		
 	}

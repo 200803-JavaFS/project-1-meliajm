@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.controllers.ReimbController;
 import com.revature.controllers.UserController;
 
-public class EmployeeServlet extends HttpServlet{
+public class EmployeeServlet extends HttpServlet {
 	
-private static UserController uc = new UserController();
+	private static UserController uc = new UserController();
 	
 	private static ReimbController rc = new ReimbController();
 	
@@ -42,7 +42,7 @@ private static UserController uc = new UserController();
 
 					System.out.println("req.get: "+ req.getMethod());
 					if (req.getMethod().equals("POST")) {
-						System.out.println("in if");
+						System.out.println("in if employee success");
 						
 						uc.employeeSuccess(req, res);
 					}
