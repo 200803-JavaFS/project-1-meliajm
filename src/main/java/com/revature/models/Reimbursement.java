@@ -176,10 +176,10 @@ public class Reimbursement {
 
 	@Override
 	public String toString() {
-		return "Reimbursement [reimbID=" + reimbID + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="
+		return "reimbID=" + reimbID + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="
 				+ reimbSubmitted + ", reimbResolved=" + reimbResolved + ", reimbDescription=" + reimbDescription
 				+ ", reimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatusID="
-				+ reimbStatusID + ", reimbTypeID=" + reimbTypeID + "]";
+				+ reimbStatusID + ", reimbTypeID=" + reimbTypeID;
 	}
 
 	

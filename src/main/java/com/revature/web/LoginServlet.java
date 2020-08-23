@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.controllers.UserController;
 
-public class LoginServlet  extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	
 	private static UserController uc = new UserController();
 	

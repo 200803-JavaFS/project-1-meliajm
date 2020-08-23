@@ -51,12 +51,10 @@ public class MasterServlet extends HttpServlet {
 //						
 //						uc.login(req, res);
 //					}
-//				case "employeeSuccess": 
-//					// check what type of user they are 
-//					// this is for employee
-//					if (req.getMethod().equals("POST")) {
-//						uc.employeeSuccess(req, res);
-//					}
+				case "index": 
+					// check what type of user they are 
+					// this is for employee
+					uc.login(req, res);
 //				case "reimb":
 //					if (req.getMethod().equals("GET")) {
 //						if (portions.length == 2) {

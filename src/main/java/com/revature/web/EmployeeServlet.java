@@ -15,7 +15,7 @@ public class EmployeeServlet extends HttpServlet {
 	
 	private static UserController uc = new UserController();
 	
-	private static ReimbController rc = new ReimbController();
+//	private static ReimbController rc = new ReimbController();
 	
 	public EmployeeServlet() {
 		super();
