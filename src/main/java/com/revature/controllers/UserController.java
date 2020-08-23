@@ -30,10 +30,13 @@ public class UserController {
 		
 		if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
 			userRole ur = urs.findByID(u.getUserID());
+			System.out.println("ur.getUserRole().equals?: " + ur.getUserRole().equals("Employee"));
 			if (ur.getUserRole().equals("Employee")) {				
-				rd = req.getRequestDispatcher("employeeSuccess.html");
+				rd = req.getRequestDispatcher("employeeSuccess");
 				rd.forward(req, res);
 			} else if (ur.getUserRole().equals("FinanceM")) {
+				rd = req.getRequestDispatcher("financeMSuccess");
+				rd.forward(req, res);
 				
 			}
 		} else {
@@ -43,8 +46,13 @@ public class UserController {
 		}
 	}
 	
-	public void success(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		
+	public void employeeSuccess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		// Print out reimbursements of users
+		System.out.println("your reimb for this user");
+		RequestDispatcher rd = null;
+
+		rd = req.getRequestDispatcher("employeeSuccess.html");
+
 		
 	}
 

@@ -1,24 +1,23 @@
 package com.revature.web;
 
-import javax.servlet.http.HttpServlet;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.controllers.ReimbController;
 import com.revature.controllers.UserController;
 
-public class MasterServlet extends HttpServlet {
+public class EmployeeServlet extends HttpServlet{
 	
-	private static UserController uc = new UserController();
+private static UserController uc = new UserController();
 	
 	private static ReimbController rc = new ReimbController();
 	
-	public MasterServlet() {
+	public EmployeeServlet() {
 		super();
 	}
 	
@@ -38,19 +37,20 @@ public class MasterServlet extends HttpServlet {
 		try {
 			switch(portions[0]) {
 			
-				case "login":
+				case "employeeSuccess":
 					System.out.println("req: "+ req);
 
 					System.out.println("req.get: "+ req.getMethod());
 					if (req.getMethod().equals("POST")) {
 						System.out.println("in if");
 						
-						uc.login(req, res);
+						uc.employeeSuccess(req, res);
 					}
-//				case "employeeSuccess": 
+//				case "success": 
 //					// check what type of user they are 
 //					// this is for employee
-//					if (req.getMethod().equals("POST")) {
+//					if (req.getParameter())
+//					if (req.getMethod().equals("GET")) {
 //						uc.employeeSuccess(req, res);
 //					}
 //				case "reimb":
@@ -84,8 +84,5 @@ public class MasterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doGet(req,res);
 	}
-
-
-
 
 }

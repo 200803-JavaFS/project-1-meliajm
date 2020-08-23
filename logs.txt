@@ -1,3 +1,26 @@
 2020-08-22 15:52:39 INFO  UserService:30 - find by username
 2020-08-22 16:00:48 INFO  UserService:30 - find by username
 2020-08-22 16:03:08 INFO  UserService:30 - find by username
+2020-08-23 12:05:55 INFO  UserService:30 - find by username
+2020-08-23 12:15:49 INFO  UserService:30 - find by username
+2020-08-23 12:19:27 INFO  UserService:30 - find by username
+2020-08-23 12:19:31 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:21:21 INFO  UserService:30 - find by username
+2020-08-23 12:21:25 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:22:25 INFO  UserService:30 - find by username
+2020-08-23 12:22:29 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:29:57 INFO  UserService:30 - find by username
+2020-08-23 12:30:01 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:30:45 INFO  UserService:30 - find by username
+2020-08-23 12:30:48 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:42:50 INFO  UserService:30 - find by username
+2020-08-23 12:42:50 INFO  UserService:30 - find by username
+2020-08-23 12:42:55 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:42:55 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:46:05 INFO  UserService:30 - find by username
+2020-08-23 12:46:08 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:56:16 INFO  UserService:30 - find by username
+2020-08-23 12:56:29 INFO  UserService:30 - find by username
+2020-08-23 12:56:33 INFO  UserRoleService:20 - find user role from user id
+2020-08-23 12:57:49 INFO  UserService:30 - find by username
+2020-08-23 12:57:52 INFO  UserRoleService:20 - find user role from user id

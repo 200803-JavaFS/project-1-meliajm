@@ -13,7 +13,7 @@ public class UserRoleDAO implements IUserRoleDAO {
 	@Override
 	public userRole findByID(int id) {
 		try(Connection conn = ConnectionUtility.getConnection()) {
-			String sql = "SELECT * FROM users u JOIN user_roles ur ON u.user_role_id = ur.user_role_id WHERE u.user_id " + id+";";
+			String sql = "SELECT * FROM users u JOIN user_roles ur ON u.user_role_id = ur.user_role_id WHERE u.user_id =" + id+";";
 			Statement statement = conn.createStatement();
 			ResultSet result = statement.executeQuery(sql);
 			if (result.next()) {
