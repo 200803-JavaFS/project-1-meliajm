@@ -22,55 +22,70 @@ public class UserController {
 	private static UserService us = new UserService();
 	private static UserRoleService urs = new UserRoleService();
 //	private static Reimb
-
-	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		
-		RequestDispatcher rd = null;
-		PrintWriter out = res.getWriter();
-		try {
-			
-			User u = us.findByUsername(req.getParameter("username"));
-			System.out.println("user: "+ u);
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
-			
-			if (u!=null && u.getUsername().equals(username) && u.getPassword().equals(password)) {
-				userRole ur = urs.findByID(u.getUserID());
-				System.out.println("ur.getUserRole().equals?: " + ur.getUserRole().equals("Employee"));
-				if (ur.getUserRole().equals("Employee")) {				
-					rd = req.getRequestDispatcher("employeeSuccess");
-					rd.forward(req, res);
-				} else if (ur.getUserRole().equals("FinanceM")) {
-					rd = req.getRequestDispatcher("financeMSuccess");
-					rd.forward(req, res);
-					
-				}
-			} else {
-				rd.include(req, res);
-				System.out.println("in else in user controller");
-				// this does not display properly
-//				res.setContentType("text/html");
-//				rd = req.getRequestDispatcher("index.html");
-				res.sendRedirect("");
-
-			}
-		} catch (NullPointerException e) {
-			// not sure this is working how i want it to
-			e.printStackTrace();
-			res.setContentType("text/html");
-
-			System.out.println("in catch in user controller");
-
-			rd = req.getRequestDispatcher("index.html");
-//			res.sendRedirect("");
-			rd.include(req, res);
-			out.print("<span style='color:red; text-align:center'>Invalid Username/Password</span>");
 	
-			System.out.println("in catch in user controller after");
-
-//			login(req, res);
+	public void getUser(HttpServletResponse res, int id) throws IOException {
+		User u = us.findById(id);
+		if (u==null) {
+			res.setStatus(204);
+		} else {
+			res.setStatus(200);
+			String json = om.writeValueAsString(u);
+			res.getWriter().println(json);
 		}
 	}
+	
+
+
+
+//	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+//		
+//		RequestDispatcher rd = null;
+//		PrintWriter out = res.getWriter();
+//		try {
+//			
+//			User u = us.findByUsername(req.getParameter("username"));
+//			System.out.println("user: "+ u);
+//			String username = req.getParameter("username");
+//			String password = req.getParameter("password");
+//			
+//			if (u!=null && u.getUsername().equals(username) && u.getPassword().equals(password)) {
+//				userRole ur = urs.findByID(u.getUserID());
+//				System.out.println("ur.getUserRole().equals?: " + ur.getUserRole().equals("Employee"));
+//				if (ur.getUserRole().equals("Employee")) {				
+//					rd = req.getRequestDispatcher("employeeSuccess");
+//					rd.forward(req, res);
+//				} else if (ur.getUserRole().equals("FinanceM")) {
+//					rd = req.getRequestDispatcher("financeMSuccess");
+//					rd.forward(req, res);
+//					
+//				}
+//			} else {
+//				rd.include(req, res);
+//				System.out.println("in else in user controller");
+//				// this does not display properly
+////				res.setContentType("text/html");
+////				rd = req.getRequestDispatcher("index.html");
+//				res.sendRedirect("");
+//
+//			}
+//		} catch (NullPointerException e) {
+//			// not sure this is working how i want it to
+//			e.printStackTrace();
+//			res.setContentType("text/html");
+//
+//			System.out.println("in catch in user controller");
+//
+//			rd = req.getRequestDispatcher("index.html");
+////			res.sendRedirect("");
+//			rd.include(req, res);
+//			out.print("<span style='color:red; text-align:center'>Invalid Username/Password</span>");
+//	
+//			System.out.println("in catch in user controller after");
+//
+////			login(req, res);
+//		}
+//	}
+//	
 	
 	public void employeeSuccess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		// Print out reimbursements of users
@@ -147,5 +162,6 @@ public class UserController {
 
 		
 	}
+
 
 }

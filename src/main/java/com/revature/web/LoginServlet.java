@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 					if (req.getMethod().equals("POST")) {
 						System.out.println("in if");
 						
-						uc.login(req, res);
+//						uc.login(req, res);
 					}
 //				case "employeeSuccess": 
 //					// check what type of user they are 

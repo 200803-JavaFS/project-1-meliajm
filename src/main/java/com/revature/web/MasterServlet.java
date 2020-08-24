@@ -10,14 +10,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.controllers.LoginController;
 import com.revature.controllers.ReimbController;
 import com.revature.controllers.UserController;
 
 public class MasterServlet extends HttpServlet {
 	
-	private static UserController uc = new UserController();
-	
+	private static UserController uc = new UserController();	
 	private static ReimbController rc = new ReimbController();
+	private static LoginController lc = new LoginController();
+
 	
 	public MasterServlet() {
 		super();
@@ -34,53 +36,45 @@ public class MasterServlet extends HttpServlet {
 		
 		// better to log
 		System.out.println(Arrays.toString(portions));
-		System.out.println("portions[0]: "+  portions[0]);
-		System.out.println("portions[0] equal: "+  portions[0].equals("login"));
 		try {
 			switch(portions[0]) {
-//				case "index":
-//					RequestDispatcher rd = null;
-//					rd = req.getRequestDispatcher("index.html");
-
-//				case "login":
-//					System.out.println("req: "+ req);
-//
-//					System.out.println("req.get: "+ req.getMethod());
-//					if (req.getMethod().equals("POST")) {
-//						System.out.println("in if");
-//						
-//						uc.login(req, res);
-//					}
-				case "index": 
-					// check what type of user they are 
-					// this is for employee
-					uc.login(req, res);
-//				case "reimb":
-//					if (req.getMethod().equals("GET")) {
-//						if (portions.length == 2) {
-//							int id = Integer.parseInt(portions[1]);
-//							 rc.getReimb(res, id);
-//							
-//						} else if (portions.length==1) {
-//							rc.getAllAvengers(res);
-//						} 
-//					} else if (req.getMethod().equals("POST")) {
-//						
-//						ac.addReimb(req, res);
-//						
-//						
-//					}
+				case "user":
+					if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
+						if (req.getMethod().equals("GET")) {
+							if (portions.length == 2) {
+								int id = Integer.parseInt(portions[1]);
+								 uc.getUser(res, id);
+							} else if (portions.length==1) {
+//								rc.getAllReimbursements(res);
+							} 
+						} else if (req.getMethod().equals("POST")) {
+							rc.addReimbursement(req, res);
+						}
+						
+						
+					} else  {
+						res.setStatus(403);
+						res.getWriter().println("you must be logged in to view.");
+					}
+					break;
+				case "login":
+					lc.login(req, res);
+					break;
+				case "logout":
+					lc.logout(req, res);
+					break;
+					
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			res.getWriter().print("the id you provided is not an integer");
 			res.setStatus(400);
+			}
 		}
-		
-		
-		
-		
-	}
+	
+	
+	
+
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
