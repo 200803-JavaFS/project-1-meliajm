@@ -21,6 +21,7 @@ public class ReimbEmpServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("application/json");
+//		res.setContentType("text/html");
 		res.setStatus(404);
 
 		final String URI = req.getRequestURI().replace("/project1/", "");

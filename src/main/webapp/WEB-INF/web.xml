@@ -40,5 +40,15 @@
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   
+  <servlet> 
+  	<display-name>ReimbEmpServlet</display-name>
+  	<servlet-name>ReimbEmpServlet</servlet-name>
+  	<servlet-class>com.revature.web.ReimbEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ReimbEmpServlet</servlet-name> 
+  	<url-pattern>/reimbursement</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

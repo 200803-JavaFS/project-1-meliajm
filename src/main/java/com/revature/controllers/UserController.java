@@ -21,6 +21,7 @@ public class UserController {
 	private static ObjectMapper om = new ObjectMapper();
 	private static UserService us = new UserService();
 	private static UserRoleService urs = new UserRoleService();
+//	private static Reimb
 
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		
@@ -73,70 +74,76 @@ public class UserController {
 	
 	public void employeeSuccess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		// Print out reimbursements of users
-		res.setContentType("text/html");
-		PrintWriter out = res.getWriter();
-
-		System.out.println("your reimb for this user");
-		System.out.println("req: "+ req);
-		System.out.println("reqs: "+ res);
-
+		res.setContentType("application/json");
+		
+		System.out.println("in employee success in user controller");
 		RequestDispatcher rd = null;
+		rd = req.getRequestDispatcher("employeeSuccess.html");
+//		rd.forward("employeeSuccess.html");
+		
+		
+//		PrintWriter out = res.getWriter();
+//
+//		System.out.println("your reimb for this user");
+//		System.out.println("req: "+ req);
+//		System.out.println("reqs: "+ res.getContentType());
+
 		// i want to use employeeSuccess.html but for now it's print outs
 		//rd = req.getRequestDispatcher("employeeSuccess.html");
-		out.print("<h1>Welcome, "+ req.getParameter("username")+ "!</h1>");
+//		out.print("<h1>Welcome, "+ req.getParameter("username")+ "!</h1>");
 		// find reimbs from user
 		// this an extra step needing to hit database again, not best practice, where can i pass in user so i
 		// do not need to do that
 		// this should go to employee success not login i believe
-		User u = us.findByUsername(req.getParameter("username"));
-		List<Reimbursement> listReimb = us.findUserReimbursements(u);
-		out.print("<h3>Here are your reimbursements</h3>");
-		int len = listReimb.size();
-		for (int i=0; i<len; i++) {	
-			
-			out.print("<li>"+listReimb.get(i)+"</li>");
-		}
-		// click here to add new reimbursement request
-		//res.sendRedirect("/reimbursements");
-		
-		out.print("<h3>Submit your reimbursement request here</h3>");
-		out.print("		<form action=\"reimbursement\" method=\"post\">\n" + 
-				"			<table>\n" + 
-				"				<tr>\n" + 
-				"					<td><input type=\"text\" name=\"reimb_amount\" placeholder=\"ENTER amount\"></td>\n" + 
-				"				</tr>\n" + 
-				"				\n" + 
-				"				<tr>\n" + 
-				"				<!--  timestamp for submitted-->\n" + 
-				"					<td><input hidden=\"timestamp\" name=\"timestamp\"></td>\n" + 
-				"				</tr>\n" + 
-				"				\n" + 
-				"				<tr>\n" + 
-				"					<td><input type=\"textarea\" name=\"descr\" placeholder=\"ENTER description\"></td>\n" + 
-				"				</tr>\n" + 
-				"				<tr>\n" + 
-				"					<!-- author for submitted-->\n" + 
-				"					<td><input hidden=\"author\" name=\"this user\"></td>\n" + 
-				"				</tr>\n" + 
-				"				<tr>\n" + 
-				"					<!-- reimbursement status-->\n" + 
-				"					<td><input hidden=\"reimbursement status\" name=\"this user\"></td>\n" + 
-				"				</tr>\n" + 
-				"				<tr>\n" + 
-				"					<!-- make this a drop down menu-->\n" + 
-				"					<td><input type=\"text\" name=\"reimb_type\" placeholder=\"ENTER Lodging, Travel, Food, or Other\"></td>\n" + 
-				"				</tr>\n" + 
-				"				<tr>\n" + 
-				"					<td><input type=\"submit\" value=\"employeeSuccess\" name=\"submit this\"></td>\n" + 
-				"				</tr>\n" + 
-				"			</table>		\n" + 
-				"		</form>");
-
-
-		
-		
-
-		System.out.println("your reimb for this user here? in employeeSuccess in user controller");
+//		User u = us.findByUsername(req.getParameter("username"));
+//		List<Reimbursement> listReimb = us.findUserReimbursements(u);
+//		out.print("<h3>Here are your reimbursements</h3>");
+//		int len = listReimb.size();
+//		for (int i=0; i<len; i++) {	
+//			
+//			out.print("<li>"+listReimb.get(i)+"</li>");
+//		}
+//		// click here to add new reimbursement request
+//		//res.sendRedirect("/reimbursements");
+//		
+//		out.print("<h3>Submit your reimbursement request here</h3>");
+//		out.print("		<form action=\"reimbursement\" method=\"post\">\n" + 
+//				"			<table>\n" + 
+//				"				<tr>\n" + 
+//				"					<td><input type=\"text\" name=\"reimbAmount\" placeholder=\"ENTER amount\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"				\n" + 
+//				"				<tr>\n" + 
+//				"				<!--  timestamp for submitted-->\n" + 
+//				"					<td><input hidden=\"timestamp\" name=\"timestamp\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"				\n" + 
+//				"				<tr>\n" + 
+//				"					<td><input type=\"textarea\" name=\"descr\" placeholder=\"ENTER description\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"				<tr>\n" + 
+//				"					<!-- author for submitted-->\n" + 
+//				"					<td><input hidden=\"author\" name=\"this user\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"				<tr>\n" + 
+//				"					<!-- reimbursement status-->\n" + 
+//				"					<td><input hidden=\"reimbursement status\" name=\"this user\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"				<tr>\n" + 
+//				"					<!-- make this a drop down menu-->\n" + 
+//				"					<td><input type=\"text\" name=\"reimb_type\" placeholder=\"ENTER Lodging, Travel, Food, or Other\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"				<tr>\n" + 
+//				"					<td><input type=\"submit\" value=\"employeeSuccess\" name=\"submit this\"></td>\n" + 
+//				"				</tr>\n" + 
+//				"			</table>		\n" + 
+//				"		</form>");
+//
+//
+//		
+//		
+//
+//		System.out.println("your reimb for this user here? in employeeSuccess in user controller");
 
 		
 	}
