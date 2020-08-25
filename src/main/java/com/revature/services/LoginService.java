@@ -1,7 +1,5 @@
 package com.revature.services;
 
-import com.revature.daos.IUserDAO;
-import com.revature.daos.UserDAO;
 import com.revature.models.LoginDTO;
 import com.revature.models.User;
 

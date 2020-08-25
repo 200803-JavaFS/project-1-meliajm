@@ -69,8 +69,8 @@ public class MasterServlet extends HttpServlet {
 			e.printStackTrace();
 			res.getWriter().print("the id you provided is not an integer");
 			res.setStatus(400);
-			}
 		}
+	}
 	
 	
 	

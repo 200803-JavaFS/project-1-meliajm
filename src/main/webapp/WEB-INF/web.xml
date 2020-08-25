@@ -17,38 +17,6 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>MasterServlet</servlet-name> 
-  	<url-pattern>/index</url-pattern>
+  	<url-pattern>/*</url-pattern>
   </servlet-mapping>
-  
-  <servlet> 
-  	<display-name>EmployeeServlet</display-name>
-  	<servlet-name>EmployeeServlet</servlet-name>
-  	<servlet-class>com.revature.web.EmployeeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>EmployeeServlet</servlet-name> 
-  	<url-pattern>/employeeSuccess</url-pattern>
-  </servlet-mapping>
-  
-  <servlet> 
-  	<display-name>LoginServlet</display-name>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>com.revature.web.LoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>LoginServlet</servlet-name> 
-  	<url-pattern>/login</url-pattern>
-  </servlet-mapping>
-  
-  <servlet> 
-  	<display-name>ReimbEmpServlet</display-name>
-  	<servlet-name>ReimbEmpServlet</servlet-name>
-  	<servlet-class>com.revature.web.ReimbEmpServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>ReimbEmpServlet</servlet-name> 
-  	<url-pattern>/reimbursement</url-pattern>
-  </servlet-mapping>
-  
-  
 </web-app>

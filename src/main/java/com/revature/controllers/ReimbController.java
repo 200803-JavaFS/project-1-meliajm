@@ -3,6 +3,7 @@ package com.revature.controllers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,18 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbService;
+import com.revature.services.UserService;
 
 public class ReimbController {
 	
 	private static ReimbService rs = new ReimbService();
 	private static ObjectMapper om = new ObjectMapper();
+	private static UserService us = new UserService();
+
 	
-	public void reimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		res.setContentType("text/html");
-		PrintWriter out = res.getWriter();
-		
-		out.print("submitted your reimbursement");
+	public void findUserReimbursements(HttpServletResponse res) throws IOException {
+//		List<Reimbursement> all = us.findUserReimbursements(res.getParameter("username"));
+//		res.getWriter().println(om.writeValueAsString(all));
 	}
+	
+//	public void reimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+//		res.setContentType("text/html");
+//		PrintWriter out = res.getWriter();
+//		
+//		out.print("submitted your reimbursement");
+//	}
 	
 	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		BufferedReader reader = req.getReader();
