@@ -11,12 +11,12 @@
   </welcome-file-list>
   
   <servlet> 
-  	<display-name>MasterServlet</display-name>
-  	<servlet-name>MasterServlet</servlet-name>
-  	<servlet-class>com.revature.web.MasterServlet</servlet-class>
+  	<display-name>LoginServlet</display-name>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>com.revature.web.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>MasterServlet</servlet-name> 
+  	<servlet-name>LoginServlet</servlet-name> 
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   
