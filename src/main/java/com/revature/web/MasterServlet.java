@@ -19,7 +19,6 @@ public class MasterServlet extends HttpServlet {
 	private static UserController uc = new UserController();	
 	private static ReimbController rc = new ReimbController();
 	private static LoginController lc = new LoginController();
-
 	
 	public MasterServlet() {
 		super();
@@ -29,6 +28,7 @@ public class MasterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("application/json");
 		res.setStatus(404);
+		RequestDispatcher rd = null; 
 		
 		final String URI = req.getRequestURI().replace("/project1/", "");
 		
@@ -58,6 +58,8 @@ public class MasterServlet extends HttpServlet {
 					}
 					break;
 				case "login":
+//					rd = req.getRequestDispatcher("/index.html");
+//					rd.include(req, res);
 					lc.login(req, res);
 					break;
 				case "logout":

@@ -1241,3 +1241,15 @@
 2020-08-24 12:01:25 INFO  UserRoleService:20 - find user role from user id
 2020-08-25 08:21:40 INFO  UserService:30 - find by username
 2020-08-25 08:22:34 INFO  UserService:30 - find by username
+2020-08-25 08:35:30 INFO  UserService:30 - find by username
+2020-08-25 08:35:54 INFO  UserService:30 - find by username
+2020-08-25 08:37:34 INFO  UserService:30 - find by username
+2020-08-25 08:38:34 INFO  UserService:30 - find by username
+2020-08-25 17:13:32 INFO  UserService:30 - find by username
+2020-08-25 17:26:49 INFO  UserService:30 - find by username
+2020-08-25 17:26:52 INFO  UserService:30 - find by username
+2020-08-25 17:35:09 INFO  UserService:30 - find by username
+2020-08-25 17:37:27 INFO  UserService:30 - find by username
+2020-08-25 17:43:02 INFO  UserService:30 - find by username
+2020-08-25 17:54:24 INFO  UserService:30 - find by username
+2020-08-25 18:05:00 INFO  UserService:30 - find by username

@@ -89,11 +89,13 @@ public class UserController {
 	
 	public void employeeSuccess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		// Print out reimbursements of users
-		res.setContentType("application/json");
+//		res.setContentType("text/html");
 		
 		System.out.println("in employee success in user controller");
-		RequestDispatcher rd = null;
-		rd = req.getRequestDispatcher("employeeSuccess.html");
+//		RequestDispatcher rd = null;
+		req.getRequestDispatcher("employeeSuccess").forward(req,res);
+
+//		rd = req.getRequestDispatcher("employeeSuccess");
 //		rd.forward("employeeSuccess.html");
 		
 		

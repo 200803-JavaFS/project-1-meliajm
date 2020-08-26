@@ -38,14 +38,17 @@ public class EmployeeServlet extends HttpServlet {
 			switch(portions[0]) {
 			
 				case "employeeSuccess":
-					System.out.println("req: "+ req);
-
-					System.out.println("req.get: "+ req.getMethod());
-					if (req.getMethod().equals("POST")) {
-						System.out.println("in if employee success");
-						
-						uc.employeeSuccess(req, res);
-					}
+					uc.employeeSuccess(req, res);
+					break;
+//					System.out.println("req: "+ req);
+//
+//					System.out.println("req.get: "+ req.getMethod());
+//					if (req.getMethod().equals("POST")) {
+//						System.out.println("in if employee success");
+//						
+//						uc.employeeSuccess(req, res);
+//					}
+					
 //				case "success": 
 //					// check what type of user they are 
 //					// this is for employee

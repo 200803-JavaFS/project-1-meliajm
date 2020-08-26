@@ -82,6 +82,7 @@ public class UserDAO implements IUserDAO {
 				u.setLastName(result.getString("last_name"));
 				u.setEmail(result.getString("email"));
 				u.setUserRole(result.getInt("user_role_id"));
+//				System.out.println("user: "+ u);
 				return u;
 			} else {
 				return null;

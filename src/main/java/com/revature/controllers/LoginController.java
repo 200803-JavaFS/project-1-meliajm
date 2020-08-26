@@ -3,6 +3,8 @@ package com.revature.controllers;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,8 +17,10 @@ public class LoginController {
 
 	private static LoginService ls = new LoginService();
 	private static ObjectMapper om = new ObjectMapper();
-	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		
+	RequestDispatcher rd = null;
+
+	
+	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		if(req.getMethod().equals("GET")) {
 			LoginDTO l = new LoginDTO();
 			l.username = req.getParameter("username");
@@ -55,6 +59,14 @@ public class LoginController {
 				ses.setAttribute("loggedin", true);
 				res.setStatus(200);
 				res.getWriter().println("Login Successful");
+				res.getWriter().println("hashcode: "+"p".hashCode());
+				res.getWriter().println("hashcode: "+"p".hashCode());
+				res.getWriter().println("hashcode: "+"q".hashCode());
+				res.setContentType("text/html");
+				req.getRequestDispatcher("employeeSuccess.html").forward(req,res);
+		
+
+
 			} else {
 				HttpSession ses = req.getSession(false);
 				if(ses != null) {

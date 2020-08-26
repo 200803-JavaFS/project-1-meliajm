@@ -17,6 +17,16 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>MasterServlet</servlet-name> 
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet> 
+  	<display-name>EmployeeServlet</display-name>
+  	<servlet-name>EmployeeServlet</servlet-name>
+  	<servlet-class>com.revature.web.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EmployeeServlet</servlet-name> 
+  	<url-pattern>/employeeSuccess</url-pattern>
   </servlet-mapping>
 </web-app>
