@@ -1,12 +1,59 @@
 package com.revature.models;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reimbursement_status")
 public class ReimbursementStatus {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="reimb_status")
 	private int reimbStatusID;
+	
+	@Column(name="reimb_status")
 	private String reimStatus;
 	
+	@OneToMany(mappedBy="reimbStatus", fetch=FetchType.EAGER)
+	private List<Reimbursement> rList;
+	
+	
+	
+	public ReimbursementStatus() {
+		super();
+	}
+	
+	
+	
+	public ReimbursementStatus(int reimbStatusID, String reimStatus, List<Reimbursement> rList) {
+		super();
+		this.reimbStatusID = reimbStatusID;
+		this.reimStatus = reimStatus;
+		this.rList = rList;
+	}
+	
+
+
+
+	public ReimbursementStatus(String reimStatus, List<Reimbursement> rList) {
+		super();
+		this.reimStatus = reimStatus;
+		this.rList = rList;
+	}
+
+
+
 	public int getReimbStatusID() {
 		return reimbStatusID;
 	}
@@ -52,20 +99,9 @@ public class ReimbursementStatus {
 	
 	
 	
-//	public ReimbursementStatus(int reimbStatusID, String reimStatus) {
-//		super();
-//		this.reimbStatusID = reimbStatusID;
-//		this.reimStatus = reimStatus;
-//	}
 	
-//	public ReimbursementStatus(int reimbStatusID, String reimStatus) {
-//		super();
-//		this.reimStatus = reimStatus;
-//	}
 	
-//	public ReimbursementStatus(int reimbStatusID, String reimStatus) {
-//		super();
-//	}
+
 	
 	
 	

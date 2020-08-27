@@ -1,13 +1,50 @@
 package com.revature.models;
 
+import java.util.List;
+// do we need all 3 constructors for all models?
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="reimbursement_type")
 public class ReimbursementType {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="reimb_type_id")
 	private int reimbTypeID;
+	
+	@Column(name="reimb_type")
 	private String reimbType;
 	
-	
+	@OneToMany(mappedBy="reimbType", fetch=FetchType.EAGER)
+	private List<Reimbursement> rList;
+		
+	public ReimbursementType() {
+		super();
+	}
+
+	public ReimbursementType(int reimbTypeID, String reimbType, List<Reimbursement> rList) {
+		super();
+		this.reimbTypeID = reimbTypeID;
+		this.reimbType = reimbType;
+		this.rList = rList;
+	}
+
+	public ReimbursementType(String reimbType, List<Reimbursement> rList) {
+		super();
+		this.reimbType = reimbType;
+		this.rList = rList;
+	}
+
 	public int getReimbTypeID() {
 		return reimbTypeID;
 	}
@@ -57,19 +94,5 @@ public class ReimbursementType {
 		return "ReimbursementType [reimbTypeID=" + reimbTypeID + ", reimbType=" + reimbType + "]";
 	}
 	
-//	public ReimbursementType(int reimbTypeID, String reimbType) {
-//		super();
-//		this.reimbTypeID = reimbTypeID;
-//		this.reimbType = reimbType;
-//	}
-	
-//	public ReimbursementType(String reimbType) {
-//		super();
-//		this.reimbType = reimbType;
-//	}
-	
-//	public ReimbursementType(String reimbType) {
-//		super();
-//	}
 
 }

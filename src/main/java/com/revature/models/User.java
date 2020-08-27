@@ -1,23 +1,60 @@
 package com.revature.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="users")
 public class User {
 	
 private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private int userID;
+	
+	@Column(name="username", unique=true)
 	private String username;
+	
+	@Column(name="user_password")
 	private String password;
+	
+	@Column(name="first_name")
 	private String firstName;
+	
+	@Column(name="last_name")	
 	private String lastName;
+	
+	@Column(name="email")	
 	private String email;
-	private int userRole;
+
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="userRoleId")
+	private userRole userRole;
+	
+	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.EAGER)
+	private List<Reimbursement> rAList;
+	
+	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
+	private List<Reimbursement> rRList;
 	
 	public User() {
 		super();
 	}
-	
+
 	public User(int userID, String username, String password, String firstName, String lastName, String email,
-			int userRole) {
+			com.revature.models.userRole userRole) {
 		super();
 		this.userID = userID;
 		this.username = username;
@@ -27,9 +64,9 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 		this.userRole = userRole;
 	}
-	
+
 	public User(String username, String password, String firstName, String lastName, String email,
-			int userRole) {
+			com.revature.models.userRole userRole) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -87,12 +124,22 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 	}
 
-	public int getUserRole() {
+	public userRole getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(int userRole) {
+	public void setUserRole(userRole userRole) {
 		this.userRole = userRole;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", userRole=" + userRole + "]";
 	}
 
 	@Override
@@ -104,7 +151,7 @@ private static final long serialVersionUID = 1L;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + userID;
-		result = prime * result + userRole;
+		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -140,7 +187,10 @@ private static final long serialVersionUID = 1L;
 			return false;
 		if (userID != other.userID)
 			return false;
-		if (userRole != other.userRole)
+		if (userRole == null) {
+			if (other.userRole != null)
+				return false;
+		} else if (!userRole.equals(other.userRole))
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -149,12 +199,13 @@ private static final long serialVersionUID = 1L;
 			return false;
 		return true;
 	}
+	
+	
+	
 
-	@Override
-	public String toString() {
-		return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email + ", userRole=" + userRole + "]";
-	}
+	
+
+	
 	
 	
 
