@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="reimbursement")
-public class Reimbursement {
+public class Reimbursement implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -21,20 +23,20 @@ public class Reimbursement {
 	@Column(name="reimb_id")
 	private int reimbID;
 	
-	@Column(name="reimb_amount")
+	@Column(name="reimb_amount", nullable=false)
 	private double reimbAmount;
 	
-	@Column(name="reimb_submitted")
-	private String reimbSubmitted;
+	@Column(name="reimb_submitted", nullable=false)
+	private String timeSubmitted;
 	
 	@Column(name="reimb_resolved")
-	private String reimbResolved;
+	private String timeResolved;
 
 	@Column(name="reimb_description")
 	private String reimbDescription;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="reimb_author")
+	@JoinColumn(name="reimb_author", nullable=false)
 	private User reimbAuthor;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
@@ -42,25 +44,25 @@ public class Reimbursement {
 	private User reimbResolver;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="reimb_status_id")
+	@JoinColumn(name="reimb_status_id", nullable=false)
 	private ReimbursementStatus reimbStatus;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="reimb_type_id")
+	@JoinColumn(name="reimb_type_id", nullable=false)
 	private ReimbursementType reimbType;
 	
 	public Reimbursement() {
 		super();
 	}
 
-	public Reimbursement(int reimbID, double reimbAmount, String reimbSubmitted, String reimbResolved,
+	public Reimbursement(int reimbID, double reimbAmount, String timeSubmitted, String timeResolved,
 			String reimbDescription, User reimbAuthor, User reimbResolver, ReimbursementStatus reimbStatus,
 			ReimbursementType reimbType) {
 		super();
 		this.reimbID = reimbID;
 		this.reimbAmount = reimbAmount;
-		this.reimbSubmitted = reimbSubmitted;
-		this.reimbResolved = reimbResolved;
+		this.timeSubmitted = timeSubmitted;
+		this.timeResolved = timeResolved;
 		this.reimbDescription = reimbDescription;
 		this.reimbAuthor = reimbAuthor;
 		this.reimbResolver = reimbResolver;
@@ -68,12 +70,12 @@ public class Reimbursement {
 		this.reimbType = reimbType;
 	}
 
-	public Reimbursement(double reimbAmount, String reimbSubmitted, String reimbResolved, String reimbDescription,
+	public Reimbursement(double reimbAmount, String timeSubmitted, String timeResolved, String reimbDescription,
 			User reimbAuthor, User reimbResolver, ReimbursementStatus reimbStatus, ReimbursementType reimbType) {
 		super();
 		this.reimbAmount = reimbAmount;
-		this.reimbSubmitted = reimbSubmitted;
-		this.reimbResolved = reimbResolved;
+		this.timeSubmitted = timeSubmitted;
+		this.timeResolved = timeResolved;
 		this.reimbDescription = reimbDescription;
 		this.reimbAuthor = reimbAuthor;
 		this.reimbResolver = reimbResolver;
@@ -97,20 +99,20 @@ public class Reimbursement {
 		this.reimbAmount = reimbAmount;
 	}
 
-	public String getReimbSubmitted() {
-		return reimbSubmitted;
+	public String getTimeSubmitted() {
+		return timeSubmitted;
 	}
 
-	public void setReimbSubmitted(String reimbSubmitted) {
-		this.reimbSubmitted = reimbSubmitted;
+	public void setTimeSubmitted(String timeSubmitted) {
+		this.timeSubmitted = timeSubmitted;
 	}
 
-	public String getReimbResolved() {
-		return reimbResolved;
+	public String getTimeResolved() {
+		return timeResolved;
 	}
 
-	public void setReimbResolved(String reimbResolved) {
-		this.reimbResolved = reimbResolved;
+	public void setTimeResolved(String timeResolved) {
+		this.timeResolved = timeResolved;
 	}
 
 	public String getReimbDescription() {
@@ -167,11 +169,11 @@ public class Reimbursement {
 		result = prime * result + ((reimbAuthor == null) ? 0 : reimbAuthor.hashCode());
 		result = prime * result + ((reimbDescription == null) ? 0 : reimbDescription.hashCode());
 		result = prime * result + reimbID;
-		result = prime * result + ((reimbResolved == null) ? 0 : reimbResolved.hashCode());
 		result = prime * result + ((reimbResolver == null) ? 0 : reimbResolver.hashCode());
 		result = prime * result + ((reimbStatus == null) ? 0 : reimbStatus.hashCode());
-		result = prime * result + ((reimbSubmitted == null) ? 0 : reimbSubmitted.hashCode());
 		result = prime * result + ((reimbType == null) ? 0 : reimbType.hashCode());
+		result = prime * result + ((timeResolved == null) ? 0 : timeResolved.hashCode());
+		result = prime * result + ((timeSubmitted == null) ? 0 : timeSubmitted.hashCode());
 		return result;
 	}
 
@@ -198,11 +200,6 @@ public class Reimbursement {
 			return false;
 		if (reimbID != other.reimbID)
 			return false;
-		if (reimbResolved == null) {
-			if (other.reimbResolved != null)
-				return false;
-		} else if (!reimbResolved.equals(other.reimbResolved))
-			return false;
 		if (reimbResolver == null) {
 			if (other.reimbResolver != null)
 				return false;
@@ -213,24 +210,33 @@ public class Reimbursement {
 				return false;
 		} else if (!reimbStatus.equals(other.reimbStatus))
 			return false;
-		if (reimbSubmitted == null) {
-			if (other.reimbSubmitted != null)
-				return false;
-		} else if (!reimbSubmitted.equals(other.reimbSubmitted))
-			return false;
 		if (reimbType == null) {
 			if (other.reimbType != null)
 				return false;
 		} else if (!reimbType.equals(other.reimbType))
+			return false;
+		if (timeResolved == null) {
+			if (other.timeResolved != null)
+				return false;
+		} else if (!timeResolved.equals(other.timeResolved))
+			return false;
+		if (timeSubmitted == null) {
+			if (other.timeSubmitted != null)
+				return false;
+		} else if (!timeSubmitted.equals(other.timeSubmitted))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Reimbursement [reimbID=" + reimbID + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="
-				+ reimbSubmitted + ", reimbResolved=" + reimbResolved + ", reimbDescription=" + reimbDescription
-				+ ", reimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus
-				+ ", reimbType=" + reimbType + "]";
+		return "Reimbursement [reimbID=" + reimbID + ", reimbAmount=" + reimbAmount + ", timeSubmitted=" + timeSubmitted
+				+ ", timeResolved=" + timeResolved + ", reimbDescription=" + reimbDescription + ", reimbAuthor="
+				+ reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus + ", reimbType="
+				+ reimbType + "]";
 	}
+	
+	
+
+	
 }

@@ -31,20 +31,20 @@ public class UserService {
 		return uDao.findByUsername(username);
 	}
 	
-	public boolean addUser(User u) {
-		log.info("adding user");
-		return uDao.addUser(u);
-	}
-	
-	public boolean updateUser(User u) {
-		log.info("update user");
-		return uDao.updateUser(u);
-	}
-	
-	public List<Reimbursement> findUserReimbursements(User u) {
-		log.info("find user reimbursements from user");
-		return uDao.findUserReimbursements(u);
-	}
+//	public boolean addUser(User u) {
+//		log.info("adding user");
+//		return uDao.addUser(u);
+//	}
+//	
+//	public boolean updateUser(User u) {
+//		log.info("update user");
+//		return uDao.updateUser(u);
+//	}
+//	
+//	public List<Reimbursement> findUserReimbursements(User u) {
+//		log.info("find user reimbursements from user");
+//		return uDao.findUserReimbursements(u);
+//	}
 	
 //	public User findUserRole(int id) {
 //		log.info("find user role from user id");

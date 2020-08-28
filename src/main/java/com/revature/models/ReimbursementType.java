@@ -24,7 +24,7 @@ public class ReimbursementType {
 	
 	@Column(name="reimb_type")
 	private String reimbType;
-	
+	//what is this?
 	@OneToMany(mappedBy="reimbType", fetch=FetchType.EAGER)
 	private List<Reimbursement> rList;
 		

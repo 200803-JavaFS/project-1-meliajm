@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,34 +17,36 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable {
 	
 private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private int userID;
 	
-	@Column(name="username", unique=true)
+	@Column(name="username", unique=true, nullable=false)
 	private String username;
 	
-	@Column(name="user_password")
+	@Column(name="user_password", nullable=false)
 	private String password;
 	
-	@Column(name="first_name")
+	@Column(name="first_name", nullable=false)
 	private String firstName;
 	
-	@Column(name="last_name")	
+	@Column(name="last_name", nullable=false)	
 	private String lastName;
 	
-	@Column(name="email")	
+	@Column(name="email", unique=true, nullable=false)	
 	private String email;
 
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="userRoleId")
+	//here what should name be
+	@JoinColumn(name="user_role_id", nullable=false)
 	private userRole userRole;
 	
-	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.LAZY)
 	private List<Reimbursement> rAList;
 	
 	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
@@ -52,8 +55,6 @@ private static final long serialVersionUID = 1L;
 	public User() {
 		super();
 	}
-
-	
 
 	public User(int userID, String username, String password, String firstName, String lastName, String email,
 			userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
@@ -81,7 +82,6 @@ private static final long serialVersionUID = 1L;
 		this.rAList = rAList;
 		this.rRList = rRList;
 	}
-
 
 
 	public int getUserID() {

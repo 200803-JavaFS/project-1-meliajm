@@ -18,7 +18,7 @@ public class userRole {
 	@Column(name="user_role_id")
 	private int UserRoleID;
 	
-	@Column(name="user_role")
+	@Column(name="user_role", nullable=false)
 	private String UserRole;
 	
 	public int getUserRoleID() {
