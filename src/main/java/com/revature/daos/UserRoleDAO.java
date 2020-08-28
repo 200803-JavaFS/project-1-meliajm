@@ -7,6 +7,10 @@ import com.revature.models.userRole;
 import com.revature.utils.HibernateUtil;
 
 public class UserRoleDAO implements IUserRoleDAO {
+	
+	public UserRoleDAO() {
+		super();
+	}
 
 	@Override
 	public userRole findByID(int id) {
@@ -22,8 +26,6 @@ public class UserRoleDAO implements IUserRoleDAO {
 		ses.save(ur);
 		tx.commit();		
 	}
-	
-	
 	
 //	@Override
 //	public userRole findByID(int id) {

@@ -19,11 +19,11 @@ public class ReimbursementStatus {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="reimb_status")
+	@Column(name="reimb_status_id")
 	private int reimbStatusID;
 	
 	@Column(name="reimb_status")
-	private String reimStatus;
+	private String reimbStatus;
 	
 	@OneToMany(mappedBy="reimbStatus", fetch=FetchType.EAGER)
 	private List<Reimbursement> rList;
@@ -36,19 +36,19 @@ public class ReimbursementStatus {
 	
 	
 	
-	public ReimbursementStatus(int reimbStatusID, String reimStatus, List<Reimbursement> rList) {
+	public ReimbursementStatus(int reimbStatusID, String reimbStatus, List<Reimbursement> rList) {
 		super();
 		this.reimbStatusID = reimbStatusID;
-		this.reimStatus = reimStatus;
+		this.reimbStatus = reimbStatus;
 		this.rList = rList;
 	}
 	
 
 
 
-	public ReimbursementStatus(String reimStatus, List<Reimbursement> rList) {
+	public ReimbursementStatus(String reimbStatus, List<Reimbursement> rList) {
 		super();
-		this.reimStatus = reimStatus;
+		this.reimbStatus = reimbStatus;
 		this.rList = rList;
 	}
 
@@ -60,17 +60,17 @@ public class ReimbursementStatus {
 	public void setReimbStatusID(int reimbStatusID) {
 		this.reimbStatusID = reimbStatusID;
 	}
-	public String getReimStatus() {
-		return reimStatus;
+	public String getreimbStatus() {
+		return reimbStatus;
 	}
-	public void setReimStatus(String reimStatus) {
-		this.reimStatus = reimStatus;
+	public void setreimbStatus(String reimbStatus) {
+		this.reimbStatus = reimbStatus;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((reimStatus == null) ? 0 : reimStatus.hashCode());
+		result = prime * result + ((reimbStatus == null) ? 0 : reimbStatus.hashCode());
 		result = prime * result + reimbStatusID;
 		return result;
 	}
@@ -83,10 +83,10 @@ public class ReimbursementStatus {
 		if (getClass() != obj.getClass())
 			return false;
 		ReimbursementStatus other = (ReimbursementStatus) obj;
-		if (reimStatus == null) {
-			if (other.reimStatus != null)
+		if (reimbStatus == null) {
+			if (other.reimbStatus != null)
 				return false;
-		} else if (!reimStatus.equals(other.reimStatus))
+		} else if (!reimbStatus.equals(other.reimbStatus))
 			return false;
 		if (reimbStatusID != other.reimbStatusID)
 			return false;
@@ -94,7 +94,7 @@ public class ReimbursementStatus {
 	}
 	@Override
 	public String toString() {
-		return "ReimbursementStatus [reimbStatusID=" + reimbStatusID + ", reimStatus=" + reimStatus + "]";
+		return "ReimbursementStatus [reimbStatusID=" + reimbStatusID + ", reimbStatus=" + reimbStatus + "]";
 	}
 	
 	
