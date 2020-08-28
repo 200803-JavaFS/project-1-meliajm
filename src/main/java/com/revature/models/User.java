@@ -144,10 +144,16 @@ private static final long serialVersionUID = 1L;
 		return serialVersionUID;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
+//				+ lastName + ", email=" + email + ", userRole=" + userRole + "]";
+//	}
+	
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", userRole=" + userRole + "]";
+				+ lastName + ", email=" + email + "]";
 	}
 
 	@Override
@@ -207,14 +213,4 @@ private static final long serialVersionUID = 1L;
 			return false;
 		return true;
 	}
-	
-	
-	
-
-	
-
-	
-	
-	
-
 }

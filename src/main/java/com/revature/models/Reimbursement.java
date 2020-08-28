@@ -235,6 +235,8 @@ public class Reimbursement implements Serializable {
 				+ reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus + ", reimbType="
 				+ reimbType + "]";
 	}
+
+	
 	
 	
 

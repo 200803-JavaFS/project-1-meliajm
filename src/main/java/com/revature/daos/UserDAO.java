@@ -43,19 +43,32 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public void addUser(User u) {
+	public boolean addUser(User u) {
+//		Session ses = HibernateUtil.getSession();
+//		Transaction tx = ses.beginTransaction();
+//		ses.save(u);
+//		tx.commit();
 		Session ses = HibernateUtil.getSession();
-		Transaction tx = ses.beginTransaction();
-		ses.save(u);
-		tx.commit();	}
-
-	@Override
-	public void updateUser(User u) {
-		Session ses = HibernateUtil.getSession();
-		ses.merge(u);
+		try {			
+			ses.save(u);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
-
-	
+	@Override
+	public boolean updateUser(User u) {
+		Session ses = HibernateUtil.getSession();
+//		ses.merge(u);
+		try {			
+			ses.merge(u);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

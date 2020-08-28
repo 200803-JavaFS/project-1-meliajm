@@ -11,9 +11,9 @@ public interface IReimbursementDAO {
 	
 	public Reimbursement findByID(int id);
 		
-	public void addReimbursement(Reimbursement r);
+	public boolean addReimbursement(Reimbursement r);
 	
-	public void updateReimbursement(Reimbursement r);
+	public boolean updateReimbursement(Reimbursement r);
 
 	public List<Reimbursement> findReimbursementByStatus(String status);
 	

@@ -13,9 +13,9 @@ public interface IUserDAO {
 	
 	public User findByUsername(String username);
 	
-	public void addUser(User u);
+	public boolean addUser(User u);
 	
-	public void updateUser(User u);
+	public boolean updateUser(User u);
 	
 //	public void findByUserRole(User u);
 

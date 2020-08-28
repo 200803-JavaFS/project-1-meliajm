@@ -36,17 +36,31 @@ public class ReimbursementDAO implements IReimbursementDAO {
 	}
 
 	@Override
-	public void addReimbursement(Reimbursement r) {
+	public boolean addReimbursement(Reimbursement r) {
+//		Session ses = HibernateUtil.getSession();
+//		Transaction tx = ses.beginTransaction();
+//		ses.save(r);
+//		tx.commit();
 		Session ses = HibernateUtil.getSession();
-		Transaction tx = ses.beginTransaction();
-		ses.save(r);
-		tx.commit();
+		try {			
+			ses.save(r);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
-	public void updateReimbursement(Reimbursement r) {
+	public boolean updateReimbursement(Reimbursement r) {
 		Session ses = HibernateUtil.getSession();
-		ses.merge(r);
+		try {
+			ses.merge(r);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
@@ -59,7 +73,7 @@ public class ReimbursementDAO implements IReimbursementDAO {
 	@Override
 	public List<Reimbursement> findReimbursementsByUser(User u) {
 		Session ses = HibernateUtil.getSession();
-		List<Reimbursement> rList = ses.createQuery("FROM Reimbursement WHERE reimbAuthor = "+ u, Reimbursement.class).list();
+		List<Reimbursement> rList = ses.createQuery("FROM Reimbursement WHERE reimbAuthor = "+ u.getUserID(), Reimbursement.class).list();
 		return rList;
 	}
 
