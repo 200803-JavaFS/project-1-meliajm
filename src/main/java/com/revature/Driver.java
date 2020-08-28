@@ -1,5 +1,7 @@
 package com.revature;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.revature.daos.ReimbursementDAO;
@@ -20,16 +22,20 @@ public class Driver {
 	
 	
 	public static void main(String[] args) {
-		insertValues();
+//		insertValues();
 		List<User> users = uDAO.findAll();
-		userRole uRole = users.get(1).getUserRole();
-		System.out.println("user role: "+ uRole);
+//		userRole uRole = users.get(1).getUserRole();
+//		System.out.println("user role: "+ uRole);
+		User bart= uDAO.findByID(4);
+		System.out.println(bart);
 		
-//		List<Reimbursement> reimbs = rDAO.findReimbursementsByUser(users.get(3));
-//		
-//		for (Reimbursement r: reimbs) {
-//			System.out.println(r);
-//		}
+		User bart2= uDAO.findByUsername("barty");
+		System.out.println(bart2);
+		List<Reimbursement> reimbs = rDAO.findReimbursementsByUser(users.get(3));
+		
+		for (Reimbursement r: reimbs) {
+			System.out.println(r);
+		}
 		
 	}
 
@@ -60,8 +66,14 @@ public class Driver {
 
 //		System.out.println("stat: "+rStatus);
 		ReimbursementType rType = rDAO.findReimbursementsByUser(users.get(3)).get(0).getReimbType();
-//		
-		Reimbursement r = new Reimbursement(2020.20, "15:35:23", null, "good vision", bart, null, rStatus, rType);
+		LocalTime ld = LocalTime.now();
+		LocalTime tlater = LocalTime.parse( "17:40:00" ) ;
+
+//		DateTimeFormatter dateTimeF = DateTimeFormatter.ofPattern("HH:mm:ss");
+//		String time = ZonedDateTime.now().format(dateTimeF);
+//		java.sql.Time timeValue = new java.sql.Time(format.parse(fajr_prayertime).getTime());
+
+		Reimbursement r = new Reimbursement(2020.20, ld, tlater, "good vision", bart, null, rStatus, rType);
 		rDAO.addReimbursement(r);
 	}
 }
