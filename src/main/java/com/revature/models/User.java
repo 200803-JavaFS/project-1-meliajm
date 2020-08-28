@@ -53,8 +53,10 @@ private static final long serialVersionUID = 1L;
 		super();
 	}
 
+	
+
 	public User(int userID, String username, String password, String firstName, String lastName, String email,
-			com.revature.models.userRole userRole) {
+			userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
 		super();
 		this.userID = userID;
 		this.username = username;
@@ -63,10 +65,12 @@ private static final long serialVersionUID = 1L;
 		this.lastName = lastName;
 		this.email = email;
 		this.userRole = userRole;
+		this.rAList = rAList;
+		this.rRList = rRList;
 	}
-
+	
 	public User(String username, String password, String firstName, String lastName, String email,
-			com.revature.models.userRole userRole) {
+			userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -74,7 +78,11 @@ private static final long serialVersionUID = 1L;
 		this.lastName = lastName;
 		this.email = email;
 		this.userRole = userRole;
+		this.rAList = rAList;
+		this.rRList = rRList;
 	}
+
+
 
 	public int getUserID() {
 		return userID;

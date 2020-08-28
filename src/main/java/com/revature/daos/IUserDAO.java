@@ -13,13 +13,12 @@ public interface IUserDAO {
 	
 	public User findByUsername(String username);
 	
-	public boolean addUser(User u);
+	public void addUser(User u);
 	
-	public boolean updateUser(User u);
+	public void updateUser(User u);
+	
+//	public void findByUserRole(User u);
 
-	public List<Reimbursement> findUserReimbursements(User u);
+//	public List<Reimbursement> findUserReimbursements(User u);
 	
-	
-//	public boolean deleteUser(int id);
-
 }

@@ -11,12 +11,13 @@ public interface IReimbursementDAO {
 	
 	public Reimbursement findByID(int id);
 		
-	public boolean addReimbursement(Reimbursement r);
+	public void addReimbursement(Reimbursement r);
 	
-	public boolean updateReimbursement(Reimbursement r);
+	public void updateReimbursement(Reimbursement r);
 
 	public List<Reimbursement> findReimbursementByStatus(String status);
 	
+	public List<Reimbursement> findReimbursementsByUser(User u);
 //	public boolean deleteReimbursement(int id);
 
 }

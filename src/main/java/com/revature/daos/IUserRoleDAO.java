@@ -7,4 +7,6 @@ public interface IUserRoleDAO {
 	
 	public userRole findByID(int id);
 
+	public void addUserRole(userRole ur);
+
 }
