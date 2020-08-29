@@ -26,19 +26,19 @@ public class ReimbService {
 		return rDao.findByID(id);
 	}
 	
-//	public boolean addReimbursement(Reimbursement r) {
-//		log.info("add reimbursement");
-//		return rDao.addReimbursement(r);
-//	}
-//	
-//	public boolean updateReimbursement(Reimbursement r) {
-//		log.info("update reimbursement");
-//		return rDao.updateReimbursement(r);
-//	}
+	public boolean addReimbursement(Reimbursement r) {
+		log.info("add reimbursement");
+		return rDao.addReimbursement(r);
+	}
 	
-	public List<Reimbursement> findReimbursementByStatus(String status) {
+	public boolean updateReimbursement(Reimbursement r) {
+		log.info("update reimbursement");
+		return rDao.updateReimbursement(r);
+	}
+	
+	public List<Reimbursement> findReimbursementByStatus(int i) {
 		log.info("find reimbursement by status");
-		return rDao.findReimbursementByStatus(status);
+		return rDao.findReimbursementByStatus(i);
 	}
 
 }

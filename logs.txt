@@ -1274,3 +1274,34 @@
 2020-08-25 20:39:47 INFO  UserService:30 - find by username
 2020-08-25 20:39:51 INFO  UserService:30 - find by username
 2020-08-25 20:39:53 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 12:38:19 INFO  UserService:30 - find by username
+2020-08-29 12:38:31 INFO  UserService:30 - find by username
+2020-08-29 12:38:31 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 12:59:25 INFO  UserService:30 - find by username
+2020-08-29 12:59:34 INFO  UserService:30 - find by username
+2020-08-29 12:59:34 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 14:37:11 INFO  UserService:30 - find by username
+2020-08-29 14:37:11 INFO  UserService:30 - find by username
+2020-08-29 14:37:11 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 14:47:55 INFO  UserService:30 - find by username
+2020-08-29 14:47:55 INFO  UserService:30 - find by username
+2020-08-29 14:47:55 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 15:03:43 INFO  UserService:30 - find by username
+2020-08-29 15:31:04 INFO  UserService:30 - find by username
+2020-08-29 15:31:19 INFO  UserService:30 - find by username
+2020-08-29 15:37:49 INFO  UserService:30 - find by username
+2020-08-29 15:38:10 INFO  UserService:30 - find by username
+2020-08-29 15:38:11 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 15:38:23 INFO  UserService:30 - find by username
+2020-08-29 15:38:38 INFO  UserService:30 - find by username
+2020-08-29 15:40:45 INFO  UserService:30 - find by username
+2020-08-29 15:40:45 INFO  UserService:30 - find by username
+2020-08-29 15:40:45 INFO  UserRoleService:20 - find user role from user id
+2020-08-29 15:41:00 INFO  UserService:30 - find by username
+2020-08-29 15:49:59 INFO  UserService:30 - find by username
+2020-08-29 15:52:05 INFO  UserService:30 - find by username
+2020-08-29 15:54:43 INFO  UserService:30 - find by username
+2020-08-29 15:56:33 INFO  UserService:30 - find by username
+2020-08-29 15:57:28 INFO  UserService:30 - find by username
+2020-08-29 15:59:28 INFO  UserService:30 - find by username
+2020-08-29 16:12:34 INFO  UserService:30 - find by username

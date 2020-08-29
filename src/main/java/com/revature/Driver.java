@@ -29,11 +29,14 @@ public class Driver {
 	public static void main(String[] args) {
 //		insertValues();
 //		List<User> users = uDAO.findAll();
+//		for (User r: users) {
+//			System.out.println(r);
+//		}
 //		userRole uRole = users.get(1).getUserRole();
 //		System.out.println("user role: "+ uRole);
 		
-//		User bart= uDAO.findByID(4);
-//		System.out.println(bart);
+		User bart= uDAO.findByID(10);
+		System.out.println(bart);
 //		
 //		User bart2= uDAO.findByUsername("barty");
 //		System.out.println(bart2);
@@ -53,7 +56,7 @@ public class Driver {
 	
 	private static void addUser() {
 		userRole ur2 = urDAO.findByID(2);
-		User u = new User("bambi", "pass", "bamboo", "bike", "bambi.com", ur2, null, null);
+		User u = new User("bambo", "pass", "bamboo", "bike", "bambi.com", ur2, null, null);
 		uDAO.addUser(u);
 	}
 	

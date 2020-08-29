@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +29,13 @@ public class LoginController {
 
 
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		// what is request? here
+//		String payloadRequest = getBody(req);
+		//System.out.println("pay "+ payloadRequest); //pay {"username":"tiaclair1","password":"p"}
+		System.out.println("req contains username? "+req.getParameterMap().containsKey("username"));
+
 		String username = req.getParameter("username");
+		System.out.println("username in lc "+username);
 		String password = req.getParameter("password");
 		LoginDTO l = new LoginDTO();
 		l.username = username;
@@ -68,7 +76,8 @@ public class LoginController {
 			String body = new String(sb);
 			System.out.println("body: "+ body);
 //			l = om.readValue(body, LoginDTO.class);
-			
+			System.out.println("ls.login(l): "+ ls.login(l));
+
 			if(ls.login(l)) {
 				HttpSession ses = req.getSession();
 				System.out.println("you logged in, success!");
@@ -84,10 +93,11 @@ public class LoginController {
 				userRole ur = urs.findByID(u.getUserID());
 				
 				if (ur.getUserRole().equals("Employee")) {					
-					req.getRequestDispatcher("employeeSuccess.html").forward(req,res);
+//					req.getRequestDispatcher("employeeSuccess.html").forward(req,res);
 					System.out.println("employee success");
 				} else if (ur.getUserRole().equals("Employee")) {
-					req.getRequestDispatcher("financeMSuccess.html").forward(req,res);
+					System.out.println("financem success");
+//					req.getRequestDispatcher("financeMSuccess.html").forward(req,res);
 				}
 
 			} else {
@@ -115,5 +125,40 @@ public class LoginController {
 			res.getWriter().println("you must be logged in to log out");
 		}
 	}
+	
+//	public static String getBody(HttpServletRequest request) throws IOException {
+//
+//	    String body = null;
+//	    StringBuilder stringBuilder = new StringBuilder();
+//	    BufferedReader bufferedReader = null;
+//
+//	    try {
+//	        InputStream inputStream = request.getInputStream();
+//	        if (inputStream != null) {
+//	            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//	            char[] charBuffer = new char[128];
+//	            int bytesRead = -1;
+//	            while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+//	                stringBuilder.append(charBuffer, 0, bytesRead);
+//	            }
+//	        } else {
+//	            stringBuilder.append("");
+//	        }
+//	    } catch (IOException ex) {
+//	        throw ex;
+//	    } finally {
+//	        if (bufferedReader != null) {
+//	            try {
+//	                bufferedReader.close();
+//	            } catch (IOException ex) {
+//	                throw ex;
+//	            }
+//	        }
+//	    }
+//
+//	    body = stringBuilder.toString();
+//	    return body;
+//	}
+
 
 }
