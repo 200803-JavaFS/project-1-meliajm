@@ -20,23 +20,78 @@ public class Driver {
 	public static UserRoleDAO urDAO = new UserRoleDAO();
 	public static ReimbursementDAO rDAO = new ReimbursementDAO();
 	
+//	public boolean updateReimbursement(Reimbursement r);
+//
+//	public List<Reimbursement> findReimbursementByStatus(String status);
+//	
+//	public List<Reimbursement> findReimbursementsByUser(User u);
 	
 	public static void main(String[] args) {
 //		insertValues();
-		List<User> users = uDAO.findAll();
+//		List<User> users = uDAO.findAll();
 //		userRole uRole = users.get(1).getUserRole();
 //		System.out.println("user role: "+ uRole);
-		User bart= uDAO.findByID(4);
-		System.out.println(bart);
 		
-		User bart2= uDAO.findByUsername("barty");
-		System.out.println(bart2);
-		List<Reimbursement> reimbs = rDAO.findReimbursementsByUser(users.get(3));
+//		User bart= uDAO.findByID(4);
+//		System.out.println(bart);
+//		
+//		User bart2= uDAO.findByUsername("barty");
+//		System.out.println(bart2);
+//		List<Reimbursement> reimbs = rDAO.findReimbursementsByUser(users.get(3));
+//		List<Reimbursement> reimbs = rDAO.findAll();
+//		System.out.println("find all reimbs");
+//		for (Reimbursement r: reimbs) {
+//			System.out.println(r);
+//		}
 		
-		for (Reimbursement r: reimbs) {
+//		updateReimb();
+//		findByStatus();
+//		addReimb();
+		addUser();
+		
+	}
+	
+	private static void addUser() {
+		userRole ur2 = urDAO.findByID(2);
+		User u = new User("bambi", "pass", "bamboo", "bike", "bambi.com", ur2, null, null);
+		uDAO.addUser(u);
+	}
+	
+	private static void addReimb() {
+		User tia= uDAO.findByUsername("tiaclair1");
+		ReimbursementStatus rs = new ReimbursementStatus("Approved");
+		ReimbursementStatus rs2 = new ReimbursementStatus("Denied");
+
+		ReimbursementType rt = new ReimbursementType("Other");
+
+		Reimbursement r = new Reimbursement(111.22, LocalTime.now(), null, "good vision", tia, null, rs, rt);
+		Reimbursement r2 = new Reimbursement(555.25, LocalTime.now(), null, "good vision", tia, null, rs2, rt);
+		rDAO.addReimbursement(r2);
+		rDAO.addReimbursement(r);
+		
+		
+
+	}
+	
+	private static void findByStatus() {
+		List<Reimbursement> rs = rDAO.findReimbursementByStatus(3);
+//		syso
+		for (Reimbursement r: rs) {
 			System.out.println(r);
 		}
-		
+	}
+	
+	private static void updateReimb() {
+		User u = uDAO.findByID(1);
+		Reimbursement r = rDAO.findByID(1);
+		Reimbursement r2 = rDAO.findByID(6);		
+//		r = Reimbursement(r.getReimbID(), r.getReimbAmount(), r.getTimeSubmitted(), LocalTime.now(), r.getReimbDescription(), r.getReimbAuthor(), u, r2.getReimbStatus(), r.getReimbType()); 
+		r.setReimbResolver(u);
+		r.setReimbStatus(r2.getReimbStatus());
+		r.setTimeResolved(LocalTime.now());
+//		r.setReimbDescription("new description here");
+		rDAO.updateReimbursement(r);
+		System.out.println(r);
 	}
 
 	private static void insertValues() {
@@ -67,7 +122,7 @@ public class Driver {
 //		System.out.println("stat: "+rStatus);
 		ReimbursementType rType = rDAO.findReimbursementsByUser(users.get(3)).get(0).getReimbType();
 		LocalTime ld = LocalTime.now();
-		LocalTime tlater = LocalTime.parse( "17:40:00" ) ;
+		LocalTime tlater = LocalTime.parse( "17:40:00" );
 
 //		DateTimeFormatter dateTimeF = DateTimeFormatter.ofPattern("HH:mm:ss");
 //		String time = ZonedDateTime.now().format(dateTimeF);
@@ -76,4 +131,6 @@ public class Driver {
 		Reimbursement r = new Reimbursement(2020.20, ld, tlater, "good vision", bart, null, rStatus, rType);
 		rDAO.addReimbursement(r);
 	}
+	
+	
 }

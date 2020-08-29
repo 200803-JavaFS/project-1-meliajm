@@ -25,24 +25,22 @@ public class ReimbursementType {
 	@Column(name="reimb_type")
 	private String reimbType;
 	//what is this?
-	@OneToMany(mappedBy="reimbType", fetch=FetchType.EAGER)
-	private List<Reimbursement> rList;
-		
+//	@OneToMany(mappedBy="reimbType", fetch=FetchType.EAGER)
+//	private List<Reimbursement> rList;
+//		
 	public ReimbursementType() {
 		super();
 	}
 
-	public ReimbursementType(int reimbTypeID, String reimbType, List<Reimbursement> rList) {
+	public ReimbursementType(int reimbTypeID, String reimbType) {
 		super();
 		this.reimbTypeID = reimbTypeID;
 		this.reimbType = reimbType;
-		this.rList = rList;
 	}
 
-	public ReimbursementType(String reimbType, List<Reimbursement> rList) {
+	public ReimbursementType(String reimbType) {
 		super();
 		this.reimbType = reimbType;
-		this.rList = rList;
 	}
 
 	public int getReimbTypeID() {

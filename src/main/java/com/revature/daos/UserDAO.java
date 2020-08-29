@@ -1,17 +1,11 @@
 package com.revature.daos;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.Query;
 
-import com.revature.models.Reimbursement;
+import org.hibernate.Session;
+
 import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
 
@@ -38,10 +32,8 @@ public class UserDAO implements IUserDAO {
 	@Override
 	public User findByUsername(String username) {
 		Session ses = HibernateUtil.getSession();
-//		User u = ses.get(User.class, username);
-		User u  = ses.get("FROM User u WHERE u.username ='"+username+"'", User.class);
-
-		return u;
+		List<User> uList  = (List<User>) ses.createQuery("FROM User u WHERE u.username ='"+username+"'", User.class).list();
+		return uList.get(0);
 	}
 
 	@Override
@@ -53,6 +45,7 @@ public class UserDAO implements IUserDAO {
 		Session ses = HibernateUtil.getSession();
 		try {			
 			ses.save(u);
+			System.out.println("adding user  ///////////////////////////////////////////");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

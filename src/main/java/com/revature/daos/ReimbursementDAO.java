@@ -44,6 +44,8 @@ public class ReimbursementDAO implements IReimbursementDAO {
 		Session ses = HibernateUtil.getSession();
 		try {			
 			ses.save(r);
+			System.out.println("added reimb /////////////////////////////////////////////////////////////////////");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,17 +58,19 @@ public class ReimbursementDAO implements IReimbursementDAO {
 		Session ses = HibernateUtil.getSession();
 		try {
 			ses.merge(r);
+			System.out.println("updated reimb /////////////////////////////////////////////////////////////////////");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
+		
 	}
 
 	@Override
-	public List<Reimbursement> findReimbursementByStatus(String status) {
+	public List<Reimbursement> findReimbursementByStatus(int i) {
 		Session ses = HibernateUtil.getSession();
-		List<Reimbursement> rList = ses.createQuery("FROM Reimbursement WHERE reimbStatus = "+ status, Reimbursement.class).list();
+		List<Reimbursement> rList = ses.createQuery("FROM Reimbursement WHERE reimbStatus = "+ i, Reimbursement.class).list();
 		return rList;
 	}
 

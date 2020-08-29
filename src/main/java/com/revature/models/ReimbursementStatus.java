@@ -25,9 +25,9 @@ public class ReimbursementStatus {
 	@Column(name="reimb_status")
 	private String reimbStatus;
 	
-	@OneToMany(mappedBy="reimbStatus", fetch=FetchType.EAGER)
-	private List<Reimbursement> rList;
-	
+//	@OneToMany(mappedBy="reimbStatus", fetch=FetchType.EAGER)
+//	private List<Reimbursement> rList;
+//	
 	
 	public ReimbursementStatus() {
 		super();
@@ -35,20 +35,18 @@ public class ReimbursementStatus {
 	
 	
 	
-	public ReimbursementStatus(int reimbStatusID, String reimbStatus, List<Reimbursement> rList) {
+	public ReimbursementStatus(int reimbStatusID, String reimbStatus) {
 		super();
 		this.reimbStatusID = reimbStatusID;
 		this.reimbStatus = reimbStatus;
-		this.rList = rList;
 	}
 	
 
 
 
-	public ReimbursementStatus(String reimbStatus, List<Reimbursement> rList) {
+	public ReimbursementStatus(String reimbStatus) {
 		super();
 		this.reimbStatus = reimbStatus;
-		this.rList = rList;
 	}
 
 

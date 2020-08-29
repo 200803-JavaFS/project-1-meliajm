@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 		res.setContentType("application/json");
 		res.setStatus(404);
 		System.out.println("in login serv");
+		lc.login(req, res);
 //		RequestDispatcher rd = null; 
 		
 //		final String URI = req.getRequestURI().replace("/project1/", "");
@@ -38,7 +39,8 @@ public class LoginServlet extends HttpServlet {
 		// better to log
 //		System.out.println(Arrays.toString(portions));
 		
-			lc.login(req, res);
+			
+		
 //			switch(portions[0]) {
 //				case "user":
 //					if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {

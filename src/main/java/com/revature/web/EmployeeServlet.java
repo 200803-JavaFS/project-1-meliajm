@@ -25,21 +25,22 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("application/json");
 		res.setStatus(404);
+		uc.employeeSuccess(req, res);
 		
-		final String URI = req.getRequestURI().replace("/project1/", "");
+//		final String URI = req.getRequestURI().replace("/project1/", "");
 		
-		String[] portions = URI.split("/");
+//		String[] portions = URI.split("/");
 		
 		// better to log
-		System.out.println(Arrays.toString(portions));
-		System.out.println("portions[0]: "+  portions[0]);
-		System.out.println("portions[0] equal: "+  portions[0].equals("login"));
-		try {
-			switch(portions[0]) {
+//		System.out.println(Arrays.toString(portions));
+//		System.out.println("portions[0]: "+  portions[0]);
+//		System.out.println("portions[0] equal: "+  portions[0].equals("login"));
+//		try {
+//			switch(portions[0]) {
 			
-				case "employeeSuccess":
-					uc.employeeSuccess(req, res);
-					break;
+//				case "employeeSuccess":
+					
+//					break;
 //					System.out.println("req: "+ req);
 //
 //					System.out.println("req.get: "+ req.getMethod());
@@ -71,13 +72,13 @@ public class EmployeeServlet extends HttpServlet {
 //						
 //						
 //					}
-			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-			res.getWriter().print("the id you provided is not an integer");
-			res.setStatus(400);
-		}
-		
+//			}
+//		} catch (NumberFormatException e) {
+//			e.printStackTrace();
+//			res.getWriter().print("the id you provided is not an integer");
+//			res.setStatus(400);
+//		}
+//		
 		
 		
 		
