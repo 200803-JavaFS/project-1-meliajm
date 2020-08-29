@@ -3,12 +3,12 @@ let url = 'http://localhost:8080/project1/';
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
 
 async function loginFunc() {
-    let usern = document.getElementById("username").value;
-    let userp = document.getElementById("password").value;
-
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    console.log(username);
     let user = {
-        username : usern,
-        password : userp
+        username : username,
+        password : password
     }
 
     let resp = await fetch(url+"login", {

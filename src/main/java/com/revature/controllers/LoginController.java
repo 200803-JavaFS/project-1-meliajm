@@ -32,7 +32,7 @@ public class LoginController {
 		// what is request? here
 //		String payloadRequest = getBody(req);
 		//System.out.println("pay "+ payloadRequest); //pay {"username":"tiaclair1","password":"p"}
-		System.out.println("req contains username? "+req.getParameterMap().containsKey("username"));
+		System.out.println("req contains ? "+req.getParameterMap().containsKey("user"));
 
 		String username = req.getParameter("username");
 		System.out.println("username in lc "+username);
@@ -75,7 +75,7 @@ public class LoginController {
 			}
 			String body = new String(sb);
 			System.out.println("body: "+ body);
-//			l = om.readValue(body, LoginDTO.class);
+			l = om.readValue(body, LoginDTO.class);
 			System.out.println("ls.login(l): "+ ls.login(l));
 
 			if(ls.login(l)) {
@@ -89,16 +89,19 @@ public class LoginController {
 				res.getWriter().println("hashcode: "+"p".hashCode());
 				res.getWriter().println("hashcode: "+"q".hashCode());
 				res.setContentType("text/html");
-				User u = us.findByUsername(username) ;
-				userRole ur = urs.findByID(u.getUserID());
-				
-				if (ur.getUserRole().equals("Employee")) {					
-//					req.getRequestDispatcher("employeeSuccess.html").forward(req,res);
-					System.out.println("employee success");
-				} else if (ur.getUserRole().equals("Employee")) {
-					System.out.println("financem success");
-//					req.getRequestDispatcher("financeMSuccess.html").forward(req,res);
-				}
+				System.out.println("username in ls.login "+ username);
+//				User u = us.findByUsername(username) ;
+//				userRole ur = urs.findByID(u.getUserID());
+				// need to make this switch so that we can figure out what 
+				//type of user (employee or finance manager)
+				// then 
+//				if (ur.getUserRole().equals("Employee")) {					
+////					req.getRequestDispatcher("employeeSuccess.html").forward(req,res);
+//					System.out.println("employee success");
+//				} else if (ur.getUserRole().equals("Employee")) {
+//					System.out.println("financem success");
+////					req.getRequestDispatcher("financeMSuccess.html").forward(req,res);
+//				}
 
 			} else {
 				HttpSession ses = req.getSession(false);
