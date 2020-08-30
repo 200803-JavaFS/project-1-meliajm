@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.controllers.LoginController;
 import com.revature.controllers.ReimbController;
+import com.revature.controllers.UserController;
 import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import com.revature.models.userRole;
@@ -19,7 +20,7 @@ public class MasterServlet extends HttpServlet {
 
 	private static ReimbController rc = new ReimbController();
 	private static LoginController lc = new LoginController();
-//	private static UserController uc = new UserController();
+	private static UserController uc = new UserController();
 	private static UserService us = new UserService();
 
 
@@ -73,7 +74,8 @@ public class MasterServlet extends HttpServlet {
 							} else if (portions.length == 1) {
 								System.out.println("here in get all reimbs");
 //								rc.getAllReimbursements(res);
-								u.getrAList();
+//								u.getrAList();
+								uc.getUserReimbursements(res, u);
 							}
 						} else if (req.getMethod().equals("POST")) {
 							rc.addReimbursement(req, res);

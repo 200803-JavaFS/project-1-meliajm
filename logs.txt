@@ -1636,3 +1636,9 @@
 2020-08-30 14:15:54 INFO  UserService:30 - find by username
 2020-08-30 14:15:56 INFO  UserService:30 - find by username
 2020-08-30 14:15:56 INFO  ReimbService:20 - find all
+2020-08-30 14:18:57 INFO  UserService:30 - find by username
+2020-08-30 14:18:57 INFO  UserService:30 - find by username
+2020-08-30 14:19:00 INFO  UserService:30 - find by username
+2020-08-30 14:24:29 INFO  UserService:30 - find by username
+2020-08-30 14:24:37 INFO  UserService:30 - find by username
+2020-08-30 14:24:39 INFO  UserService:30 - find by username

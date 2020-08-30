@@ -34,6 +34,12 @@ public class UserController {
 		}
 	}
 	
+	public void getUserReimbursements(HttpServletResponse res, User u) throws IOException {
+		List<Reimbursement> rAlist = u.getrAList();
+		res.getWriter().println(om.writeValueAsString(rAlist));
+		res.setStatus(200);
+	}
+	
 
 
 
