@@ -42,8 +42,10 @@ public class ReimbursementDAO implements IReimbursementDAO {
 //		ses.save(r);
 //		tx.commit();
 		Session ses = HibernateUtil.getSession();
-		try {			
+		try {
+			Transaction tx = ses.beginTransaction();
 			ses.save(r);
+			tx.commit();
 			System.out.println("added reimb /////////////////////////////////////////////////////////////////////");
 
 			return true;
@@ -57,7 +59,9 @@ public class ReimbursementDAO implements IReimbursementDAO {
 	public boolean updateReimbursement(Reimbursement r) {
 		Session ses = HibernateUtil.getSession();
 		try {
+			Transaction tx = ses.beginTransaction();
 			ses.merge(r);
+			tx.commit();
 			System.out.println("updated reimb /////////////////////////////////////////////////////////////////////");
 			return true;
 		} catch (Exception e) {

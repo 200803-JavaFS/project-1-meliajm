@@ -47,10 +47,10 @@ public class Driver {
 //			System.out.println(r);
 //		}
 		
-//		updateReimb();
+		updateReimb();
 //		findByStatus();
 //		addReimb();
-		addUser();
+//		addUser();
 		
 	}
 	
@@ -67,8 +67,8 @@ public class Driver {
 
 		ReimbursementType rt = new ReimbursementType("Other");
 
-		Reimbursement r = new Reimbursement(111.22, LocalTime.now(), null, "good vision", tia, null, rs, rt);
-		Reimbursement r2 = new Reimbursement(555.25, LocalTime.now(), null, "good vision", tia, null, rs2, rt);
+		Reimbursement r = new Reimbursement(111.22, LocalTime.now(), null, "hair ties", tia, null, rs, rt);
+		Reimbursement r2 = new Reimbursement(555.25, LocalTime.now(), null, "apples", tia, null, rs2, rt);
 		rDAO.addReimbursement(r2);
 		rDAO.addReimbursement(r);
 		
