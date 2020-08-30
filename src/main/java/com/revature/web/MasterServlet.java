@@ -46,7 +46,8 @@ public class MasterServlet extends HttpServlet {
 				System.out.println("req.getSession(false) "+ req.getSession(false));
 				System.out.println("req.getSession().getAttribute(log) "+ req.getSession().getAttribute("loggedin"));
 //				if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
-					//ADD REIMB WITH SESSIONS RIGHT NOW
+				// see all reimb then	
+				//ADD REIMB WITH no SESSIONS RIGHT NOW
 				// BECAUSE SESS NOT PERSISTING
 				// update DOM
 				// THEN SWITCH TO FINANCE MANAGER

@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="users")
 public class User implements Serializable {
@@ -47,9 +49,11 @@ private static final long serialVersionUID = 1L;
 	private userRole userRole;
 	
 	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private List<Reimbursement> rAList;
 	
 	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private List<Reimbursement> rRList;
 	
 	public User() {

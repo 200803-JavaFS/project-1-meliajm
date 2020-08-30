@@ -54,12 +54,12 @@ public class Driver {
 //		addUser();
 		
 	}
-	
-	private static void addUser() {
-		userRole ur2 = urDAO.findByID(2);
-		User u = new User("bambo", "pass", "bamboo", "bike", "bambi.com", ur2, null, null);
-		uDAO.addUser(u);
-	}
+	// removed lists
+//	private static void addUser() {
+//		userRole ur2 = urDAO.findByID(2);
+//		User u = new User("bambo", "pass", "bamboo", "bike", "bambi.com", ur2, null, null);
+//		uDAO.addUser(u);
+//	}
 	
 	private static void addReimb() {
 		User tia= uDAO.findByUsername("tiaclair1");

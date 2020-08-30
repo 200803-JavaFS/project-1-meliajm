@@ -33,7 +33,7 @@ public class ReimbController {
 	
 	public void getAllReimbursements(HttpServletResponse res) throws IOException {
 		List<Reimbursement> all = rs.findAll();
-		res.getWriter().println(om.writeValueAsString(all));
+//		res.getWriter().println(om.writeValueAsString(all));
 		res.setStatus(200);
 	}
 	
