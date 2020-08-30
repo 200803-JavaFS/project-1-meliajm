@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
@@ -43,8 +44,10 @@ public class UserDAO implements IUserDAO {
 //		ses.save(u);
 //		tx.commit();
 		Session ses = HibernateUtil.getSession();
-		try {			
+		try {						
+			Transaction tx = ses.beginTransaction();
 			ses.save(u);
+			tx.commit();
 			System.out.println("adding user  ///////////////////////////////////////////");
 			return true;
 		} catch (Exception e) {
@@ -57,8 +60,10 @@ public class UserDAO implements IUserDAO {
 	public boolean updateUser(User u) {
 		Session ses = HibernateUtil.getSession();
 //		ses.merge(u);
-		try {			
+		try {	
+			Transaction tx = ses.beginTransaction();
 			ses.merge(u);
+			tx.commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

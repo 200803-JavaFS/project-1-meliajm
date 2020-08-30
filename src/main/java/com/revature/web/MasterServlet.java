@@ -43,6 +43,8 @@ public class MasterServlet extends HttpServlet {
 		try {
 			switch (portions[0]) {
 			case "reimbursement":
+				System.out.println("req.getSession(false) "+ req.getSession(false));
+				System.out.println("req.getSession().getAttribute(log) "+ req.getSession().getAttribute("loggedin"));
 				if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
 					if (req.getMethod().equals("GET")) {
 						if (portions.length == 2) {

@@ -85,16 +85,18 @@ public class LoginController {
 				ses.setAttribute("loggedin", true);
 				res.setStatus(200);
 				res.getWriter().println("Login Successful");
-				res.getWriter().println("hashcode: "+"p".hashCode());
-				res.getWriter().println("hashcode: "+"p".hashCode());
-				res.getWriter().println("hashcode: "+"q".hashCode());
-				res.setContentType("text/html");
+//				res.getWriter().println("hashcode: "+"p".hashCode());
+//				res.getWriter().println("hashcode: "+"p".hashCode());
+//				res.getWriter().println("hashcode: "+"q".hashCode());
+//				res.setContentType("text/html");
 				System.out.println("username in ls.login "+ username);
+				System.out.println("ses "+ ses);
+
 //				User u = us.findByUsername(username) ;
 //				userRole ur = urs.findByID(u.getUserID());
 				// need to make this switch so that we can figure out what 
 				//type of user (employee or finance manager)
-				// then 
+				// then what?
 //				if (ur.getUserRole().equals("Employee")) {					
 ////					req.getRequestDispatcher("employeeSuccess.html").forward(req,res);
 //					System.out.println("employee success");
@@ -111,7 +113,6 @@ public class LoginController {
 				res.setStatus(401);
 				res.getWriter().println("Login failed");
 			}
-			
 		}
 	}
 	
