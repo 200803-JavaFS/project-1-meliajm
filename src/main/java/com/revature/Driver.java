@@ -47,8 +47,8 @@ public class Driver {
 //			System.out.println(r);
 //		}
 		
-		updateReimb();
-//		findByStatus();
+//		updateReimb();
+		findByStatus();
 //		addReimb();
 //		addUser();
 		
@@ -77,7 +77,7 @@ public class Driver {
 	}
 	
 	private static void findByStatus() {
-		List<Reimbursement> rs = rDAO.findReimbursementByStatus(3);
+		List<Reimbursement> rs = rDAO.findReimbursementByStatus(1);
 //		syso
 		for (Reimbursement r: rs) {
 			System.out.println(r);
