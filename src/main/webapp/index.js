@@ -1,38 +1,6 @@
 let url = 'http://localhost:8080/project1/';
 
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
-// document.getElementById("financeMBtn").addEventListener("click", financeLoginPage);
-
-// async function financeLoginPage() {
-//     document.getElementById("financeMBtn").style.display = 'none';
-//     // build new form
-
-//     let username = document.getElementById("username").value;
-//     let password = document.getElementById("password").value;
-//     console.log(username);
-//     let user = {
-//         username : username,
-//         password : password
-//     }
-
-//     let resp = await fetch(url+"financeLogin", {
-//         method: 'POST',
-//         body: JSON.stringify(user),
-//         credentials : "include"
-//     })
-
-//     if(resp.status===200){
-//         document.getElementById("login-row").innerText = "YOU HAVE LOGGED IN "+user.username;
-//         // create this function
-//         createButtonWithid("findAllBtn", "Show All My Reimbursements", findAllFinance);
-//     } else {
-//         document.getElementById("login-row").innerText = "Login failed!";
-//     }
-// }
-
-// function findAllFinance() {
-//     console.log("finding all reimbs as finance manager.")
-// }
 
 async function loginFunc() {
     let username = document.getElementById("username").value;
@@ -53,9 +21,14 @@ async function loginFunc() {
         document.getElementById("login-row").innerText = "YOU HAVE LOGGED IN "+user.username;
         // this is hardcoded and should be changed
         if (user.username==='captain' || user.username==='liz') {
-            createButtonWithid("findAllBtn", "Show All Employee Reimbursements", findAllFunc);
+            // createButtonWithid("findAllBtn", "Show All Employee Reimbursements", findAllFunc(user.username));
+            createButtonWithid("filterStatusBtn", "Filter Reimbursement By Status", queryReimb);
+            findAllFunc(user.username);
+
         } else {
-            createButtonWithid("findAllBtn", "Show My Reimbursements", findMyReimbs);
+            // createButtonWithid("findAllBtn", "Show My Reimbursements", findAllFunc(user.usernam));
+           findAllFunc(user.username);
+
             createButtonWithid("addReimbBtn", "Submit New Request", showAddReimbForm);
         }
     } else {
@@ -63,70 +36,20 @@ async function loginFunc() {
     }
 }
 
-async function findMyReimbs() {
-    console.log('finding your reimbs')
-    document.getElementById('findAllBtn').style.display = 'none';
-    const myHeaders = new Headers();
-    myHeaders.append("Origin", "corssucklol");
-    let resp = await fetch(url+"reimbursement", {
-        credentials: 'include',
-        headers: {
-            Origin: "corssucks"
-        }
-      });
-
-    if(resp.status===200){
-        let data = await resp.json();
-        console.log(data);
-        
-        // addReimbContent(data);
-        for (let i = 0; i < data.length; i++) {
-            let tbody = document.getElementById('reimb-body');
-            console.log(data[i]);
-            console.log("amount: "+data[i].reimbAmount);
-            let newRow = document.createElement('tr');
-            let td1 = document.createElement('td');
-            let td2 = document.createElement('td');
-            let td3 = document.createElement('td');
-            let td4 = document.createElement('td');
-            let td5 = document.createElement('td');
-            let td6 = document.createElement('td');
-            let td7 = document.createElement('td');
-            // if () {
-
-            // }
-            td1.innerText = data[i].reimbID;
-            td2.innerText = data[i].reimbAmount;
-            // td3.innerText = data[i].timeSubmitted.hour
-            if (data[i].timeSubmitted===null) {
-                td3.innerText = "not updated"
-            } else {
-                td3.innerText = data[i].timeSubmitted.hour
-            }
-            if (data[i].timeResolved===null) {
-                td4.innerText = "not updated"
-            } else {
-                td4.innerText = data[i].timeResolved.hour;
-            }
-            td5.innerText = data[i].reimbDescription;
-            td6.innerText = data[i].reimbType.reimbType
-            td7.innerText = data[i].reimbStatus.reimbStatus;
-
-            newRow.appendChild(td1);
-            newRow.appendChild(td2);
-            newRow.appendChild(td3);
-            newRow.appendChild(td4);
-            newRow.appendChild(td5);
-            newRow.appendChild(td6);
-            newRow.appendChild(td7);
-
-            tbody.appendChild(newRow);
-          }
-    }
+async function updateReimb() {
+    console.log('updating reimb');
 }
 
-async function findAllFunc() {
-    document.getElementById('findAllBtn').style.display = 'none';
+function queryReimb() {
+    console.log('query reimb');
+}
+
+
+
+async function findAllFunc(username) {
+    // if (!!document.getElementById('findAllBtn')) {
+    //     document.getElementById('findAllBtn').style.display = 'none';
+    // }
     const myHeaders = new Headers();
     myHeaders.append("Origin", "corssucklol");
     let resp = await fetch(url+"reimbursement", {
@@ -147,6 +70,11 @@ async function findAllFunc() {
             console.log("amount: "+data[i].reimbAmount);
             let newRow = document.createElement('tr');
             let td1 = document.createElement('td');
+            td1.id = "link"
+            let a = document.createElement('a');
+            a.href = url+`${data[i].reimbID}`;    
+            a.innerText = data[i].reimbID; 
+            td1.appendChild(a); 
             let td2 = document.createElement('td');
             let td3 = document.createElement('td');
             let td4 = document.createElement('td');
@@ -154,7 +82,11 @@ async function findAllFunc() {
             let td6 = document.createElement('td');
             let td7 = document.createElement('td');
 
-            td1.innerText = data[i].reimbID;
+            // let a = document.createElement('a');
+            
+            // td1.insertAdjacentElement('beforeend', a)
+            // td1.innerText = 
+            // td1.innerText = data[i].reimbID;
             td2.innerText = data[i].reimbAmount;
             // td3.innerText = data[i].timeSubmitted.hour
             if (data[i].timeSubmitted===null) {
@@ -182,6 +114,10 @@ async function findAllFunc() {
             tbody.appendChild(newRow);
           }
     }
+    if (username==='captain' || username==='liz') {
+        createButtonWithid("updateStatusBtn", "Update Reimbursement Status", updateReimb);
+    }
+
 }
 
 // function addReimbContent(data) {
