@@ -69,8 +69,8 @@ public class MasterServlet extends HttpServlet {
 					if (ur.equals("Employee")) {						
 						if (req.getMethod().equals("GET")) {
 							if (portions.length == 2) {
-//								int id = Integer.parseInt(portions[1]);
-//								rc.getReimbursement(res, id);
+								int id = Integer.parseInt(portions[1]);
+								rc.getReimbursement(res, id);
 							} else if (portions.length == 1) {
 								System.out.println("here in get all reimbs");
 //								rc.getAllReimbursements(res);
@@ -84,6 +84,7 @@ public class MasterServlet extends HttpServlet {
 						System.out.println("finance m log in");
 						if (req.getMethod().equals("GET")) {
 							if (portions.length == 2) {
+								System.out.println("int"+portions[1]);
 								int id = Integer.parseInt(portions[1]);
 								rc.getReimbursement(res, id);
 							} else if (portions.length == 1) {

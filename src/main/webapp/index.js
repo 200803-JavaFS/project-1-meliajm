@@ -71,10 +71,16 @@ async function findAllFunc(username) {
             let newRow = document.createElement('tr');
             let td1 = document.createElement('td');
             td1.id = "link"
-            let a = document.createElement('a');
-            a.href = url+`${data[i].reimbID}`;    
-            a.innerText = data[i].reimbID; 
-            td1.appendChild(a); 
+            // let a = document.createElement('a');
+            // let b = document.createElement('button');
+
+            // a.href = "reimbursement/"+data[i].reimbID;  
+            // a.innerText = data[i].reimbID; 
+            td1.innerText = data[i].reimbID; 
+            td1.style.color = 'blue';
+            td1.onclick = showGetReimb(data[i].reimbID);
+            // b.onclick = showGetReimb;
+            // td1.appendChild(b); 
             let td2 = document.createElement('td');
             let td3 = document.createElement('td');
             let td4 = document.createElement('td');
@@ -82,13 +88,7 @@ async function findAllFunc(username) {
             let td6 = document.createElement('td');
             let td7 = document.createElement('td');
 
-            // let a = document.createElement('a');
-            
-            // td1.insertAdjacentElement('beforeend', a)
-            // td1.innerText = 
-            // td1.innerText = data[i].reimbID;
             td2.innerText = data[i].reimbAmount;
-            // td3.innerText = data[i].timeSubmitted.hour
             if (data[i].timeSubmitted===null) {
                 td3.innerText = "not updated"
             } else {
@@ -120,13 +120,11 @@ async function findAllFunc(username) {
 
 }
 
-// function addReimbContent(data) {
-//     for(let i =0; i<data.length; i++) {
-//         console.log("add reimb");
-//         console.log(data[i]);
-//         console.log("amount: "+data[i].amount);
-//     }
-// }
+function showGetReimb(id) {
+    console.log('showing id: '+id);
+    
+    
+}
 
 function createButtonWithid(id, buttonText, func) {
     // put buttons on two diff elements

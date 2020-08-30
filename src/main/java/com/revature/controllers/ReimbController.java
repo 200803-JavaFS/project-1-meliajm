@@ -27,6 +27,7 @@ public class ReimbController {
 		if (r==null) {
 			res.setStatus(204);
 		} else {
+			System.out.println("in get reimb rc");
 			res.setStatus(200);
 			String json = om.writeValueAsString(r);
 			res.getWriter().println(json);
