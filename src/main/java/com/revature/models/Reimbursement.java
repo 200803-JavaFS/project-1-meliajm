@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="reimbursement")
@@ -39,19 +39,21 @@ public class Reimbursement implements Serializable {
 	@Column(name="reimb_description")
 	private String reimbDescription;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_author", nullable=false)
+	@JsonBackReference
 	private User reimbAuthor;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_resolver")
+	@JsonBackReference
 	private User reimbResolver;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_status_id", nullable=false)
 	private ReimbursementStatus reimbStatus;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_type_id", nullable=false)
 	private ReimbursementType reimbType;
 	
@@ -102,8 +104,6 @@ public class Reimbursement implements Serializable {
 	public void setReimbAmount(double reimbAmount) {
 		this.reimbAmount = reimbAmount;
 	}
-	
-	
 
 
 	public LocalTime getTimeSubmitted() {

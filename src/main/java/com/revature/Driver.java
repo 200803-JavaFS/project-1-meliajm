@@ -27,6 +27,12 @@ public class Driver {
 //	public List<Reimbursement> findReimbursementsByUser(User u);
 	
 	public static void main(String[] args) {
+		
+		String emp = uDAO.findByUsername("tiaclair1").getUserRole().getUserRole();
+		System.out.println("emp " +emp);
+		
+		String fm = uDAO.findByUsername("captain").getUserRole().getUserRole();
+		System.out.println("fm " +fm);
 //		insertValues();
 //		List<User> users = uDAO.findAll();
 //		for (User r: users) {
@@ -64,13 +70,13 @@ public class Driver {
 	private static void addReimb() {
 		User tia= uDAO.findByUsername("tiaclair1");
 		ReimbursementStatus rs = new ReimbursementStatus("Approved");
-		ReimbursementStatus rs2 = new ReimbursementStatus("Denied");
+//		ReimbursementStatus rs2 = new ReimbursementStatus("Denied");
 
 		ReimbursementType rt = new ReimbursementType("Other");
 
-		Reimbursement r = new Reimbursement(111.22, LocalTime.now(), null, "hair ties", tia, null, rs, rt);
-		Reimbursement r2 = new Reimbursement(555.25, LocalTime.now(), null, "apples", tia, null, rs2, rt);
-		rDAO.addReimbursement(r2);
+		Reimbursement r = new Reimbursement(999.22, LocalTime.now(), null, "hair ties", tia, null, rs, rt);
+//		Reimbursement r2 = new Reimbursement(555.25, LocalTime.now(), null, "apples", tia, null, rs2, rt);
+//		rDAO.addReimbursement(r2);
 		rDAO.addReimbursement(r);
 		
 		

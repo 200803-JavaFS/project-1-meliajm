@@ -58,8 +58,13 @@ public class ReimbController {
 		}
 		
 		String body = new String(s);
+		// i think is where find by user and associations need to happen
 		
 		System.out.println("body: "+ body);
+//		body = {"reimbAmount":"100.05","timeSubmitted":"23:45:33","timeResolved":"03:45:33","reimbDescription":"this is for demos","reimbAuthor":"tiaclair1","reimbResolver":"captain","reimbStatus":"Pending","reimbType":"Food"};
+
+//		body: {"amount":"100.05","timeSubmitted":"23:45:33","timeResolved":"03:45:33","descr":"this is for demos","author":"tiaclair1","resolver":"captain","status":"Pending","type":"Food"}
+
 		Reimbursement r = om.readValue(body, Reimbursement.class);
 		System.out.println("r: "+ r);
 		

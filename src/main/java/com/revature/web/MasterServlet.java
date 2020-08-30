@@ -1,6 +1,5 @@
 package com.revature.web;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -9,17 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.controllers.UserController;
-import com.revature.controllers.ReimbController;
-
 import com.revature.controllers.LoginController;
+import com.revature.controllers.ReimbController;
+import com.revature.models.LoginDTO;
 import com.revature.models.User;
-import com.revature.models.Reimbursement;
+import com.revature.models.userRole;
+import com.revature.services.UserService;
 
 public class MasterServlet extends HttpServlet {
 
 	private static ReimbController rc = new ReimbController();
 	private static LoginController lc = new LoginController();
+//	private static UserController uc = new UserController();
+	private static UserService us = new UserService();
+
 
 	public MasterServlet() {
 		super();
@@ -43,8 +45,8 @@ public class MasterServlet extends HttpServlet {
 		try {
 			switch (portions[0]) {
 			case "reimbursement":
-				System.out.println("req.getSession(false) "+ req.getSession(false));
-				System.out.println("req.getSession().getAttribute(log) "+ req.getSession().getAttribute("loggedin"));
+//				System.out.println("req.getSession(false) "+ req.getSession(false));
+//				System.out.println("req.getSession().getAttribute(log) "+ req.getSession().getAttribute("loggedin"));
 				if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
 				// see all reimb then	
 				//ADD REIMB WITH no SESSIONS RIGHT NOW
@@ -57,17 +59,36 @@ public class MasterServlet extends HttpServlet {
 				// LOGOUT
 				// INPUT TWO DECIMALS
 				// HASH PASSWORD
-					if (req.getMethod().equals("GET")) {
-						if (portions.length == 2) {
-							int id = Integer.parseInt(portions[1]);
-							rc.getReimbursement(res, id);
-						} else if (portions.length == 1) {
-//							ac.getAllAvengers(res);
-							System.out.println("here in get all reimbs");
-							rc.getAllReimbursements(res);
+					LoginDTO ldto = (LoginDTO) req.getSession().getAttribute("user");
+					System.out.println("//////////////////////////////////////////////// "+  ldto.username);
+					User u = us.findByUsername(ldto.username);
+					userRole uR = u.getUserRole();
+					String ur = uR.getUserRole();
+					System.out.println("ur "+ ur);
+					if (ur.equals("Employee")) {						
+						if (req.getMethod().equals("GET")) {
+							if (portions.length == 2) {
+//								int id = Integer.parseInt(portions[1]);
+//								rc.getReimbursement(res, id);
+							} else if (portions.length == 1) {
+								System.out.println("here in get all reimbs");
+//								rc.getAllReimbursements(res);
+								u.getrAList();
+							}
+						} else if (req.getMethod().equals("POST")) {
+							rc.addReimbursement(req, res);
 						}
-					} else if (req.getMethod().equals("POST")) {
-						rc.addReimbursement(req, res);
+					} else if (ur.equals("FinanceM")) {
+						System.out.println("finance m log in");
+						if (req.getMethod().equals("GET")) {
+							if (portions.length == 2) {
+								int id = Integer.parseInt(portions[1]);
+								rc.getReimbursement(res, id);
+							} else if (portions.length == 1) {
+								System.out.println("here in get all reimbs");
+								rc.getAllReimbursements(res);
+							}
+						} 
 					}
 				} 
 				else {
@@ -78,11 +99,14 @@ public class MasterServlet extends HttpServlet {
 			case "login":
 				lc.login(req, res);
 				break;
+			case "financeLogin":
+				lc.financeLogin(req, res);
+				break;
 			case "logout":
 				lc.logout(req, res);
 				break;
 			case "add":
-				rc.addReimbursement(req, res);;
+				rc.addReimbursement(req, res);
 				break;
 			}
 

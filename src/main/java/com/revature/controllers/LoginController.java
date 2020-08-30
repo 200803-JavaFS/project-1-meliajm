@@ -2,8 +2,6 @@ package com.revature.controllers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,9 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.daos.UserDAO;
 import com.revature.models.LoginDTO;
-import com.revature.models.User;
-import com.revature.models.userRole;
 import com.revature.services.LoginService;
 import com.revature.services.UserRoleService;
 import com.revature.services.UserService;
@@ -25,6 +22,8 @@ public class LoginController {
 	private static ObjectMapper om = new ObjectMapper();
 	private static UserRoleService urs = new UserRoleService();
 	private static UserService us = new UserService();
+	private static UserDAO uDAO = new UserDAO();
+
 	RequestDispatcher rd = null;
 
 
@@ -32,15 +31,21 @@ public class LoginController {
 		// what is request? here
 //		String payloadRequest = getBody(req);
 		//System.out.println("pay "+ payloadRequest); //pay {"username":"tiaclair1","password":"p"}
-		System.out.println("req contains ? "+req.getParameterMap().containsKey("user"));
+//		System.out.println("req contains ? "+req.getParameterMap().containsKey("user"));
 
 		String username = req.getParameter("username");
 		System.out.println("username in lc "+username);
 		String password = req.getParameter("password");
+		
+//		String emp = us.findByUsername(username).getUserRole().getUserRole();
+//		System.out.println("emp " +emp);
+//		
 		LoginDTO l = new LoginDTO();
 		l.username = username;
 		l.password = password;
 		
+		
+		// && emp.equals("Employee"))
 		
 		if(req.getMethod().equals("GET")) {
 //			System.out.println("in login control login if");
@@ -54,6 +59,7 @@ public class LoginController {
 				ses.setAttribute("loggedin", true);
 				res.setStatus(200);
 				res.getWriter().println("Login Successful");
+
 			} else {
 				HttpSession ses = req.getSession(false);
 				if(ses != null) {
@@ -85,12 +91,15 @@ public class LoginController {
 				ses.setAttribute("loggedin", true);
 				res.setStatus(200);
 				res.getWriter().println("Login Successful");
+//				User u = us.findByUsername(username);
+//				res.getWriter().println("user role: " + u.getUserRole().getUserRole());
+
 //				res.getWriter().println("hashcode: "+"p".hashCode());
 //				res.getWriter().println("hashcode: "+"p".hashCode());
 //				res.getWriter().println("hashcode: "+"q".hashCode());
 //				res.setContentType("text/html");
-				System.out.println("username in ls.login "+ username);
-				System.out.println("ses "+ ses);
+//				System.out.println("username in ls.login "+ username);
+//				System.out.println("ses "+ ses);
 
 //				User u = us.findByUsername(username) ;
 //				userRole ur = urs.findByID(u.getUserID());
@@ -128,6 +137,11 @@ public class LoginController {
 			res.setStatus(400);
 			res.getWriter().println("you must be logged in to log out");
 		}
+	}
+
+	public void financeLogin(HttpServletRequest req, HttpServletResponse res) {
+//		System.out.println("finance manager is logging in.");
+		
 	}
 	
 //	public static String getBody(HttpServletRequest request) throws IOException {

@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="users")
@@ -48,12 +49,12 @@ private static final long serialVersionUID = 1L;
 	@JoinColumn(name="user_role_id", nullable=false)
 	private userRole userRole;
 	
-	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.EAGER)
+	@JsonManagedReference
 	private List<Reimbursement> rAList;
 	
 	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonManagedReference
 	private List<Reimbursement> rRList;
 	
 	public User() {
@@ -61,7 +62,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	public User(int userID, String username, String password, String firstName, String lastName, String email,
-			userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
+			com.revature.models.userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
 		super();
 		this.userID = userID;
 		this.username = username;
@@ -74,8 +75,21 @@ private static final long serialVersionUID = 1L;
 		this.rRList = rRList;
 	}
 	
+	
+
+
+
+
+	public List<Reimbursement> getrRList() {
+		return rRList;
+	}
+
+	public void setrRList(List<Reimbursement> rRList) {
+		this.rRList = rRList;
+	}
+
 	public User(String username, String password, String firstName, String lastName, String email,
-			userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
+			com.revature.models.userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -86,7 +100,6 @@ private static final long serialVersionUID = 1L;
 		this.rAList = rAList;
 		this.rRList = rRList;
 	}
-
 
 	public int getUserID() {
 		return userID;
@@ -147,6 +160,8 @@ private static final long serialVersionUID = 1L;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
 
 //	@Override
 //	public String toString() {
@@ -154,6 +169,14 @@ private static final long serialVersionUID = 1L;
 //				+ lastName + ", email=" + email + ", userRole=" + userRole + "]";
 //	}
 	
+	public List<Reimbursement> getrAList() {
+		return rAList;
+	}
+
+	public void setrAList(List<Reimbursement> rAList) {
+		this.rAList = rAList;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
