@@ -20,17 +20,27 @@ public class ReimbController {
 	private static ObjectMapper om = new ObjectMapper();
 	private static UserService us = new UserService();
 
-	
-	public void findUserReimbursements(HttpServletResponse res) throws IOException {
-//		List<Reimbursement> all = us.findUserReimbursements(res.getParameter("username"));
-//		res.getWriter().println(om.writeValueAsString(all));
+	public void getReimbursement(HttpServletResponse res, int id) throws IOException {
+		Reimbursement r = rs.findById(id);
+		if (r==null) {
+			res.setStatus(204);
+		} else {
+			res.setStatus(200);
+			String json = om.writeValueAsString(r);
+			res.getWriter().println(json);
+		}
 	}
 	
-//	public void reimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-//		res.setContentType("text/html");
-//		PrintWriter out = res.getWriter();
-//		
-//		out.print("submitted your reimbursement");
+	public void getAllReimbursements(HttpServletResponse res) throws IOException {
+		List<Reimbursement> all = rs.findAll();
+		res.getWriter().println(om.writeValueAsString(all));
+		res.setStatus(200);
+	}
+	
+	
+//	public void findUserReimbursements(HttpServletResponse res) throws IOException {
+//		List<Reimbursement> all = us.findUserReimbursements(res.getParameter("username"));
+//		res.getWriter().println(om.writeValueAsString(all));
 //	}
 	
 	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -51,12 +61,12 @@ public class ReimbController {
 		Reimbursement r = om.readValue(body, Reimbursement.class);
 		System.out.println("r: "+ r);
 		
-//		if (rs.addReimbursement(r)) {
-//			res.setStatus(201);
-//			res.getWriter().println("Reimb was created");
-//		} else {
-//			res.setStatus(403);
-//		}
+		if (rs.addReimbursement(r)) {
+			res.setStatus(201);
+			res.getWriter().println("Reimb was created");
+		} else {
+			res.setStatus(403);
+		}
 	}
 
 }

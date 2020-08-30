@@ -35,12 +35,13 @@ public class Driver {
 //		userRole uRole = users.get(1).getUserRole();
 //		System.out.println("user role: "+ uRole);
 		
-		User bart= uDAO.findByID(10);
-		System.out.println(bart);
-//		
+//		User bart= uDAO.findByID(10);
+//		System.out.println(bart);
+////		
 //		User bart2= uDAO.findByUsername("barty");
 //		System.out.println(bart2);
 //		List<Reimbursement> reimbs = rDAO.findReimbursementsByUser(users.get(3));
+//		
 //		List<Reimbursement> reimbs = rDAO.findAll();
 //		System.out.println("find all reimbs");
 //		for (Reimbursement r: reimbs) {
@@ -48,7 +49,7 @@ public class Driver {
 //		}
 		
 //		updateReimb();
-		findByStatus();
+//		findByStatus();
 //		addReimb();
 //		addUser();
 		
