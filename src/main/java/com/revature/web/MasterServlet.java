@@ -45,7 +45,7 @@ public class MasterServlet extends HttpServlet {
 			case "reimbursement":
 				System.out.println("req.getSession(false) "+ req.getSession(false));
 				System.out.println("req.getSession().getAttribute(log) "+ req.getSession().getAttribute("loggedin"));
-//				if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
+				if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
 				// see all reimb then	
 				//ADD REIMB WITH no SESSIONS RIGHT NOW
 				// BECAUSE SESS NOT PERSISTING
@@ -63,22 +63,26 @@ public class MasterServlet extends HttpServlet {
 							rc.getReimbursement(res, id);
 						} else if (portions.length == 1) {
 //							ac.getAllAvengers(res);
+							System.out.println("here in get all reimbs");
 							rc.getAllReimbursements(res);
 						}
 					} else if (req.getMethod().equals("POST")) {
 						rc.addReimbursement(req, res);
 					}
-//				} 
-//				else {
-//					res.setStatus(403);
-//					res.getWriter().println("You must be logged in to do that!");
-//				}
+				} 
+				else {
+					res.setStatus(403);
+					res.getWriter().println("You must be logged in to do that!");
+				}
 				break;
 			case "login":
 				lc.login(req, res);
 				break;
 			case "logout":
 				lc.logout(req, res);
+				break;
+			case "add":
+				rc.addReimbursement(req, res);;
 				break;
 			}
 

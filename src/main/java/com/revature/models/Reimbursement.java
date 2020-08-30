@@ -1,7 +1,6 @@
 package com.revature.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
@@ -15,8 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name="reimbursement")
+//@JsonSerialize
 public class Reimbursement implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -240,10 +242,5 @@ public class Reimbursement implements Serializable {
 				+ reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus + ", reimbType="
 				+ reimbType + "]";
 	}
-
-	
-	
-	
-
 	
 }

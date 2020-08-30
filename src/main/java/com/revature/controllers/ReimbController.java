@@ -18,6 +18,8 @@ public class ReimbController {
 	
 	private static ReimbService rs = new ReimbService();
 	private static ObjectMapper om = new ObjectMapper();
+//	om.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);
+
 	private static UserService us = new UserService();
 
 	public void getReimbursement(HttpServletResponse res, int id) throws IOException {
@@ -33,7 +35,7 @@ public class ReimbController {
 	
 	public void getAllReimbursements(HttpServletResponse res) throws IOException {
 		List<Reimbursement> all = rs.findAll();
-//		res.getWriter().println(om.writeValueAsString(all));
+		res.getWriter().println(om.writeValueAsString(all));
 		res.setStatus(200);
 	}
 	
