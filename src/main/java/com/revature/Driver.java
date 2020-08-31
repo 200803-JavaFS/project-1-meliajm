@@ -27,8 +27,8 @@ public class Driver {
 //	public List<Reimbursement> findReimbursementsByUser(User u);
 	
 	public static void main(String[] args) {
-		System.out.println("password".hashCode());
-		System.out.println("password".hashCode());
+//		System.out.println("password".hashCode());
+//		System.out.println("password".hashCode());
 
 		
 		
@@ -52,11 +52,11 @@ public class Driver {
 //		System.out.println(bart2);
 //		List<Reimbursement> reimbs = rDAO.findReimbursementsByUser(users.get(3));
 //		
-//		List<Reimbursement> reimbs = rDAO.findAll();
-//		System.out.println("find all reimbs");
-//		for (Reimbursement r: reimbs) {
-//			System.out.println(r);
-//		}
+		List<Reimbursement> reimbs = rDAO.findAll();
+		System.out.println("find all reimbs");
+		for (Reimbursement r: reimbs) {
+			System.out.println(r);
+		}
 		
 //		updateReimb();
 //		findByStatus();

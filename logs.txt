@@ -2210,3 +2210,25 @@
 2020-08-31 10:33:59 INFO  UserService:30 - find by username
 2020-08-31 10:33:59 INFO  UserService:30 - find by username
 2020-08-31 10:33:59 INFO  ReimbService:20 - find all
+2020-08-31 10:37:56 INFO  UserService:30 - find by username
+2020-08-31 10:37:56 INFO  UserService:30 - find by username
+2020-08-31 10:37:56 INFO  UserService:30 - find by username
+2020-08-31 10:37:56 INFO  ReimbService:20 - find all
+2020-08-31 10:39:53 INFO  UserService:30 - find by username
+2020-08-31 10:39:53 INFO  UserService:30 - find by username
+2020-08-31 10:39:53 INFO  UserService:30 - find by username
+2020-08-31 10:39:53 INFO  ReimbService:20 - find all
+2020-08-31 10:49:10 INFO  UserService:30 - find by username
+2020-08-31 10:49:19 INFO  UserService:30 - find by username
+2020-08-31 10:49:19 INFO  UserService:30 - find by username
+2020-08-31 10:49:19 INFO  ReimbService:20 - find all
+2020-08-31 10:49:25 INFO  UserService:30 - find by username
+2020-08-31 10:49:25 INFO  UserService:30 - find by username
+2020-08-31 10:49:25 INFO  UserService:30 - find by username
+2020-08-31 10:49:56 INFO  UserService:30 - find by username
+2020-08-31 10:49:56 INFO  UserService:30 - find by username
+2020-08-31 10:49:56 INFO  UserService:30 - find by username
+2020-08-31 10:49:56 INFO  ReimbService:20 - find all
+2020-08-31 10:50:01 INFO  ReimbService:25 - find by id
+2020-08-31 10:50:21 INFO  UserService:30 - find by username
+2020-08-31 10:50:21 INFO  ReimbService:20 - find all

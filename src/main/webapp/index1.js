@@ -33,13 +33,12 @@ async function loginFunc() {
 
     if(resp.status===200){
         document.getElementById("login-row").innerText = "YOU HAVE LOGGED IN "+user.username;
-        if (user.username==='captain' || user.username==='liz') {
-            findAllFunc(user.username);
+        if (user.username==='captini'|| user.username==='captain' ||user.username==='liz') {
             document.getElementById('financeM').style.display='block';
         } else {
-            findAllFunc(user.username);
             document.getElementById('employee').style.display='block';
         }
+        findAllFunc();
 
     } else {
         document.getElementById("login-row").innerText = "Login failed!";
@@ -172,8 +171,7 @@ async function queryReimb() {
 
 }
 
-async function findAllFunc(username) {
-    // if (username==='captain' || username==='liz') {
+async function findAllFunc() {
         const myHeaders = new Headers();
         myHeaders.append("Origin", "corssucklol");
         let resp = await fetch(url+"reimbursement", {
@@ -227,8 +225,5 @@ async function findAllFunc(username) {
 
                 tbody.appendChild(newRow);
             }
-        // } else {
-        //     console.log('user is employee, can only see her reimbs')
-        // }
     }
 }
