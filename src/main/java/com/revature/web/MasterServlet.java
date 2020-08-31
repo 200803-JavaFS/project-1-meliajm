@@ -93,7 +93,13 @@ public class MasterServlet extends HttpServlet {
 							}
 						} 
 					}
+					// this is not in the correct spot
+				} else if (portions.length == 2) {
+					System.out.println("int"+portions[1]);
+					int id = Integer.parseInt(portions[1]);
+					rc.getReimbursement(res, id);
 				} 
+				
 				else {
 					res.setStatus(403);
 					res.getWriter().println("You must be logged in to do that!");
