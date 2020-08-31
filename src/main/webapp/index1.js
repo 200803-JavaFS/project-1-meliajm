@@ -1,5 +1,8 @@
 let url = 'http://localhost:8080/project1/';
 
+document.getElementById('financeM').style.display='none';
+document.getElementById('employee').style.display='none';
+
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
 document.getElementById('filterStatusBtn').addEventListener("click", queryReimb);
 document.getElementById('SelectBtn').addEventListener("click", selectReimb);
@@ -30,7 +33,14 @@ async function loginFunc() {
 
     if(resp.status===200){
         document.getElementById("login-row").innerText = "YOU HAVE LOGGED IN "+user.username;
-        findAllFunc(user.username);
+        if (user.username==='captain' || user.username==='liz') {
+            findAllFunc(user.username);
+            document.getElementById('financeM').style.display='block';
+        } else {
+            findAllFunc(user.username);
+            document.getElementById('employee').style.display='block';
+        }
+
     } else {
         document.getElementById("login-row").innerText = "Login failed!";
     }
@@ -163,64 +173,62 @@ async function queryReimb() {
 }
 
 async function findAllFunc(username) {
-    const myHeaders = new Headers();
-    myHeaders.append("Origin", "corssucklol");
-    let resp = await fetch(url+"reimbursement", {
+    // if (username==='captain' || username==='liz') {
+        const myHeaders = new Headers();
+        myHeaders.append("Origin", "corssucklol");
+        let resp = await fetch(url+"reimbursement", {
         credentials: 'include',
         headers: {
             Origin: "corssucks"
         }
       });
+        if(resp.status===200){
+            let data = await resp.json();
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                let tbody = document.getElementById('reimb-body');
+                console.log(data[i]);
+                console.log("amount: "+data[i].reimbAmount);
+                let newRow = document.createElement('tr');
+                let td1 = document.createElement('td');
+                td1.id = "link" 
+                td1.innerText = data[i].reimbID; 
+                td1.style.color = 'blue';
+            
+                let td2 = document.createElement('td');
+                let td3 = document.createElement('td');
+                let td4 = document.createElement('td');
+                let td5 = document.createElement('td');
+                let td6 = document.createElement('td');
+                let td7 = document.createElement('td');
 
-    if(resp.status===200){
-        let data = await resp.json();
-        console.log(data);
-        
-        for (let i = 0; i < data.length; i++) {
-            let tbody = document.getElementById('reimb-body');
-            console.log(data[i]);
-            console.log("amount: "+data[i].reimbAmount);
-            let newRow = document.createElement('tr');
-            let td1 = document.createElement('td');
-            td1.id = "link" 
-            td1.innerText = data[i].reimbID; 
-            td1.style.color = 'blue';
-           
-            let td2 = document.createElement('td');
-            let td3 = document.createElement('td');
-            let td4 = document.createElement('td');
-            let td5 = document.createElement('td');
-            let td6 = document.createElement('td');
-            let td7 = document.createElement('td');
+                td2.innerText = data[i].reimbAmount;
+                if (data[i].timeSubmitted===null) {
+                    td3.innerText = "not updated"
+                } else {
+                    td3.innerText = data[i].timeSubmitted.hour
+                }
+                if (data[i].timeResolved===null) {
+                    td4.innerText = "not updated"
+                } else {
+                    td4.innerText = data[i].timeResolved.hour;
+                }
+                td5.innerText = data[i].reimbDescription;
+                td6.innerText = data[i].reimbType.reimbType
+                td7.innerText = data[i].reimbStatus.reimbStatus;
 
-            td2.innerText = data[i].reimbAmount;
-            if (data[i].timeSubmitted===null) {
-                td3.innerText = "not updated"
-            } else {
-                td3.innerText = data[i].timeSubmitted.hour
+                newRow.appendChild(td1);
+                newRow.appendChild(td2);
+                newRow.appendChild(td3);
+                newRow.appendChild(td4);
+                newRow.appendChild(td5);
+                newRow.appendChild(td6);
+                newRow.appendChild(td7);
+
+                tbody.appendChild(newRow);
             }
-            if (data[i].timeResolved===null) {
-                td4.innerText = "not updated"
-            } else {
-                td4.innerText = data[i].timeResolved.hour;
-            }
-            td5.innerText = data[i].reimbDescription;
-            td6.innerText = data[i].reimbType.reimbType
-            td7.innerText = data[i].reimbStatus.reimbStatus;
-
-            newRow.appendChild(td1);
-            newRow.appendChild(td2);
-            newRow.appendChild(td3);
-            newRow.appendChild(td4);
-            newRow.appendChild(td5);
-            newRow.appendChild(td6);
-            newRow.appendChild(td7);
-
-            tbody.appendChild(newRow);
-          }
+        // } else {
+        //     console.log('user is employee, can only see her reimbs')
+        // }
     }
-    if (username==='captain' || username==='liz') {
-    }
-
-
 }
