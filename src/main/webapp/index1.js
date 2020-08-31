@@ -78,6 +78,8 @@ async function getReimb() {
 async function loginFunc() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+    
+    //
     console.log(username);
     let user = {
         username : username,
@@ -100,6 +102,9 @@ async function loginFunc() {
         findAllFunc();
         document.getElementById('logoutbtn').style.display = "block";
         document.getElementById('logininput').style.display='none'
+        document.getElementById("username").value="";
+        document.getElementById("password").value="";
+
 
     } else {
         document.getElementById("login-row").innerText = "Login failed!";
