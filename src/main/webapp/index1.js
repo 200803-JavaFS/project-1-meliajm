@@ -9,11 +9,30 @@ document.getElementById('SelectBtn').addEventListener("click", selectReimb);
 document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
 
 async function updateReimb() {
-    stat = document.getElementById('updateReimb').value;
-    if (document.getElementById('link').innerHTML===document.getElementById('reimbID').value
-    ) {
-        console.log('updating reimb to '+ stat);
+    let stat = document.getElementById('updateReimb').value;
+    let reimbID = document.getElementById("reimbID").value;
+
+    if (document.getElementById('link').innerHTML===reimbID) {
+        console.log('updating reimb to '+ stat + 'with id of: ' +reimbID);
         // do post here
+        let data = {
+            status: stat
+        }
+
+        let resp = await fetch("reimbursement/"+reimbID+'/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            credentials : "include"
+        })
+
+        if (resp.status===200){
+            document.getElementById("login-row").innerText = "Status is updated.";
+        } else {
+            document.getElementById("login-row").innerText = "That did not update";
+        }
+        reimbID="";
+        stat="";
+
     }
 }
 async function loginFunc() {
@@ -31,7 +50,7 @@ async function loginFunc() {
         credentials : "include"
     })
 
-    if(resp.status===200){
+    if (resp.status===200){
         document.getElementById("login-row").innerText = "YOU HAVE LOGGED IN "+user.username;
         if (user.username==='captini'|| user.username==='captain' ||user.username==='liz') {
             document.getElementById('financeM').style.display='block';
@@ -53,7 +72,7 @@ async function selectReimb() {
 
     let response = await fetch(url+"reimbursement/"+reimbID+'/');
 
-    if(response.status === 200) {
+    if (response.status === 200) {
         let data = await response.json();
         console.log(data);
         let tbody = document.getElementById('reimb-body');

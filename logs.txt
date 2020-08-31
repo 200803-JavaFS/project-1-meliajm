@@ -2232,3 +2232,13 @@
 2020-08-31 10:50:01 INFO  ReimbService:25 - find by id
 2020-08-31 10:50:21 INFO  UserService:30 - find by username
 2020-08-31 10:50:21 INFO  ReimbService:20 - find all
+2020-08-31 11:12:24 INFO  UserService:30 - find by username
+2020-08-31 11:12:24 INFO  UserService:30 - find by username
+2020-08-31 11:12:24 INFO  UserService:30 - find by username
+2020-08-31 11:12:24 INFO  ReimbService:20 - find all
+2020-08-31 11:12:32 INFO  ReimbService:25 - find by id
+2020-08-31 11:13:27 INFO  UserService:30 - find by username
+2020-08-31 11:13:27 INFO  ReimbService:20 - find all
+2020-08-31 11:13:39 INFO  UserService:30 - find by username
+2020-08-31 11:13:39 INFO  UserService:30 - find by username
+2020-08-31 11:13:39 INFO  UserService:30 - find by username
