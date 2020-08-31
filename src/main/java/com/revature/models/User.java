@@ -74,11 +74,6 @@ private static final long serialVersionUID = 1L;
 		this.rAList = rAList;
 		this.rRList = rRList;
 	}
-	
-	
-
-
-
 
 	public List<Reimbursement> getrRList() {
 		return rRList;

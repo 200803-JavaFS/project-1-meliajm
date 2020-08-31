@@ -20,10 +20,7 @@ public class LoginController {
 
 	private static LoginService ls = new LoginService();
 	private static ObjectMapper om = new ObjectMapper();
-	private static UserRoleService urs = new UserRoleService();
-	private static UserService us = new UserService();
-	private static UserDAO uDAO = new UserDAO();
-
+	
 	RequestDispatcher rd = null;
 
 

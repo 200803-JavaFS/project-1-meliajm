@@ -76,12 +76,12 @@ async function selectReimb() {
         if (data.timeSubmitted===null) {
             td3.innerText = "not updated"
         } else {
-            td3.innerText = data.timeSubmitted.hour
+            td3.innerText = data.timeSubmitted.hour+"."+data.timeSubmitted.minute+"."+data.timeSubmitted.second;
         }
         if (data.timeResolved===null) {
             td4.innerText = "not updated"
         } else {
-            td4.innerText = data.timeResolved.hour;
+            td4.innerText = data.timeResolved.hour+"."+data.timeResolved.minute+"."+data.timeResolved.second;
         }
         td5.innerText = data.reimbDescription;
         td6.innerText = data.reimbType.reimbType
@@ -144,12 +144,12 @@ async function queryReimb() {
                 if (data[i].timeSubmitted===null) {
                     td3.innerText = "not updated"
                 } else {
-                    td3.innerText = data[i].timeSubmitted.hour
+                    td3.innerText = data[i].timeSubmitted.hour+"."+data[i].timeSubmitted.minute+"."+data[i].timeSubmitted.second;
                 }
                 if (data[i].timeResolved===null) {
                     td4.innerText = "not updated"
                 } else {
-                    td4.innerText = data[i].timeResolved.hour;
+                    td4.innerText = data[i].timeResolved.hour+"."+data[i].timeResolved.minute+"."+data[i].timeResolved.second;
                 }
                 td5.innerText = data[i].reimbDescription;
                 td6.innerText = data[i].reimbType.reimbType
@@ -206,12 +206,12 @@ async function findAllFunc(username) {
                 if (data[i].timeSubmitted===null) {
                     td3.innerText = "not updated"
                 } else {
-                    td3.innerText = data[i].timeSubmitted.hour
+                    td3.innerText = data[i].timeSubmitted.hour+"."+data[i].timeSubmitted.minute+"."+data[i].timeSubmitted.second;
                 }
                 if (data[i].timeResolved===null) {
                     td4.innerText = "not updated"
                 } else {
-                    td4.innerText = data[i].timeResolved.hour;
+                    td4.innerText = data[i].timeResolved.hour+"."+data[i].timeResolved.minute+"."+data[i].timeResolved.second;
                 }
                 td5.innerText = data[i].reimbDescription;
                 td6.innerText = data[i].reimbType.reimbType
