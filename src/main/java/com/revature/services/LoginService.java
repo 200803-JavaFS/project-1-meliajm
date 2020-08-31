@@ -9,7 +9,7 @@ public class LoginService {
 	
 	public boolean login(LoginDTO l) {
 		User u = us.findByUsername(l.username);
-		if (l.username.equals(u.getUsername()) && l.password.equals(u.getPassword())) {
+		if (l.username.equals(u.getUsername()) && l.password.hashCode()==(u.getPassword())) {
 			return true;
 		}
 		return false;

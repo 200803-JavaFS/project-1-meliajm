@@ -27,12 +27,16 @@ public class Driver {
 //	public List<Reimbursement> findReimbursementsByUser(User u);
 	
 	public static void main(String[] args) {
+		System.out.println("password".hashCode());
+		System.out.println("password".hashCode());
+
 		
-		String emp = uDAO.findByUsername("tiaclair1").getUserRole().getUserRole();
-		System.out.println("emp " +emp);
 		
-		String fm = uDAO.findByUsername("captain").getUserRole().getUserRole();
-		System.out.println("fm " +fm);
+//		String emp = uDAO.findByUsername("tiaclair1").getUserRole().getUserRole();
+//		System.out.println("emp " +emp);
+//		
+//		String fm = uDAO.findByUsername("captain").getUserRole().getUserRole();
+//		System.out.println("fm " +fm);
 //		insertValues();
 //		List<User> users = uDAO.findAll();
 //		for (User r: users) {

@@ -32,8 +32,8 @@ private static final long serialVersionUID = 1L;
 	@Column(name="username", unique=true, nullable=false)
 	private String username;
 	
-	@Column(name="user_password", nullable=false)
-	private String password;
+	@Column(name="user_hashcode", nullable=false)
+	private int password;
 	
 	@Column(name="first_name", nullable=false)
 	private String firstName;
@@ -61,7 +61,7 @@ private static final long serialVersionUID = 1L;
 		super();
 	}
 
-	public User(int userID, String username, String password, String firstName, String lastName, String email,
+	public User(int userID, String username, int password, String firstName, String lastName, String email,
 			com.revature.models.userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
 		super();
 		this.userID = userID;
@@ -83,7 +83,7 @@ private static final long serialVersionUID = 1L;
 		this.rRList = rRList;
 	}
 
-	public User(String username, String password, String firstName, String lastName, String email,
+	public User(String username, int password, String firstName, String lastName, String email,
 			com.revature.models.userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
 		super();
 		this.username = username;
@@ -112,11 +112,11 @@ private static final long serialVersionUID = 1L;
 		this.username = username;
 	}
 
-	public String getPassword() {
+	public int getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(int password) {
 		this.password = password;
 	}
 
@@ -185,7 +185,9 @@ private static final long serialVersionUID = 1L;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + password;
+		result = prime * result + ((rAList == null) ? 0 : rAList.hashCode());
+		result = prime * result + ((rRList == null) ? 0 : rRList.hashCode());
 		result = prime * result + userID;
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -216,10 +218,17 @@ private static final long serialVersionUID = 1L;
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (password == null) {
-			if (other.password != null)
+		if (password != other.password)
+			return false;
+		if (rAList == null) {
+			if (other.rAList != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!rAList.equals(other.rAList))
+			return false;
+		if (rRList == null) {
+			if (other.rRList != null)
+				return false;
+		} else if (!rRList.equals(other.rRList))
 			return false;
 		if (userID != other.userID)
 			return false;
@@ -235,4 +244,8 @@ private static final long serialVersionUID = 1L;
 			return false;
 		return true;
 	}
+
+	
+
+	
 }
