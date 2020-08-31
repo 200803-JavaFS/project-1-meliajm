@@ -2,25 +2,44 @@ let url = 'http://localhost:8080/project1/';
 
 document.getElementById('financeM').style.display='none';
 document.getElementById('employee').style.display='none';
+document.getElementById('logoutbtn').style.display='none';
+
 
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
+document.getElementById("logoutbtn").addEventListener("click", logoutFunc);
 document.getElementById('filterStatusBtn').addEventListener("click", queryReimb);
 document.getElementById('SelectBtn').addEventListener("click", selectReimb);
-document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
+
+// document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
 
 async function updateReimb() {
     let stat = document.getElementById('updateReimb').value;
     let reimbID = document.getElementById("reimbID").value;
-
-    if (document.getElementById('link').innerHTML===reimbID) {
+    if (document.getElementById('link').innerHTML===reimbID&&document.getElementsByTagName('td').length!==1) {
         console.log('updating reimb to '+ stat + 'with id of: ' +reimbID);
+        //call get
+        let reimb = getReimb();
+        let user = getUser();
+        console.log(reimb);
+        // not sure if i need to add whole object in patch 
+        // but that is what i am doing
         // do post here
         let data = {
-            status: stat
+            reimbID: reimb.reimbID,
+            reimbAmount: reimb.reimbAmount,
+            reimbStatus: stat,
+            reimbDescription: reimb.reimbDescription,
+            reimbType: reimbType,
+            reimbStatus: reimb.reimbStatus,
+            reimbType: reimb.reimbType,
+            reimbTimeResolved: reimb.timeResolved,
+            reimbTimeSubmitted: reimb.timeSubmitted,
+            author: user,
+            resolver: resolver
         }
 
         let resp = await fetch("reimbursement/"+reimbID+'/', {
-            method: 'POST',
+            method: 'PATCH',
             body: JSON.stringify(data),
             credentials : "include"
         })
@@ -33,6 +52,27 @@ async function updateReimb() {
         reimbID="";
         stat="";
 
+    }
+}
+
+// async function getUser() {
+
+// }
+
+async function getReimb() {
+
+    let reimbID = document.getElementById("reimbID").value;
+    console.log("you've picked this reimb id "+ reimbID);
+
+    let response = await fetch(url+"reimbursement/"+reimbID+'/');
+
+    if (response.status === 200) {
+        console.log('getting');
+        let data = await response.json();
+        console.log(data);
+        return data;
+    } else {
+        console.log('you are not able to get that reimb');
     }
 }
 async function loginFunc() {
@@ -58,9 +98,28 @@ async function loginFunc() {
             document.getElementById('employee').style.display='block';
         }
         findAllFunc();
+        document.getElementById('logoutbtn').style.display = "block";
+        document.getElementById('logininput').style.display='none'
 
     } else {
         document.getElementById("login-row").innerText = "Login failed!";
+    }
+}
+
+async function logoutFunc() {
+    let resp = await fetch(url+"logout", {
+        method: 'GET',
+        credentials : "include"
+    })
+    if (resp.status===200){
+        document.getElementById("login-row").innerText = "YOU HAVE LOGGED out";  
+        document.getElementById('financeM').style.display='none';
+        document.getElementById('employee').style.display='none';
+        document.getElementById('logoutbtn').style.display='none';
+        document.getElementById('reimb-body').innerHTML="";
+        document.getElementById('logininput').style.display='block';
+    } else {
+        document.getElementById("login-row").innerText = "Logout somehow failed!";
     }
 }
 
@@ -74,7 +133,7 @@ async function selectReimb() {
 
     if (response.status === 200) {
         let data = await response.json();
-        console.log(data);
+        console.log('data: '+data);
         let tbody = document.getElementById('reimb-body');
         tbody.innerHTML= "";
         let newRow = document.createElement('tr');
@@ -136,6 +195,7 @@ async function queryReimb() {
 
     if(resp.status===200){
         let data = await resp.json();
+        console.log(data);
         let tbody = document.getElementById('reimb-body');
         tbody.innerHTML= "";
         for (let i = 0; i < data.length; i++) {

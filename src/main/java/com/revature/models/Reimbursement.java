@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="reimbursement")
@@ -42,11 +43,13 @@ public class Reimbursement implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_author", nullable=false)
 	@JsonBackReference
+//	@JsonManagedReference
 	private User reimbAuthor;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_resolver")
 	@JsonBackReference
+//	@JsonManagedReference
 	private User reimbResolver;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
@@ -242,5 +245,7 @@ public class Reimbursement implements Serializable {
 				+ reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus + ", reimbType="
 				+ reimbType + "]";
 	}
+
+	
 	
 }

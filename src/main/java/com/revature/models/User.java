@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -51,10 +50,12 @@ private static final long serialVersionUID = 1L;
 	
 	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.EAGER)
 	@JsonManagedReference
+//	@JsonBackReference
 	private List<Reimbursement> rAList;
 	
 	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
 	@JsonManagedReference
+//	@JsonBackReference
 	private List<Reimbursement> rRList;
 	
 	public User() {
