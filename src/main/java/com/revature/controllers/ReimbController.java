@@ -18,18 +18,20 @@ public class ReimbController {
 	
 	private static ReimbService rs = new ReimbService();
 	private static ObjectMapper om = new ObjectMapper();
-//	om.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);
 
 	private static UserService us = new UserService();
 
 	public void getReimbursement(HttpServletResponse res, int id) throws IOException {
 		Reimbursement r = rs.findById(id);
+		System.out.println("in rc get reimb, r: "+r);
 		if (r==null) {
 			res.setStatus(204);
 		} else {
 			System.out.println("in get reimb rc");
 			res.setStatus(200);
 			String json = om.writeValueAsString(r);
+			//issue is here
+			System.out.println("in rc get reimb, json: "+json);
 			res.getWriter().println(json);
 		}
 	}

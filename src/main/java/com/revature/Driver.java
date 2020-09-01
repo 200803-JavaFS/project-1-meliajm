@@ -1,9 +1,9 @@
 package com.revature;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.revature.controllers.ReimbController;
 import com.revature.daos.ReimbursementDAO;
 import com.revature.daos.UserDAO;
 import com.revature.daos.UserRoleDAO;
@@ -11,7 +11,6 @@ import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementStatus;
 import com.revature.models.ReimbursementType;
 import com.revature.models.User;
-import com.revature.models.userRole;
 
 
 public class Driver {
@@ -19,6 +18,7 @@ public class Driver {
 	public static UserDAO uDAO = new UserDAO();
 	public static UserRoleDAO urDAO = new UserRoleDAO();
 	public static ReimbursementDAO rDAO = new ReimbursementDAO();
+
 	
 //	public boolean updateReimbursement(Reimbursement r);
 //
@@ -30,7 +30,6 @@ public class Driver {
 //		System.out.println("password".hashCode());
 //		System.out.println("password".hashCode());
 
-		
 		
 //		String emp = uDAO.findByUsername("tiaclair1").getUserRole().getUserRole();
 //		System.out.println("emp " +emp);

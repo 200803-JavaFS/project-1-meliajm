@@ -2714,3 +2714,55 @@
 2020-09-01 11:14:10 INFO  UserService:30 - find by username
 2020-09-01 11:14:10 INFO  UserService:30 - find by username
 2020-09-01 11:14:10 INFO  UserService:30 - find by username
+2020-09-01 14:18:53 INFO  UserService:30 - find by username
+2020-09-01 14:19:03 INFO  UserService:30 - find by username
+2020-09-01 14:19:04 INFO  UserService:30 - find by username
+2020-09-01 14:19:04 INFO  ReimbService:20 - find all
+2020-09-01 14:19:09 INFO  ReimbService:25 - find by id
+2020-09-01 14:21:31 INFO  UserService:30 - find by username
+2020-09-01 14:21:43 INFO  UserService:30 - find by username
+2020-09-01 14:21:43 INFO  UserService:30 - find by username
+2020-09-01 14:21:43 INFO  ReimbService:20 - find all
+2020-09-01 14:21:48 INFO  ReimbService:25 - find by id
+2020-09-01 17:06:10 INFO  UserService:30 - find by username
+2020-09-01 17:06:23 INFO  UserService:30 - find by username
+2020-09-01 17:06:23 INFO  UserService:30 - find by username
+2020-09-01 17:06:23 INFO  ReimbService:20 - find all
+2020-09-01 17:11:07 INFO  UserService:30 - find by username
+2020-09-01 17:11:18 INFO  UserService:30 - find by username
+2020-09-01 17:11:19 INFO  UserService:30 - find by username
+2020-09-01 17:11:19 INFO  ReimbService:20 - find all
+2020-09-01 17:12:52 INFO  UserService:30 - find by username
+2020-09-01 17:13:04 INFO  UserService:30 - find by username
+2020-09-01 17:13:04 INFO  UserService:30 - find by username
+2020-09-01 17:13:05 INFO  ReimbService:20 - find all
+2020-09-01 17:14:41 INFO  UserService:30 - find by username
+2020-09-01 17:14:41 INFO  UserService:30 - find by username
+2020-09-01 17:14:42 INFO  UserService:30 - find by username
+2020-09-01 17:14:42 INFO  ReimbService:20 - find all
+2020-09-01 17:15:24 INFO  UserService:30 - find by username
+2020-09-01 17:15:34 INFO  UserService:30 - find by username
+2020-09-01 17:15:35 INFO  UserService:30 - find by username
+2020-09-01 17:15:35 INFO  ReimbService:20 - find all
+2020-09-01 17:23:23 INFO  UserService:30 - find by username
+2020-09-01 17:23:33 INFO  UserService:30 - find by username
+2020-09-01 17:23:34 INFO  UserService:30 - find by username
+2020-09-01 17:23:34 INFO  ReimbService:20 - find all
+2020-09-01 17:28:16 INFO  UserService:30 - find by username
+2020-09-01 17:28:26 INFO  UserService:30 - find by username
+2020-09-01 17:28:26 INFO  UserService:30 - find by username
+2020-09-01 17:28:26 INFO  ReimbService:20 - find all
+2020-09-01 17:30:26 INFO  UserService:30 - find by username
+2020-09-01 17:30:36 INFO  UserService:30 - find by username
+2020-09-01 17:30:36 INFO  UserService:30 - find by username
+2020-09-01 17:30:36 INFO  ReimbService:20 - find all
+2020-09-01 17:31:07 INFO  UserService:30 - find by username
+2020-09-01 17:31:07 INFO  UserService:30 - find by username
+2020-09-01 17:31:07 INFO  UserService:30 - find by username
+2020-09-01 17:31:16 INFO  UserService:30 - find by username
+2020-09-01 17:31:17 INFO  UserService:30 - find by username
+2020-09-01 17:31:17 INFO  UserService:30 - find by username
+2020-09-01 17:31:17 INFO  ReimbService:20 - find all
+2020-09-01 17:31:28 INFO  UserService:30 - find by username
+2020-09-01 17:31:28 INFO  UserService:30 - find by username
+2020-09-01 17:31:28 INFO  UserService:30 - find by username

@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="users")
@@ -43,27 +43,27 @@ private static final long serialVersionUID = 1L;
 	@Column(name="email", unique=true, nullable=false)	
 	private String email;
 
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	//here what should name be
 	@JoinColumn(name="user_role_id", nullable=false)
 	private userRole userRole;
 	
 	@OneToMany(mappedBy="reimbAuthor", fetch=FetchType.EAGER)
-	@JsonManagedReference
-//	@JsonBackReference
+//	@JsonManagedReference
+	@JsonBackReference
 	private List<Reimbursement> rAList;
 	
-	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
-	@JsonManagedReference
-//	@JsonBackReference
-	private List<Reimbursement> rRList;
+//	@OneToMany(mappedBy="reimbResolver", fetch=FetchType.EAGER)
+//	@JsonManagedReference
+////	@JsonBackReference
+//	private List<Reimbursement> rRList;
 	
 	public User() {
 		super();
 	}
 
 	public User(int userID, String username, int password, String firstName, String lastName, String email,
-			com.revature.models.userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
+			com.revature.models.userRole userRole, List<Reimbursement> rAList) {
 		super();
 		this.userID = userID;
 		this.username = username;
@@ -73,19 +73,19 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 		this.userRole = userRole;
 		this.rAList = rAList;
-		this.rRList = rRList;
+//		this.rRList = rRList;
 	}
 
-	public List<Reimbursement> getrRList() {
-		return rRList;
-	}
-
-	public void setrRList(List<Reimbursement> rRList) {
-		this.rRList = rRList;
-	}
+//	public List<Reimbursement> getrRList() {
+//		return rRList;
+//	}
+//
+//	public void setrRList(List<Reimbursement> rRList) {
+//		this.rRList = rRList;
+//	}
 
 	public User(String username, int password, String firstName, String lastName, String email,
-			com.revature.models.userRole userRole, List<Reimbursement> rAList, List<Reimbursement> rRList) {
+			com.revature.models.userRole userRole, List<Reimbursement> rAList) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -94,7 +94,7 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 		this.userRole = userRole;
 		this.rAList = rAList;
-		this.rRList = rRList;
+//		this.rRList = rRList;
 	}
 
 	public int getUserID() {
@@ -173,11 +173,13 @@ private static final long serialVersionUID = 1L;
 		this.rAList = rAList;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "User [userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName="
+//				+ lastName + ", email=" + email + "]";
+//	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -188,11 +190,17 @@ private static final long serialVersionUID = 1L;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + password;
 		result = prime * result + ((rAList == null) ? 0 : rAList.hashCode());
-		result = prime * result + ((rRList == null) ? 0 : rRList.hashCode());
+//		result = prime * result + ((rRList == null) ? 0 : rRList.hashCode());
 		result = prime * result + userID;
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", userRole=" + userRole + "]";
 	}
 
 	@Override
@@ -226,11 +234,11 @@ private static final long serialVersionUID = 1L;
 				return false;
 		} else if (!rAList.equals(other.rAList))
 			return false;
-		if (rRList == null) {
-			if (other.rRList != null)
-				return false;
-		} else if (!rRList.equals(other.rRList))
-			return false;
+//		if (rRList == null) {
+//			if (other.rRList != null)
+//				return false;
+//		} else if (!rRList.equals(other.rRList))
+//			return false;
 		if (userID != other.userID)
 			return false;
 		if (userRole == null) {

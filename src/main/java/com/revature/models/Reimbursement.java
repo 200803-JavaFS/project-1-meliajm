@@ -42,13 +42,13 @@ public class Reimbursement implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_author", nullable=false)
-	@JsonBackReference
-//	@JsonManagedReference
+//	@JsonBackReference
+	@JsonManagedReference
 	private User reimbAuthor;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_resolver")
-	@JsonBackReference
+//	@JsonBackReference
 //	@JsonManagedReference
 	private User reimbResolver;
 	

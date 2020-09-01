@@ -9,6 +9,7 @@ public class LoginService {
 	
 	public boolean login(LoginDTO l) {
 		User u = us.findByUsername(l.username);
+		System.out.println("user: "+u);
 		if (l.username.equals(u.getUsername()) && l.password.hashCode()==(u.getPassword())) {
 			return true;
 		}
