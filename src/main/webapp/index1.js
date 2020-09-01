@@ -10,7 +10,7 @@ document.getElementById("loginbtn").addEventListener("click", loginFunc);
 document.getElementById("logoutbtn").addEventListener("click", logoutFunc);
 document.getElementById('filterStatusBtn').addEventListener("click", queryReimb);
 document.getElementById('SelectBtn').addEventListener("click", selectReimb);
-document.getElementById('ShowAllBtn').addEventListener("click", findAllFunc);
+// document.getElementById('ShowAllBtn').addEventListener("click", findAllFunc);
 
 // document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
 // show all again

@@ -2707,3 +2707,10 @@
 2020-09-01 09:17:04 INFO  UserService:30 - find by username
 2020-09-01 09:17:04 INFO  UserService:30 - find by username
 2020-09-01 09:17:05 INFO  ReimbService:20 - find all
+2020-09-01 11:13:31 INFO  UserService:30 - find by username
+2020-09-01 11:13:43 INFO  UserService:30 - find by username
+2020-09-01 11:13:44 INFO  UserService:30 - find by username
+2020-09-01 11:13:44 INFO  ReimbService:20 - find all
+2020-09-01 11:14:10 INFO  UserService:30 - find by username
+2020-09-01 11:14:10 INFO  UserService:30 - find by username
+2020-09-01 11:14:10 INFO  UserService:30 - find by username
