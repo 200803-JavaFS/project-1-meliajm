@@ -4,16 +4,59 @@ document.getElementById('financeM').style.display='none';
 document.getElementById('employee').style.display='none';
 document.getElementById('logoutbtn').style.display='none';
 document.getElementById('table-row').style.display='none';
-document.getElementById('submitReimb').style.display='none';
+// document.getElementById('submitReimb').style.display='none';
 
 
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
 document.getElementById("logoutbtn").addEventListener("click", logoutFunc);
 document.getElementById('filterStatusBtn').addEventListener("click", queryReimb);
 document.getElementById('SelectBtn').addEventListener("click", selectReimb);
-// document.getElementById('ShowAllBtn').addEventListener("click", findAllFunc);
+document.getElementById('submitReimb').addEventListener("click", submitReimb);
 
 document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
+
+async function submitReimb() {
+    let amount = document.getElementById('reimbAmount').value;
+    let descr = document.getElementById('reimbDesc').value;
+    
+    let type = document.getElementById('type').value;
+    if (type==='Lodging') {
+        typeObj = {"reimbTypeID": 1, "reimbType": "Lodging"}
+    } else if (type==='Food') {
+        typeObj = {"reimbTypeID": 4, "reimbType": "Food"}        
+    } else if (type==='Other') {
+        typeObj = {"reimbTypeID": 2, "reimbType": "Other"}        
+    } else if (type==='Travel') {
+        typeObj = {"reimbTypeID": 3, "reimbType": "Travel"}        
+    } 
+
+    //get username from session somewhere, cookie or something?
+
+    let reimb = {
+        reimbAmount: amount,
+        reimbDescription: descr,
+        reimbAuthor: "tiaclair1",
+        reimbResolver: null,
+        reimbStatus: {"reimbStatusID":3, "reimbStatus":"Pending"},
+        reimbType: typeObj,
+        timeResolved: null,
+        timeSubmitted: new Date(),
+    }
+
+    console.log(reimb);
+
+    let resp = await fetch(url+"reimbursement/", {
+        method: 'POST',
+        body: JSON.stringify(reimb),
+        credentials: "include"
+    })
+
+    if (resp.status==201) {
+        findAllFunc()
+    } else {
+        document.getElementById("login-row").innerText = 'Reimb was NOT added'
+    }
+}
 // show all again
 async function updateReimb() {
     let stat = document.getElementById('updateReimb').value;

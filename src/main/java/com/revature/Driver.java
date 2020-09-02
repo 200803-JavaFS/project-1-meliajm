@@ -83,10 +83,10 @@ public class Driver {
 
 		ReimbursementType rt = new ReimbursementType("Other");
 
-		Reimbursement r = new Reimbursement(999.22, LocalTime.now(), null, "hair ties", tia, null, rs, rt);
+//		Reimbursement r = new Reimbursement(999.22, LocalTime.now(), null, "hair ties", tia, null, rs, rt);
 //		Reimbursement r2 = new Reimbursement(555.25, LocalTime.now(), null, "apples", tia, null, rs2, rt);
 //		rDAO.addReimbursement(r2);
-		rDAO.addReimbursement(r);
+//		rDAO.addReimbursement(r);
 		
 		
 
@@ -107,7 +107,7 @@ public class Driver {
 //		r = Reimbursement(r.getReimbID(), r.getReimbAmount(), r.getTimeSubmitted(), LocalTime.now(), r.getReimbDescription(), r.getReimbAuthor(), u, r2.getReimbStatus(), r.getReimbType()); 
 		r.setReimbResolver(u);
 		r.setReimbStatus(r2.getReimbStatus());
-		r.setTimeResolved(LocalTime.now());
+//		r.setTimeResolved(LocalTime.now());
 //		r.setReimbDescription("new description here");
 		rDAO.updateReimbursement(r);
 		System.out.println(r);
@@ -147,8 +147,8 @@ public class Driver {
 //		String time = ZonedDateTime.now().format(dateTimeF);
 //		java.sql.Time timeValue = new java.sql.Time(format.parse(fajr_prayertime).getTime());
 
-		Reimbursement r = new Reimbursement(2020.20, ld, tlater, "good vision", bart, null, rStatus, rType);
-		rDAO.addReimbursement(r);
+//		Reimbursement r = new Reimbursement(2020.20, ld, tlater, "good vision", bart, null, rStatus, rType);
+//		rDAO.addReimbursement(r);
 	}
 	
 	

@@ -2,14 +2,13 @@ package com.revature.controllers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.models.ReimbDTO;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbService;
 import com.revature.services.UserService;
@@ -72,7 +71,7 @@ public class ReimbController {
 		}
 		String body = new String(s);		
 		System.out.println("body: "+ body);
-		Reimbursement r = om.readValue(body, Reimbursement.class);
+		ReimbDTO r = om.readValue(body, ReimbDTO.class);
 		System.out.println("r: "+ r);
 		if (rs.addReimbursement(r)) {
 			res.setStatus(201);
