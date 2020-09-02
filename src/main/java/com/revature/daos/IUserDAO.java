@@ -17,8 +17,9 @@ public interface IUserDAO {
 	
 	public boolean updateUser(User u);
 	
+	
 //	public void findByUserRole(User u);
 
-//	public List<Reimbursement> findUserReimbursements(User u);
+	public List<Reimbursement> findUserReimbursements(User u);
 	
 }

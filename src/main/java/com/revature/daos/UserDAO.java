@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.models.Reimbursement;
 import com.revature.models.User;
 import com.revature.utils.HibernateUtil;
 
@@ -69,6 +70,14 @@ public class UserDAO implements IUserDAO {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	
+	@Override
+	public List<Reimbursement> findUserReimbursements(User u) {
+		Session ses = HibernateUtil.getSession();
+		List<Reimbursement> list  = (List<Reimbursement>) ses.createNativeQuery("SELECT * FROM reimbursement WHERE reimb_author ="+u.getUserID(), Reimbursement.class).list();
+		return list;
 	}
 
 }

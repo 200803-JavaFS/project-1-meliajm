@@ -2969,3 +2969,18 @@
 2020-09-01 19:49:42 INFO  ReimbService:35 - update reimbursement
 2020-09-01 19:49:43 INFO  UserService:30 - find by username
 2020-09-01 19:49:43 INFO  ReimbService:20 - find all
+2020-09-01 19:53:35 INFO  UserService:30 - find by username
+2020-09-01 19:53:35 INFO  UserService:30 - find by username
+2020-09-01 19:53:35 INFO  UserService:30 - find by username
+2020-09-01 20:14:21 INFO  UserService:30 - find by username
+2020-09-01 20:14:30 INFO  UserService:30 - find by username
+2020-09-01 20:14:31 INFO  UserService:30 - find by username
+2020-09-01 20:14:31 INFO  UserService:46 - find user reimbursements from user
+2020-09-01 20:15:05 INFO  UserService:30 - find by username
+2020-09-01 20:15:05 INFO  UserService:30 - find by username
+2020-09-01 20:15:05 INFO  UserService:30 - find by username
+2020-09-01 20:15:05 INFO  UserService:46 - find user reimbursements from user
+2020-09-01 20:18:01 INFO  UserService:30 - find by username
+2020-09-01 20:18:09 INFO  UserService:30 - find by username
+2020-09-01 20:18:09 INFO  UserService:30 - find by username
+2020-09-01 20:18:09 INFO  UserService:46 - find user reimbursements from user
