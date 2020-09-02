@@ -4,6 +4,7 @@ document.getElementById('financeM').style.display='none';
 document.getElementById('employee').style.display='none';
 document.getElementById('logoutbtn').style.display='none';
 document.getElementById('table-row').style.display='none';
+document.getElementById('submitReimb').style.display='none';
 
 
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
@@ -12,18 +13,31 @@ document.getElementById('filterStatusBtn').addEventListener("click", queryReimb)
 document.getElementById('SelectBtn').addEventListener("click", selectReimb);
 // document.getElementById('ShowAllBtn').addEventListener("click", findAllFunc);
 
-// document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
+document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
 // show all again
 async function updateReimb() {
     let stat = document.getElementById('updateReimb').value;
     let reimbID = document.getElementById("reimbID").value;
     if (document.getElementById('link').innerHTML===reimbID&&document.getElementsByTagName('td').length!==1) {
-        console.log('updating reimb to '+ stat + 'with id of: ' +reimbID);
+        // console.log('updating reimb to '+ stat + 'with id of: ' +reimbID);
         //call get
-        let reimb = getReimb();
-        let user = getUser();
-        console.log(reimb);
-        // not sure if i need to add whole object in patch 
+        // let reimb = getReimb();
+
+        let reimbID = document.getElementById("reimbID").value;
+        console.log("you've picked this reimb id "+ reimbID);
+
+        let response = await fetch(url+"reimbursement/"+reimbID+'/');
+
+        if (response.status === 200) {
+            console.log('getting');
+            let reimb = await response.json();
+            console.log("reimb");
+            console.log(reimb);
+            // return data;
+       
+
+        // let user = getUser();
+        // not sure if i need to add whole object in patch (NOW POST) 
         // but that is what i am doing
         // do post here
         let data = {
@@ -31,28 +45,33 @@ async function updateReimb() {
             reimbAmount: reimb.reimbAmount,
             reimbStatus: stat,
             reimbDescription: reimb.reimbDescription,
-            reimbType: reimbType,
-            reimbStatus: reimb.reimbStatus,
+            reimbAuthor: reimb.reimbAuthor,
+            reimbResolver: reimb.reimbAuthor,
+            reimbStatus: {"reimbStatusID":reimb.reimbStatus.reimbStatusID, "reimbStatus":stat},
+            // "reimbStatus":{"reimbStatusID":11,"reimbStatus":"Pending"}
             reimbType: reimb.reimbType,
             reimbTimeResolved: reimb.timeResolved,
-            reimbTimeSubmitted: reimb.timeSubmitted,
-            author: user,
-            resolver: resolver
+            reimbTimeSubmitted: reimb.timeSubmitted
         }
 
-        let resp = await fetch("reimbursement/"+reimbID+'/', {
-            method: 'PATCH',
+        let resp = await fetch(url+"reimbursement/"+reimbID+'/', {
+            method: 'POST',
             body: JSON.stringify(data),
             credentials : "include"
         })
 
         if (resp.status===200){
             document.getElementById("login-row").innerText = "Status is updated.";
+            //reload all reimbs to display
         } else {
             document.getElementById("login-row").innerText = "That did not update";
         }
         reimbID="";
         stat="";
+
+    } else {
+        console.log('you are not able to get that record');
+    }
 
     }
 }
@@ -63,19 +82,19 @@ async function updateReimb() {
 
 async function getReimb() {
 
-    let reimbID = document.getElementById("reimbID").value;
-    console.log("you've picked this reimb id "+ reimbID);
+    // let reimbID = document.getElementById("reimbID").value;
+    // console.log("you've picked this reimb id "+ reimbID);
 
-    let response = await fetch(url+"reimbursement/"+reimbID+'/');
+    // let response = await fetch(url+"reimbursement/"+reimbID+'/');
 
-    if (response.status === 200) {
-        console.log('getting');
-        let data = await response.json();
-        console.log(data);
-        return data;
-    } else {
-        console.log('you are not able to get that reimb');
-    }
+    // if (response.status === 200) {
+    //     console.log('getting');
+    //     let data = await response.json();
+    //     console.log(data);
+    //     return data;
+    // } else {
+    //     console.log('you are not able to get that reimb');
+    // }
 }
 async function loginFunc() {
     let username = document.getElementById("username").value;

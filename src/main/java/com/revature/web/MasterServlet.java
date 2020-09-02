@@ -91,7 +91,13 @@ public class MasterServlet extends HttpServlet {
 								System.out.println("here in get all reimbs");
 								rc.getAllReimbursements(res);
 							}
-						} 
+						} else if (req.getMethod().equals("POST")) {
+							System.out.println("in patch case master");
+							if (portions.length == 2) {								
+								rc.updateReimbursement(req, res);
+							}
+//							int id = Integer.parseInt(portions[1]);
+						}
 					}
 					// this is not in the correct spot
 				} else if (portions.length == 2) {
@@ -131,5 +137,5 @@ public class MasterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doGet(req, res);
 	}
-
+	
 }

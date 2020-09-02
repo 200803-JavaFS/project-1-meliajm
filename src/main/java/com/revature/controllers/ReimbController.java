@@ -30,7 +30,6 @@ public class ReimbController {
 			System.out.println("in get reimb rc");
 			res.setStatus(200);
 			String json = om.writeValueAsString(r);
-			//issue is here
 			System.out.println("in rc get reimb, json: "+json);
 			res.getWriter().println(json);
 		}
@@ -42,35 +41,39 @@ public class ReimbController {
 		res.setStatus(200);
 	}
 	
-	
-//	public void findUserReimbursements(HttpServletResponse res) throws IOException {
-//		List<Reimbursement> all = us.findUserReimbursements(res.getParameter("username"));
-//		res.getWriter().println(om.writeValueAsString(all));
-//	}
-	
-	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void updateReimbursement(HttpServletRequest req,  HttpServletResponse res) throws IOException {
 		BufferedReader reader = req.getReader();
-		
 		StringBuilder s = new StringBuilder();
-		
 		String line = reader.readLine();
-		
 		while (line != null) {
 			s.append(line);
 			line = reader.readLine();
 		}
-		
-		String body = new String(s);
-		// i think is where find by user and associations need to happen
-		
+		String body = new String(s);		
 		System.out.println("body: "+ body);
-//		body = {"reimbAmount":"100.05","timeSubmitted":"23:45:33","timeResolved":"03:45:33","reimbDescription":"this is for demos","reimbAuthor":"tiaclair1","reimbResolver":"captain","reimbStatus":"Pending","reimbType":"Food"};
-
-//		body: {"amount":"100.05","timeSubmitted":"23:45:33","timeResolved":"03:45:33","descr":"this is for demos","author":"tiaclair1","resolver":"captain","status":"Pending","type":"Food"}
-
 		Reimbursement r = om.readValue(body, Reimbursement.class);
 		System.out.println("r: "+ r);
-		
+		if (rs.updateReimbursement(r)) {
+			res.setStatus(202);
+			res.getWriter().println("Reimb was updated");
+		} else {
+			res.setStatus(403);
+		}
+	}
+
+	
+	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		BufferedReader reader = req.getReader();
+		StringBuilder s = new StringBuilder();
+		String line = reader.readLine();
+		while (line != null) {
+			s.append(line);
+			line = reader.readLine();
+		}
+		String body = new String(s);		
+		System.out.println("body: "+ body);
+		Reimbursement r = om.readValue(body, Reimbursement.class);
+		System.out.println("r: "+ r);
 		if (rs.addReimbursement(r)) {
 			res.setStatus(201);
 			res.getWriter().println("Reimb was created");
