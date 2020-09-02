@@ -43,14 +43,12 @@ async function updateReimb() {
         let data = {
             reimbID: reimb.reimbID,
             reimbAmount: reimb.reimbAmount,
-            reimbStatus: stat,
             reimbDescription: reimb.reimbDescription,
             reimbAuthor: reimb.reimbAuthor,
-            reimbResolver: reimb.reimbAuthor,
+            reimbResolver: null,
             reimbStatus: {"reimbStatusID":reimb.reimbStatus.reimbStatusID, "reimbStatus":stat},
-            // "reimbStatus":{"reimbStatusID":11,"reimbStatus":"Pending"}
             reimbType: reimb.reimbType,
-            reimbTimeResolved: reimb.timeResolved,
+            reimbTimeResolved: new Date(),
             reimbTimeSubmitted: reimb.timeSubmitted
         }
 
@@ -182,12 +180,12 @@ async function selectReimb() {
         if (data.timeSubmitted===null) {
             td3.innerText = "not updated"
         } else {
-            td3.innerText = data.timeSubmitted.hour+"."+data.timeSubmitted.minute+"."+data.timeSubmitted.second;
+            td3.innerText = data.timeSubmitted;
         }
         if (data.timeResolved===null) {
             td4.innerText = "not updated"
         } else {
-            td4.innerText = data.timeResolved.hour+"."+data.timeResolved.minute+"."+data.timeResolved.second;
+            td4.innerText = data.timeResolved;
         }
         td5.innerText = data.reimbDescription;
         td6.innerText = data.reimbType.reimbType
@@ -252,12 +250,12 @@ async function queryReimb() {
                 if (data[i].timeSubmitted===null) {
                     td3.innerText = "not updated"
                 } else {
-                    td3.innerText = data[i].timeSubmitted.hour+"."+data[i].timeSubmitted.minute+"."+data[i].timeSubmitted.second;
+                    td3.innerText = data[i].timeSubmitted;
                 }
                 if (data[i].timeResolved===null) {
                     td4.innerText = "not updated"
                 } else {
-                    td4.innerText = data[i].timeResolved.hour+"."+data[i].timeResolved.minute+"."+data[i].timeResolved.second;
+                    td4.innerText = data[i].timeResolved;
                 }
                 td5.innerText = data[i].reimbDescription;
                 td6.innerText = data[i].reimbType.reimbType
@@ -293,12 +291,12 @@ async function queryReimb() {
                     if (data[i].timeSubmitted===null) {
                         td3.innerText = "not updated"
                     } else {
-                        td3.innerText = data[i].timeSubmitted.hour+"."+data[i].timeSubmitted.minute+"."+data[i].timeSubmitted.second;
+                        td3.innerText = data[i].timeSubmitted;
                     }
                     if (data[i].timeResolved===null) {
                         td4.innerText = "not updated"
                     } else {
-                        td4.innerText = data[i].timeResolved.hour+"."+data[i].timeResolved.minute+"."+data[i].timeResolved.second;
+                        td4.innerText = data[i].timeResolved;
                     }
                     td5.innerText = data[i].reimbDescription;
                     td6.innerText = data[i].reimbType.reimbType
@@ -356,12 +354,12 @@ async function findAllFunc() {
                 if (data[i].timeSubmitted===null) {
                     td3.innerText = "not updated"
                 } else {
-                    td3.innerText = data[i].timeSubmitted.hour+"."+data[i].timeSubmitted.minute+"."+data[i].timeSubmitted.second;
+                    td3.innerText = data[i].timeSubmitted;
                 }
                 if (data[i].timeResolved===null) {
                     td4.innerText = "not updated"
                 } else {
-                    td4.innerText = data[i].timeResolved.hour+"."+data[i].timeResolved.minute+"."+data[i].timeResolved.second;
+                    td4.innerText = data[i].timeResolved;
                 }
                 td5.innerText = data[i].reimbDescription;
                 td6.innerText = data[i].reimbType.reimbType

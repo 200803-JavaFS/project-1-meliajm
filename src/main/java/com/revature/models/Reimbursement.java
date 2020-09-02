@@ -1,7 +1,6 @@
 package com.revature.models;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,10 +31,10 @@ public class Reimbursement implements Serializable {
 	private double reimbAmount;
 	
 	@Column(name="reimb_submitted", nullable=false)
-	private LocalTime timeSubmitted;
+	private String timeSubmitted;
 	
 	@Column(name="reimb_resolved")
-	private LocalTime timeResolved;
+	private String timeResolved;
 
 	@Column(name="reimb_description")
 	private String reimbDescription;
@@ -64,7 +63,7 @@ public class Reimbursement implements Serializable {
 		super();
 	}
 
-	public Reimbursement(int reimbID, double reimbAmount, LocalTime timeSubmitted, LocalTime timeResolved,
+	public Reimbursement(int reimbID, double reimbAmount, String timeSubmitted, String timeResolved,
 			String reimbDescription, User reimbAuthor, User reimbResolver, ReimbursementStatus reimbStatus,
 			ReimbursementType reimbType) {
 		super();
@@ -79,7 +78,7 @@ public class Reimbursement implements Serializable {
 		this.reimbType = reimbType;
 	}
 
-	public Reimbursement(double reimbAmount, LocalTime timeSubmitted, LocalTime timeResolved, String reimbDescription,
+	public Reimbursement(double reimbAmount, String timeSubmitted, String timeResolved, String reimbDescription,
 			User reimbAuthor, User reimbResolver, ReimbursementStatus reimbStatus, ReimbursementType reimbType) {
 		super();
 		this.reimbAmount = reimbAmount;
@@ -109,19 +108,19 @@ public class Reimbursement implements Serializable {
 	}
 
 
-	public LocalTime getTimeSubmitted() {
+	public String getTimeSubmitted() {
 		return timeSubmitted;
 	}
 
-	public void setTimeSubmitted(LocalTime timeSubmitted) {
+	public void setTimeSubmitted(String timeSubmitted) {
 		this.timeSubmitted = timeSubmitted;
 	}
 
-	public LocalTime getTimeResolved() {
+	public String getTimeResolved() {
 		return timeResolved;
 	}
 
-	public void setTimeResolved(LocalTime timeResolved) {
+	public void setTimeResolved(String timeResolved) {
 		this.timeResolved = timeResolved;
 	}
 
