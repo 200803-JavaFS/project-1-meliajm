@@ -16,8 +16,17 @@ document.getElementById('submitReimb').addEventListener("click", submitReimb);
 
 document.getElementById('UpdateBtn').addEventListener("click", updateReimb);
 
+amountCheck = (amount) => {
+    
+    amount.toString().split('.')[1].length
+
+}
+
 async function submitReimb() {
     let amount = document.getElementById('reimbAmount').value;
+    // amountCheck(amount);
+    lengthOfDecimals = amount.toString().split('.')[1].length;
+
     let descr = document.getElementById('reimbDesc').value;
     
     let type = document.getElementById('type').value;
@@ -32,34 +41,39 @@ async function submitReimb() {
     // } 
 
     //get username from session somewhere, cookie or something?
+    if (lengthOfDecimals===2) {
+        let reimb = {
+            reimbAmount: amount,
+            reimbDescription: descr,
+            reimbAuthorString: "tiaclair1",
+            reimbResolver: null,
+            reimbStatus: "Pending",
+            reimbType: type,
+            timeResolved: null,
+            timeSubmitted: new Date(),
+        }
 
-    let reimb = {
-        reimbAmount: amount,
-        reimbDescription: descr,
-        reimbAuthorString: "tiaclair1",
-        reimbResolver: null,
-        reimbStatus: "Pending",
-        reimbType: type,
-        timeResolved: null,
-        timeSubmitted: new Date(),
-    }
+        console.log(reimb);
 
-    console.log(reimb);
+        let resp = await fetch(url+"reimbursement/", {
+            method: 'POST',
+            body: JSON.stringify(reimb),
+            credentials: "include"
+        })
 
-    let resp = await fetch(url+"reimbursement/", {
-        method: 'POST',
-        body: JSON.stringify(reimb),
-        credentials: "include"
-    })
-
-    if (resp.status==201) {
-        let tbody = document.getElementById('reimb-body');
-        tbody.innerHTML= "";
-        findAllFunc()
-        document.getElementById('reimbAmount').value="";
-        document.getElementById('reimbDesc').value="";
+        if (resp.status==201) {
+            let tbody = document.getElementById('reimb-body');
+            tbody.innerHTML= "";
+            findAllFunc()
+            document.getElementById('reimbAmount').value="";
+            document.getElementById('reimbDesc').value="";
+        } else {
+            document.getElementById("login-row").innerText = 'Reimb was NOT added';
+        }
     } else {
-        document.getElementById("login-row").innerText = 'Reimb was NOT added'
+        console.log('that is not a proper value')
+        document.getElementById("login-row").innerText = 'that is not a proper value';
+        document.getElementById("login-row").style.color = 'red';
     }
 }
 // show all again
