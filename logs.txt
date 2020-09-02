@@ -3214,3 +3214,9 @@
 2020-09-02 14:34:41 INFO  UserService:30 - find by username
 2020-09-02 14:34:41 INFO  UserService:30 - find by username
 2020-09-02 14:34:41 INFO  UserService:46 - find user reimbursements from user
+2020-09-02 18:01:32 INFO  UserService:30 - find by username
+2020-09-02 18:01:32 INFO  UserService:30 - find by username
+2020-09-02 18:01:32 INFO  UserService:30 - find by username
+2020-09-02 18:01:33 INFO  ReimbService:34 - find all
+2020-09-02 18:01:40 INFO  UserService:30 - find by username
+2020-09-02 18:01:40 INFO  ReimbService:34 - find all
