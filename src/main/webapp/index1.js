@@ -48,8 +48,8 @@ async function updateReimb() {
             reimbResolver: null,
             reimbStatus: {"reimbStatusID":reimb.reimbStatus.reimbStatusID, "reimbStatus":stat},
             reimbType: reimb.reimbType,
-            reimbTimeResolved: new Date(),
-            reimbTimeSubmitted: reimb.timeSubmitted
+            timeResolved: new Date(),
+            timeSubmitted: reimb.timeSubmitted
         }
 
         let resp = await fetch(url+"reimbursement/"+reimbID+'/', {

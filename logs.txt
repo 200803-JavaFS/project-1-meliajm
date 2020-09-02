@@ -2876,3 +2876,20 @@
 2020-09-01 19:32:28 INFO  ReimbService:25 - find by id
 2020-09-01 19:32:37 INFO  ReimbService:25 - find by id
 2020-09-01 19:32:37 INFO  UserService:30 - find by username
+2020-09-01 19:36:18 INFO  UserService:30 - find by username
+2020-09-01 19:36:18 INFO  UserService:30 - find by username
+2020-09-01 19:36:18 INFO  UserService:30 - find by username
+2020-09-01 19:36:18 INFO  ReimbService:20 - find all
+2020-09-01 19:36:30 INFO  ReimbService:25 - find by id
+2020-09-01 19:36:35 INFO  ReimbService:25 - find by id
+2020-09-01 19:36:35 INFO  UserService:30 - find by username
+2020-09-01 19:36:35 INFO  ReimbService:35 - update reimbursement
+2020-09-01 19:36:42 INFO  UserService:30 - find by username
+2020-09-01 19:36:42 INFO  ReimbService:20 - find all
+2020-09-01 19:37:14 INFO  ReimbService:25 - find by id
+2020-09-01 19:37:20 INFO  ReimbService:25 - find by id
+2020-09-01 19:37:20 INFO  UserService:30 - find by username
+2020-09-01 19:37:21 INFO  ReimbService:35 - update reimbursement
+2020-09-01 19:37:28 INFO  UserService:30 - find by username
+2020-09-01 19:37:28 INFO  ReimbService:20 - find all
+2020-09-01 19:37:31 INFO  ReimbService:25 - find by id
