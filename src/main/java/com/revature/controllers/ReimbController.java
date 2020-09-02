@@ -50,7 +50,9 @@ public class ReimbController {
 		}
 		String body = new String(s);		
 		System.out.println("body: "+ body);
-		Reimbursement r = om.readValue(body, Reimbursement.class);
+//		Reimbursement r = om.readValue(body, Reimbursement.class);
+		ReimbDTO r = om.readValue(body, ReimbDTO.class);
+
 		System.out.println("r: "+ r);
 		if (rs.updateReimbursement(r)) {
 			res.setStatus(202);

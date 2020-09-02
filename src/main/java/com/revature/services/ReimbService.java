@@ -55,7 +55,14 @@ public class ReimbService {
 		return rDao.addReimbursement(r);
 	}
 	
-	public boolean updateReimbursement(Reimbursement r) {
+	public boolean updateReimbursement(ReimbDTO rd) {
+		Reimbursement r;
+		User uAuth = uDao.findByUsername(rd.reimbAuthorString);
+		User uRes = uDao.findByUsername(rd.reimbResolver);
+
+		ReimbursementStatus rs = rsDao.findByStatus(rd.reimbStatus); 
+		ReimbursementType rt =rtDao.findByType(rd.reimbType);
+		r = new Reimbursement(rd.reimbID, rd.reimbAmount, rd.timeSubmitted, rd.timeResolved, rd.reimbDescription, uAuth, uRes, rs, rt);
 		log.info("update reimbursement");
 		return rDao.updateReimbursement(r);
 	}

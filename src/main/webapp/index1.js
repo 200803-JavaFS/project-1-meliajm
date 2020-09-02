@@ -5,6 +5,7 @@ document.getElementById('employee').style.display='none';
 document.getElementById('logoutbtn').style.display='none';
 document.getElementById('table-row').style.display='none';
 // document.getElementById('submitReimb').style.display='none';
+let resolver = document.getElementById('resolver').value;
 
 
 document.getElementById("loginbtn").addEventListener("click", loginFunc);
@@ -80,13 +81,14 @@ async function updateReimb() {
             let reimb = await response.json();
             console.log("reimb");
             console.log(reimb);
+
             let data = {
                 reimbID: reimb.reimbID,
                 reimbAmount: reimb.reimbAmount,
                 reimbDescription: reimb.reimbDescription,
                 reimbAuthor: reimb.reimbAuthor,
-                reimbResolver: null,
-                reimbStatus: {"reimbStatusID":reimb.reimbStatus.reimbStatusID, "reimbStatus":stat},
+                reimbResolver: resolver,
+                reimbStatus: stat,
                 reimbType: reimb.reimbType,
                 timeResolved: new Date(),
                 timeSubmitted: reimb.timeSubmitted
@@ -97,6 +99,8 @@ async function updateReimb() {
                 body: JSON.stringify(data),
                 credentials : "include"
             })
+
+            // make reimbDTO here in java
 
             if (resp.status===202){
                 document.getElementById("login-row").innerText = "Status is updated.";
@@ -136,7 +140,9 @@ async function loginFunc() {
 
     if (resp.status===200){
         document.getElementById("login-row").innerText = "You have logged in "+user.username;
+
         if (user.username==='captini'|| user.username==='captain' ||user.username==='liz') {
+            resolver = user.username;
             document.getElementById('financeM').style.display='block';
             document.getElementById("login-row").style.color ="blue";
         } else {
