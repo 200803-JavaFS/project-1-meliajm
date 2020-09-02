@@ -55,8 +55,8 @@ async function submitReimb() {
         let tbody = document.getElementById('reimb-body');
         tbody.innerHTML= "";
         findAllFunc()
-        amount.innerText = 0.00;
-        descr.innerText = "";
+        document.getElementById('reimbAmount').value="";
+        document.getElementById('reimbDesc').value="";
     } else {
         document.getElementById("login-row").innerText = 'Reimb was NOT added'
     }
@@ -202,12 +202,12 @@ async function selectReimb() {
 
         td2.innerText = data.reimbAmount;
         if (data.timeSubmitted===null) {
-            td3.innerText = "not updated"
+            td3.innerText = "";
         } else {
             td3.innerText = data.timeSubmitted;
         }
         if (data.timeResolved===null) {
-            td4.innerText = "not updated"
+            td4.innerText = "";
         } else {
             td4.innerText = data.timeResolved;
         }
@@ -272,12 +272,12 @@ async function queryReimb() {
 
                 td2.innerText = data[i].reimbAmount;
                 if (data[i].timeSubmitted===null) {
-                    td3.innerText = "not updated"
+                    td3.innerText = "";
                 } else {
                     td3.innerText = data[i].timeSubmitted;
                 }
                 if (data[i].timeResolved===null) {
-                    td4.innerText = "not updated"
+                    td4.innerText = "";
                 } else {
                     td4.innerText = data[i].timeResolved;
                 }
@@ -314,12 +314,12 @@ async function queryReimb() {
     
                     td2.innerText = data[i].reimbAmount;
                     if (data[i].timeSubmitted===null) {
-                        td3.innerText = "not updated"
+                        td3.innerText = "";
                     } else {
                         td3.innerText = data[i].timeSubmitted;
                     }
                     if (data[i].timeResolved===null) {
-                        td4.innerText = "not updated"
+                        td4.innerText = "";
                     } else {
                         td4.innerText = data[i].timeResolved;
                     }
@@ -362,12 +362,12 @@ showAll = (data) => {
     
                     td2.innerText = data[i].reimbAmount;
                     if (data[i].timeSubmitted===null) {
-                        td3.innerText = "not updated"
+                        td3.innerText = "";
                     } else {
                         td3.innerText = data[i].timeSubmitted;
                     }
                     if (data[i].timeResolved===null) {
-                        td4.innerText = "not updated"
+                        td4.innerText = "";
                     } else {
                         td4.innerText = data[i].timeResolved;
                     }
@@ -420,12 +420,12 @@ async function findAllFunc() {
 
                 td2.innerText = data[i].reimbAmount;
                 if (data[i].timeSubmitted===null) {
-                    td3.innerText = "not updated"
+                    td3.innerText = "";
                 } else {
                     td3.innerText = data[i].timeSubmitted;
                 }
                 if (data[i].timeResolved===null) {
-                    td4.innerText = "not updated"
+                    td4.innerText = "";
                 } else {
                     td4.innerText = data[i].timeResolved;
                 }
