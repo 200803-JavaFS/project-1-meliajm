@@ -33,67 +33,44 @@ async function updateReimb() {
             let reimb = await response.json();
             console.log("reimb");
             console.log(reimb);
-            // return data;
-       
+            let data = {
+                reimbID: reimb.reimbID,
+                reimbAmount: reimb.reimbAmount,
+                reimbDescription: reimb.reimbDescription,
+                reimbAuthor: reimb.reimbAuthor,
+                reimbResolver: null,
+                reimbStatus: {"reimbStatusID":reimb.reimbStatus.reimbStatusID, "reimbStatus":stat},
+                reimbType: reimb.reimbType,
+                timeResolved: new Date(),
+                timeSubmitted: reimb.timeSubmitted
+            }
 
-        // let user = getUser();
-        // not sure if i need to add whole object in patch (NOW POST) 
-        // but that is what i am doing
-        // do post here
-        let data = {
-            reimbID: reimb.reimbID,
-            reimbAmount: reimb.reimbAmount,
-            reimbDescription: reimb.reimbDescription,
-            reimbAuthor: reimb.reimbAuthor,
-            reimbResolver: null,
-            reimbStatus: {"reimbStatusID":reimb.reimbStatus.reimbStatusID, "reimbStatus":stat},
-            reimbType: reimb.reimbType,
-            timeResolved: new Date(),
-            timeSubmitted: reimb.timeSubmitted
-        }
+            let resp = await fetch(url+"reimbursement/"+reimbID+'/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                credentials : "include"
+            })
 
-        let resp = await fetch(url+"reimbursement/"+reimbID+'/', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            credentials : "include"
-        })
+            if (resp.status===202){
+                document.getElementById("login-row").innerText = "Status is updated.";
+                //reload all reimbs to display
+                // showAll(data);
+                let tbody = document.getElementById('reimb-body');
+                tbody.innerHTML= "";
+                findAllFunc();
+            } else {
+                document.getElementById("login-row").innerText = "That did not update";
+            }
+            reimbID="";
+            stat="";
 
-        if (resp.status===200){
-            document.getElementById("login-row").innerText = "Status is updated.";
-            //reload all reimbs to display
         } else {
-            document.getElementById("login-row").innerText = "That did not update";
+            console.log('you are not able to get that record');
         }
-        reimbID="";
-        stat="";
-
-    } else {
-        console.log('you are not able to get that record');
-    }
 
     }
 }
 
-// async function getUser() {
-
-// }
-
-async function getReimb() {
-
-    // let reimbID = document.getElementById("reimbID").value;
-    // console.log("you've picked this reimb id "+ reimbID);
-
-    // let response = await fetch(url+"reimbursement/"+reimbID+'/');
-
-    // if (response.status === 200) {
-    //     console.log('getting');
-    //     let data = await response.json();
-    //     console.log(data);
-    //     return data;
-    // } else {
-    //     console.log('you are not able to get that reimb');
-    // }
-}
 async function loginFunc() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -271,6 +248,7 @@ async function queryReimb() {
 
                 tbody.appendChild(newRow);
                 } else if (query==="All") {
+                    // showAll(data);
                     let tbody = document.getElementById('reimb-body');
                     console.log(data[i]);
                     console.log("amount: "+data[i].reimbAmount);
@@ -315,8 +293,51 @@ async function queryReimb() {
           }
     }
     // query = document.getElementById("filterID").value='';
+}
 
-
+showAll = (data) => {
+    for (let i = 0; i < data.length; i++) {
+    let tbody = document.getElementById('reimb-body');
+                    console.log(data[i]);
+                    console.log("amount: "+data[i].reimbAmount);
+                    let newRow = document.createElement('tr');
+                    let td1 = document.createElement('td');
+                    td1.id = "link" 
+                    td1.innerText = data[i].reimbID; 
+                    td1.style.color = 'blue';
+                
+                    let td2 = document.createElement('td');
+                    let td3 = document.createElement('td');
+                    let td4 = document.createElement('td');
+                    let td5 = document.createElement('td');
+                    let td6 = document.createElement('td');
+                    let td7 = document.createElement('td');
+    
+                    td2.innerText = data[i].reimbAmount;
+                    if (data[i].timeSubmitted===null) {
+                        td3.innerText = "not updated"
+                    } else {
+                        td3.innerText = data[i].timeSubmitted;
+                    }
+                    if (data[i].timeResolved===null) {
+                        td4.innerText = "not updated"
+                    } else {
+                        td4.innerText = data[i].timeResolved;
+                    }
+                    td5.innerText = data[i].reimbDescription;
+                    td6.innerText = data[i].reimbType.reimbType
+                    td7.innerText = data[i].reimbStatus.reimbStatus;
+    
+                    newRow.appendChild(td1);
+                    newRow.appendChild(td2);
+                    newRow.appendChild(td3);
+                    newRow.appendChild(td4);
+                    newRow.appendChild(td5);
+                    newRow.appendChild(td6);
+                    newRow.appendChild(td7);
+    
+                    tbody.appendChild(newRow);
+                }
 }
 
 async function findAllFunc() {
