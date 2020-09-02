@@ -52,7 +52,11 @@ async function submitReimb() {
     })
 
     if (resp.status==201) {
+        let tbody = document.getElementById('reimb-body');
+        tbody.innerHTML= "";
         findAllFunc()
+        amount.innerText = 0.00;
+        descr.innerText = "";
     } else {
         document.getElementById("login-row").innerText = 'Reimb was NOT added'
     }
