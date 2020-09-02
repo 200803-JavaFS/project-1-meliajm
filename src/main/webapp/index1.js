@@ -82,14 +82,25 @@ async function updateReimb() {
             console.log("reimb");
             console.log(reimb);
 
+            // let reimb = {
+            //     reimbAmount: amount,
+            //     reimbDescription: descr,
+            //     reimbAuthorString: "tiaclair1",
+            //     reimbResolver: null,
+            //     reimbStatus: "Pending",
+            //     reimbType: type,
+            //     timeResolved: null,
+            //     timeSubmitted: new Date(),
+            // }
+
             let data = {
                 reimbID: reimb.reimbID,
                 reimbAmount: reimb.reimbAmount,
                 reimbDescription: reimb.reimbDescription,
-                reimbAuthor: reimb.reimbAuthor,
+                reimbAuthorString: reimb.reimbAuthor.username,
                 reimbResolver: resolver,
                 reimbStatus: stat,
-                reimbType: reimb.reimbType,
+                reimbType: reimb.reimbType.reimbType,
                 timeResolved: new Date(),
                 timeSubmitted: reimb.timeSubmitted
             }
