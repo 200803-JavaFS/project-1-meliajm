@@ -5,8 +5,12 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.revature.daos.IReimbStatusDAO;
+import com.revature.daos.IReimbTypeDAO;
 import com.revature.daos.IReimbursementDAO;
 import com.revature.daos.IUserDAO;
+import com.revature.daos.ReimbStatusDAO;
+import com.revature.daos.ReimbTypeDAO;
 import com.revature.daos.ReimbursementDAO;
 import com.revature.daos.UserDAO;
 import com.revature.models.ReimbDTO;
@@ -23,6 +27,8 @@ public class ReimbService {
 	
 	private static IReimbursementDAO rDao = new ReimbursementDAO();
 	private static IUserDAO uDao = new UserDAO();
+	private static IReimbStatusDAO rsDao = new ReimbStatusDAO();
+	private static IReimbTypeDAO rtDao = new ReimbTypeDAO();
 
 	public List<Reimbursement> findAll() {
 		log.info("find all");
@@ -42,7 +48,9 @@ public class ReimbService {
 	public boolean addReimbursement(ReimbDTO rd) {
 		Reimbursement r;
 		User u = uDao.findByUsername(rd.reimbAuthorString);
-		r = new Reimbursement(rd.reimbAmount, rd.timeSubmitted, rd.timeResolved, rd.reimbDescription, u, null, rd.reimbStatus, rd.reimbType);
+		ReimbursementStatus rs = rsDao.findByStatus(rd.reimbStatus); 
+		ReimbursementType rt =rtDao.findByType(rd.reimbType);
+		r = new Reimbursement(rd.reimbAmount, rd.timeSubmitted, rd.timeResolved, rd.reimbDescription, u, null, rs, rt);
 		log.info("add reimbursement");
 		return rDao.addReimbursement(r);
 	}

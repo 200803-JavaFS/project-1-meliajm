@@ -3019,3 +3019,24 @@
 2020-09-01 21:30:19 INFO  UserService:30 - find by username
 2020-09-01 21:30:19 INFO  UserService:46 - find user reimbursements from user
 2020-09-01 21:30:26 INFO  UserService:30 - find by username
+2020-09-01 21:36:16 INFO  UserService:30 - find by username
+2020-09-01 21:36:29 INFO  UserService:30 - find by username
+2020-09-01 21:38:20 INFO  UserService:30 - find by username
+2020-09-02 08:24:35 INFO  UserService:30 - find by username
+2020-09-02 08:24:45 INFO  UserService:30 - find by username
+2020-09-02 08:24:46 INFO  UserService:30 - find by username
+2020-09-02 08:24:46 INFO  UserService:46 - find user reimbursements from user
+2020-09-02 08:24:57 INFO  UserService:30 - find by username
+2020-09-02 08:24:57 INFO  ReimbService:46 - add reimbursement
+2020-09-02 08:49:15 INFO  UserService:30 - find by username
+2020-09-02 08:49:24 INFO  UserService:30 - find by username
+2020-09-02 08:49:24 INFO  UserService:30 - find by username
+2020-09-02 08:49:24 INFO  UserService:46 - find user reimbursements from user
+2020-09-02 08:49:33 INFO  UserService:30 - find by username
+2020-09-02 08:49:33 INFO  ReimbService:54 - add reimbursement
+2020-09-02 08:49:33 INFO  UserService:30 - find by username
+2020-09-02 08:49:33 INFO  UserService:46 - find user reimbursements from user
+2020-09-02 08:49:57 INFO  UserService:30 - find by username
+2020-09-02 08:49:57 INFO  UserService:30 - find by username
+2020-09-02 08:49:57 INFO  UserService:30 - find by username
+2020-09-02 08:49:57 INFO  UserService:46 - find user reimbursements from user

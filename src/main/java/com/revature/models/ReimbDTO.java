@@ -9,17 +9,17 @@ public class ReimbDTO {
 	public String reimbDescription;
 	public String reimbAuthorString;
 	public String reimbResolver;
-	public ReimbursementStatus reimbStatus;
-	public ReimbursementType reimbType;
+	public String reimbStatus;
+	public String reimbType;
 	
 	public ReimbDTO() {
 		super();
 	}
-	
-	public ReimbDTO(double reimbAmount, String timeSubmitted, String timeResolved, String reimbDescription,
-			String reimbAuthorString, String reimbResolver, ReimbursementStatus reimbStatus,
-			ReimbursementType reimbType) {
+
+	public ReimbDTO(int reimbID, double reimbAmount, String timeSubmitted, String timeResolved, String reimbDescription,
+			String reimbAuthorString, String reimbResolver, String reimbStatus, String reimbType) {
 		super();
+		this.reimbID = reimbID;
 		this.reimbAmount = reimbAmount;
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
@@ -30,11 +30,9 @@ public class ReimbDTO {
 		this.reimbType = reimbType;
 	}
 
-	public ReimbDTO(int reimbID, double reimbAmount, String timeSubmitted, String timeResolved, String reimbDescription,
-			String reimbAuthorString, String reimbResolver, ReimbursementStatus reimbStatus,
-			ReimbursementType reimbType) {
+	public ReimbDTO(double reimbAmount, String timeSubmitted, String timeResolved, String reimbDescription,
+			String reimbAuthorString, String reimbResolver, String reimbStatus, String reimbType) {
 		super();
-		this.reimbID = reimbID;
 		this.reimbAmount = reimbAmount;
 		this.timeSubmitted = timeSubmitted;
 		this.timeResolved = timeResolved;
@@ -121,8 +119,6 @@ public class ReimbDTO {
 				+ reimbAuthorString + ", reimbResolver=" + reimbResolver + ", reimbStatus=" + reimbStatus
 				+ ", reimbType=" + reimbType + "]";
 	}
-	
-	
 	
 	
 	

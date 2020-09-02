@@ -20,25 +20,25 @@ async function submitReimb() {
     let descr = document.getElementById('reimbDesc').value;
     
     let type = document.getElementById('type').value;
-    if (type==='Lodging') {
-        typeObj = {"reimbTypeID": 1, "reimbType": "Lodging"}
-    } else if (type==='Food') {
-        typeObj = {"reimbTypeID": 4, "reimbType": "Food"}        
-    } else if (type==='Other') {
-        typeObj = {"reimbTypeID": 2, "reimbType": "Other"}        
-    } else if (type==='Travel') {
-        typeObj = {"reimbTypeID": 3, "reimbType": "Travel"}        
-    } 
+    // if (type==='Lodging') {
+    //     typeObj = {"reimbTypeID": 1, "reimbType": "Lodging"}
+    // } else if (type==='Food') {
+    //     typeObj = {"reimbTypeID": 4, "reimbType": "Food"}        
+    // } else if (type==='Other') {
+    //     typeObj = {"reimbTypeID": 2, "reimbType": "Other"}        
+    // } else if (type==='Travel') {
+    //     typeObj = {"reimbTypeID": 3, "reimbType": "Travel"}        
+    // } 
 
     //get username from session somewhere, cookie or something?
 
     let reimb = {
         reimbAmount: amount,
         reimbDescription: descr,
-        reimbAuthor: "tiaclair1",
+        reimbAuthorString: "tiaclair1",
         reimbResolver: null,
-        reimbStatus: {"reimbStatusID":3, "reimbStatus":"Pending"},
-        reimbType: typeObj,
+        reimbStatus: "Pending",
+        reimbType: type,
         timeResolved: null,
         timeSubmitted: new Date(),
     }
