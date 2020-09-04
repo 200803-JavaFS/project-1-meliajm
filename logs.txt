@@ -3227,3 +3227,5 @@
 2020-09-04 15:43:01 INFO  ReimbService:34 - find all
 2020-09-04 15:43:07 INFO  UserService:30 - find by username
 2020-09-04 15:43:07 INFO  ReimbService:34 - find all
+2020-09-04 16:08:05 INFO  UserService:30 - find by username
+2020-09-04 16:08:05 INFO  ReimbService:34 - find all
