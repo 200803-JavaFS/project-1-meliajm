@@ -41,7 +41,7 @@ async function submitReimb() {
     // } 
 
     //get username from session somewhere, cookie or something?
-    if (lengthOfDecimals===2) {
+    if (lengthOfDecimals===2 && amount>0) {
         let reimb = {
             reimbAmount: amount,
             reimbDescription: descr,
@@ -165,7 +165,7 @@ async function loginFunc() {
 
     if (resp.status===200){
         document.getElementById("login-row").innerText = "You have logged in "+user.username;
-
+        console.log(`user: ${user.username}`);
         if (user.username==='captini'|| user.username==='captain' ||user.username==='liz') {
             resolver = user.username;
             document.getElementById('financeM').style.display='block';
